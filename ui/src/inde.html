@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <pre><code>Karachi Pakistan that</code></pre>
+    <p></p>
+    <p>In a controversial experiment, a team of physicists investigated whether we could harness the Earth's rotational
+        energy to generate electricity.</p>
+    <p style="text-align: start">It's a deceptively simple idea that researchers have only started to grapple with over
+        the last decade. But whether the concept will ever turn into a feasible source of renewable energy remains to be
+        seen, with the team's peers noting their skepticism of the results.</p>
+    <p style="text-align: start"></p>
+    <pre><code>class PostUpdate(generics.UpdateAPIView):
+        lookup_field = 'slug'
+        serializer_class = PostCreateUpdateSerializer
+        permission_classes = [permissions.IsAuthenticated]
+    
+        def get_queryset(self):
+            user = self.request.user
+            if user.role == 'master_admin':  
+                return BlogPost.objects.defer("created_at")
+            if user.role == 'blog_admin':  
+                return BlogPost.objects.filter(author=user).only('title', 'content', 'category', 'status', 'keywords')  
+            return BlogPost.objects.none()  
+    </code></pre>
+    <p style="text-align: start"></p>
+    <p style="text-align: start"></p><img height="auto" style="text-align: center; aspect-ratio: 1.5 / 1"
+        src="blob:http://localhost:5173/c52d2131-9a38-4d9b-a749-e86e0664aa8f"
+        alt="5_360_F_567161777_fCYqJJgCiwh3H9X6uZEqJAYwvCkvuHjO.jpg" width="481">
+    <p style="text-align: start"></p>
+    <p style="text-align: start"></p>
+    <p style="text-align: start"></p>
+    <p style="text-align: start"></p>
+    <pre><code>class PostUpdate(generics.UpdateAPIView):
+        lookup_field = 'slug'
+        serializer_class = PostCreateUpdateSerializer
+        permission_classes = [permissions.IsAuthenticated]
+    
+        def get_queryset(self):
+            user = self.request.user
+            if user.role == 'master_admin':  
+                return BlogPost.objects.defer("created_at")
+            if user.role == 'blog_admin':  
+                return BlogPost.objects.filter(author=user).only('title', 'content', 'category', 'status', 'keywords')  
+            return BlogPost.objects.none()  </code></pre>
+    <p style="text-align: start"></p>
+    <p style="text-align: start"></p>
+    <p style="text-align: start"></p>
+</body>
+
+</html>
