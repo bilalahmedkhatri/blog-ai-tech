@@ -68,7 +68,9 @@ ROOT_URLCONF = 'backend_auto_video.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            str(BASE_DIR.joinpath('dist')),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,6 +93,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+
+        # 'ENGINE': 'mysql.connector.django',
+        # 'NAME': 'uihxzefkgh_ai_blog',
+        # 'USER': 'uihxzefkgh_ai_blog',
+        # 'PASSWORD': '63SE58{-x{pC',
+        # 'HOST': '120.0.0.1',
+        # 'PORT': 3306,
     }
 }
 
@@ -171,6 +180,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'bilal.cloudscourt@gmail.com'
-EMAIL_HOST_PASSWORD = 'gqfocbthneghixdp'  # Use the App Password here, not your regular password
+# Use the App Password here, not your regular password
+EMAIL_HOST_PASSWORD = 'gqfocbthneghixdp'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
