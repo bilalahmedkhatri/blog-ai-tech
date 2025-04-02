@@ -82,13 +82,13 @@ function PostCreate() {
   }, [storagePrefix]);
 
   // Consolidate form state for autosave
-  const formState = { 
-    title: blogTitle, 
-    content: editorContent, 
-    category: selectedCategory, 
-    tags: selectedTags, 
-    keywords, 
-    status 
+  const formState = {
+    title: blogTitle,
+    content: editorContent,
+    category: selectedCategory,
+    tags: selectedTags,
+    keywords,
+    status
   };
 
   // Autosave form state with debouncing (using our custom hook)
@@ -156,13 +156,32 @@ function PostCreate() {
     formData.append('keywords', keywords);
     formData.append('status', status);
 
+    console.log('type: ', typeof formData);
+    console.log('actual formdata', formData);
+
     try {
       await createPost(formData).unwrap();
       clearLocalStorage();
       navigate('/dashboard');
     } catch (error) {
+      if (error.data.title) {
+        setFormError(error.data.title[0]);
+      } else if (error.data.content) {
+        setFormError(error.data.content[0]);
+      } else if (error.data.category) {
+        setFormError(error.data.category);
+      } else if (error.data.tags) {
+        setFormError(error.data.tags);
+      } else if (error.data.featured_image) {
+        setFormError(error.data.featured_image);
+      } else if (error.data.keywords) {
+        setFormError(error.data.keywords);
+      } else if (error.data.status) {
+        setFormError(error.data.status);
+      } else {
+        setFormError('Failed to create post. Please try again.');
+      }
       console.error('Error creating post:', error);
-      setFormError(`Failed to create post: ${error.message || 'Unknown error'}`);
     }
   };
 

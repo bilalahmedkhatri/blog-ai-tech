@@ -14,19 +14,20 @@ import CardAlert from './CardAlert';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../apiSlice';
 import { useNavigate } from 'react-router-dom';
+import { getEmailAndName } from '../../tools';
 
 function SideMenuMobile({ open, toggleDrawer }) {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { email, name } = getEmailAndName();
   const handleLogout = () => {
     // Dispatch the logout action to clear state and remove the token cookie
     dispatch(logout());
     // Optionally, navigate the user to the login page
     navigate('/login');
   };
-  
+
   return (
     <Drawer
       anchor="right"
@@ -58,19 +59,19 @@ function SideMenuMobile({ open, toggleDrawer }) {
               sx={{ width: 24, height: 24 }}
             />
             <Typography component="p" variant="h6">
-              Riley Carter
+              {name}
             </Typography>
           </Stack>
-          <MenuButton showBadge>
+          {/* <MenuButton showBadge>
             <NotificationsRoundedIcon />
-          </MenuButton>
+          </MenuButton> */}
         </Stack>
         <Divider />
         <Stack sx={{ flexGrow: 1 }}>
           <MenuContent />
           <Divider />
         </Stack>
-        <CardAlert />
+        {/* <CardAlert /> */}
         <Stack sx={{ p: 2 }}>
           <Button variant="outlined" fullWidth startIcon={<LogoutRoundedIcon />} onClick={handleLogout}>
             Logout

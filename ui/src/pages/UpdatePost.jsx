@@ -62,7 +62,7 @@ function PostUpdate() {
   const { data: postData, isLoading: isPostLoading } = useGetPostByIdQuery(slug);
   const { data: categories, isLoading: categoriesLoading } = useGetCategoriesQuery();
   const { data: tags, isLoading: tagsLoading } = useGetTagsQuery();
-  const [updatePost, { isLoading: isUpdating }] = useUpdatePostMutation();
+  const [updatePost, { error: updateError, isLoading: isUpdating,  }] = useUpdatePostMutation();
   const [uploadImage] = useUploadImageMutation();
 
   // Load post data into state for editing
@@ -162,12 +162,34 @@ function PostUpdate() {
           formDataObj[key] = value;
         }
       }
-
-      await updatePost({ slug, ...formDataObj }).unwrap();
+      // console.log(formDataObj);
+      // console.log('type: ', typeof formDataObj, typeof formData.get('featured_image'));
+      // console.log('actual formdata', ...formData.entries());
+      // console.log('actual formdata', ...formData);
+      // console.log('updated form data', formDataObj);
+      await updatePost({ slug, formData }).unwrap();
+      // await updatePost({ slug, ...formDataObj }).unwrap();
       navigate('/dashboard');
     } catch (error) {
-      console.error('Error updating post:', error);
-      setFormError(`Failed to update post: ${error.message || 'Unknown error'}`);
+      if (error.data.title) {
+        setFormError(error.data.title[0]);
+      } else if (error.data.content) {
+        setFormError(error.data.content[0]);
+      } else if (error.data.category) {
+        setFormError(error.data.category);
+      } else if (error.data.tags) {
+        setFormError(error.data.tags);
+      } else if (error.data.featured_image) {
+        setFormError(error.data.featured_image);
+      } else if (error.data.keywords) {
+        setFormError(error.data.keywords);
+      } else if (error.data.status) {
+        setFormError(error.data.status);
+      } else {
+        setFormError('Failed to create post. Please try again.');
+      }
+      console.error('Error creating post:', error);
+      // setFormError(`${error.status || 'unknown'}. ${error.data?.featured_image || 'Unknown error'}`);
     }
   };
 

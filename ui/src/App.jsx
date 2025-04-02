@@ -1,3 +1,4 @@
+import 'vite/modulepreload-polyfill'
 import * as React from 'react';
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -15,7 +16,6 @@ import PostView from './pages/PostView';
 import UpdatePost from './pages/UpdatePost';
 import UserProfile from './pages/UserProfile';
 import { HelmetProvider } from "react-helmet-async";
-
 
 
 const store = configureStore({

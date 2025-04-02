@@ -140,7 +140,7 @@ class UploadedImage(models.Model):
     image = models.ImageField(upload_to='editor_images/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     uploaded_by = models.ForeignKey(
-        UserProfile, on_delete=models.CASCADE, related_name="uploaded_images")
+        UserProfile, on_delete=models.CASCADE, related_name="blog_detailed_images")
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, default='pending')
     notification_sent = models.BooleanField(default=False)

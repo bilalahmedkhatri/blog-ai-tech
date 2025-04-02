@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status
 from django.shortcuts import get_object_or_404
@@ -24,6 +25,9 @@ from api.serializers import (
 from django.db import models
 import json
 import html2text
+
+def frontend(request, *args, **kwargs):
+    return render(request, 'index.html')
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):

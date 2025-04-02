@@ -29,7 +29,7 @@ print(key)
 SECRET_KEY = os.environ.get('DJANG0_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', True) == True
 
 ALLOWED_HOSTS = ['ai-blog.bilalahmed.dev', '127.0.0.1', 'localhost']
 
@@ -69,7 +69,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            str(BASE_DIR.joinpath('dist')),
+            # os.path.join(BASE_DIR, 'api', 'frontend', 'dist'),
+            os.path.join(BASE_DIR, 'frontend', 'dist'),
+            os.path.join(BASE_DIR, 'frontend'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -140,8 +142,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR, 'api', 'frontend', 'public'),
+    # os.path.join(BASE_DIR, 'api', 'frontend', 'dist'),
+    os.path.join(BASE_DIR, 'frontend', 'dist'),
+]
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'frontend', 'dist')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

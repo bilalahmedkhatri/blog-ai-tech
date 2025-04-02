@@ -173,10 +173,11 @@ export const apiSlice = createApi({
       invalidatesTags: ['Posts']
     }),
     updatePost: builder.mutation({
-      query: ({ slug, ...postData }) => ({
+      query: ({ slug, formData }) => ({
+      // query: ({ slug, ...postData }) => ({
         url: `posts/${slug}/update/`,
         method: 'PUT',
-        body: postData,
+        body: formData,
       }),
       invalidatesTags: (result, error, { slug }) => [
         { type: 'Posts', id: slug },

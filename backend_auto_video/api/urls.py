@@ -1,6 +1,7 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
 from api.views import (
+    frontend,
     AdminDashboardView,
     EditorDashboardView,
     CustomTokenObtainPairView,
@@ -13,6 +14,8 @@ from api.views import (
 )
 
 urlpatterns = [
+#     path('', frontend, name='frontend'),
+
     # JWT token endpoints
     path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
@@ -33,9 +36,11 @@ urlpatterns = [
 
     # from previous blog
     path('user/profile/', UserProfileRetrieveAPIView.as_view(), name='user-profile'),
-    path('user/profile/update/', UserProfileUpdateAPIView.as_view(), name='user-profile-update'),
+    path('user/profile/update/', UserProfileUpdateAPIView.as_view(),
+         name='user-profile-update'),
     path('category/create/', CreateCategory.as_view(), name='category-create'),
-    path('category/<int:pk>/delete/', DeleteCategory.as_view(), name='category-delete'),
+    path('category/<int:pk>/delete/',
+         DeleteCategory.as_view(), name='category-delete'),
     path('category/', CategoryList.as_view(), name='category-list'),
     path('category/<int:pk>/', CategoryDetail.as_view(), name='category-detail'),
     path('tags/', TagList.as_view(), name='tag-list'),

@@ -173,7 +173,9 @@ const PostView = () => {
   }
   
   if (error) {
-    return <div>Error loading post: {error.error ? error : 'Unknown error'}</div>;
+    console.log(post)
+    console.log(error);
+    return <div>{error.status} : {error.data.detail}</div>;
   }
 
   // Format date if available

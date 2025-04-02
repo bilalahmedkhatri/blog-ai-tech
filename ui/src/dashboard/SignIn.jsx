@@ -14,7 +14,6 @@ import { styled } from '@mui/material/styles';
 import ForgotPassword from './components/ForgotPassword';
 import AppTheme from '../shared-theme/AppTheme';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
-import { SitemarkIcon } from './components/CustomIcons';
 
 import { useLoginMutation } from '../apiSlice';
 import { useNavigate } from 'react-router-dom';

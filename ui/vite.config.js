@@ -1,9 +1,16 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  // base: '/static/',
+  // build: {
+  //   manifest: true,
+  //   rollupOptions: {
+  //     assetFileNames: (file) => 'assets/css/index.min.css',
+  //     entryFileNames: (file) => 'assets/js/[name].min.js',
+  //   },
+  // },
   esbuild: {
     loader: 'jsx',
     include: /\.jsx?$/,
@@ -16,3 +23,4 @@ export default defineConfig({
     },
   },
 });
+

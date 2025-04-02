@@ -11,7 +11,7 @@ import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
 import LoadingCircle from '../components/LoadingCircle';
 import { Snackbar, Alert, Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button } from '@mui/material';
-
+import { getEmailAndName } from '../../tools';
 
 export default function CustomizedDataGrid() {
   const navigate = useNavigate();
@@ -20,6 +20,8 @@ export default function CustomizedDataGrid() {
 
   const [snackbar, setSnackbar] = React.useState({ open: false, message: '', severity: 'success' });
   const [deleteDialog, setDeleteDialog] = React.useState({ open: false, postId: null, slug: '' });
+
+  const currentUserId = getEmailAndName();
 
   if (isLoading) {
     return (
@@ -153,7 +155,7 @@ export default function CustomizedDataGrid() {
                 label={tag}
                 size="small"
                 sx={{
-                  height: '18px',
+                  height: '16px',
                   fontSize: '0.63rem',
                   '& .MuiChip-label': {
                     padding: '0 3px',
@@ -193,19 +195,24 @@ export default function CustomizedDataGrid() {
       type: 'actions',
       headerName: 'Actions',
       width: 100,
-      getActions: (params) => [
-        <GridActionsCellItem
-          icon={<EditIcon />}
-          label="Edit"
-          onClick={() => handleEditPost(params.id, params.row.slug)}
-        />,
-        <GridActionsCellItem
-          icon={<DeleteIcon />}
-          label="Delete"
-          onClick={() => handleDeleteConfirmation(params.id, params.row.slug)}
-          color="error"
-        />,
-      ],
+      getActions: (params) => {
+        const isOwner = params.row.createdBy === currentUserId.userId;
+        return [
+          <GridActionsCellItem
+            icon={<EditIcon />}
+            label="Edit"
+            onClick={() => handleEditPost(params.id, params.row.slug)}
+            disabled={!isOwner} // disable if not owner
+          />,
+          <GridActionsCellItem
+            icon={<DeleteIcon />}
+            label="Delete"
+            onClick={() => handleDeleteConfirmation(params.id, params.row.slug)}
+            color="error"
+            disabled={!isOwner} // disable if not owner
+          />,
+        ];
+      },
     },
   ];
 
@@ -214,6 +221,7 @@ export default function CustomizedDataGrid() {
     slug: post.slug || '',
     title: post.title || '',
     status: post.status || '',
+    createdBy: post.author?.id || 0,
     author_first_name: post.author?.first_name || '',
     author_last_name: post.author?.last_name || '',
     // Extract a string value from category if it's an object

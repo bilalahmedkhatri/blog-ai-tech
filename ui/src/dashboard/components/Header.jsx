@@ -5,10 +5,12 @@ import CustomDatePicker from './CustomDatePicker';
 import NavbarBreadcrumbs from './NavbarBreadcrumbs';
 import MenuButton from './MenuButton';
 import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown';
-
+import { getEmailAndName } from '../../tools';
 import Search from './Search';
+import { Typography, Box } from '@mui/material';
 
 export default function Header() {
+  const { name, email } = getEmailAndName() || null;
   return (
     <Stack
       direction="row"
@@ -18,19 +20,21 @@ export default function Header() {
         alignItems: { xs: 'flex-start', md: 'center' },
         justifyContent: 'space-between',
         maxWidth: { sm: '100%', md: '1700px' },
-        pt: 1.5,
+        pt: 3,
       }}
       spacing={2}
     >
-      <NavbarBreadcrumbs />
-      <Stack direction="row" sx={{ gap: 1 }}>
+      <Typography variant="body1">
+        Welcome <b>{name}</b>
+      </Typography>
+      {/* <Stack direction="row" sx={{ gap: 1 }}>
         <Search />
-        {/* <CustomDatePicker /> */}
+        <CustomDatePicker />
         <MenuButton showBadge aria-label="Open notifications">
           <NotificationsRoundedIcon />
         </MenuButton>
         <ColorModeIconDropdown />
-      </Stack>
+      </Stack> */}
     </Stack>
   );
 }

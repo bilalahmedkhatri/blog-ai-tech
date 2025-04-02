@@ -13,21 +13,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MuiListItemAvatar from '@mui/material/ListItemAvatar';
 import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
 import { Link } from 'react-router-dom';
-import { jwtDecode } from 'jwt-decode';
-import Cookies from 'js-cookie';
-
-const getEmailAndName = () => {
-  const token = Cookies.get('access_token');
-  if (token) {
-    const decodedToken = jwtDecode(token);
-    return {
-      email: decodedToken.email,
-      name: decodedToken.name
-    };
-  }
-  return null;
-};
-
+import { getEmailAndName } from '../../tools';
 
 
 const ListItemAvatar = styled(MuiListItemAvatar)({
@@ -49,6 +35,9 @@ const Drawer = styled(MuiDrawer)({
 });
 
 export default function SideMenuBlog() {
+
+  const userData = getEmailAndName();
+
   return (
     <Drawer
       variant="permanent"
@@ -97,7 +86,7 @@ export default function SideMenuBlog() {
       <Stack
         direction="row"
         sx={{
-          p: 2,
+          p: 1.5,
           gap: 1,
           alignItems: 'center',
           borderTop: '1px solid',
@@ -110,12 +99,12 @@ export default function SideMenuBlog() {
           src="/static/images/avatar/7.jpg"
           sx={{ width: 36, height: 36 }}
         />
-        <Box sx={{ mr: 'auto' }}>
-          <Typography variant="body2" sx={{ fontWeight: 500, lineHeight: '16px' }}>
-            {getEmailAndName() ? getEmailAndName().name : 'Admin'}
+        <Box sx={{ mr: 'auto', mt:1 }}>
+          <Typography variant="body2" sx={{ fontWeight: 500, lineHeight: '10px' }}>
+            {userData ? userData.name : 'Admin'}
           </Typography>
           <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-            {getEmailAndName() ? getEmailAndName().email : 'test@admin.com'}
+            {userData ? userData.email : 'test@admin.com'}
           </Typography>
         </Box>
         <OptionsMenu />
