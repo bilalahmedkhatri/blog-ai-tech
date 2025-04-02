@@ -26,6 +26,7 @@ from django.db import models
 import json
 import html2text
 
+
 def frontend(request, *args, **kwargs):
     return render(request, 'index.html')
 
@@ -69,6 +70,8 @@ class SignupView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # email verification view
+
+
 class VerifyEmailView(APIView):
     # Allow public access (or you may secure it via token in query params)
     permission_classes = []
@@ -142,6 +145,7 @@ class UserProfileRetrieveAPIView(generics.RetrieveAPIView):
         # Returns the currently authenticated user
         return self.request.user
 
+
 class UserProfileUpdateAPIView(generics.UpdateAPIView):
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -150,7 +154,7 @@ class UserProfileUpdateAPIView(generics.UpdateAPIView):
         # Returns the currently authenticated user
         return self.request.user
 
-    
+
 class CreateCategory(generics.CreateAPIView):
     queryset = BlogCategory.objects.all()
     serializer_class = CategorySerializer
@@ -165,6 +169,7 @@ class CreateCategory(generics.CreateAPIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class DeleteCategory(generics.DestroyAPIView):
     queryset = BlogCategory.objects.all()
     serializer_class = CategorySerializer
@@ -178,29 +183,35 @@ class DeleteCategory(generics.DestroyAPIView):
         except ObjectDoesNotExist:
             return Response({"error": "Category not found"}, status=status.HTTP_404_NOT_FOUND)
 
+
 class CategoryList(generics.ListCreateAPIView):
     queryset = BlogCategory.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [permissions.IsAdminUser]  # Or your custom permission
+
 
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = BlogCategory.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [permissions.IsAdminUser]  # Or your custom permission
 
+
 class TagList(generics.ListCreateAPIView):
     queryset = BlogTag.objects.all()
     serializer_class = TagSerializer
     permission_classes = [permissions.IsAdminUser]  # Or your custom permission
+
 
 class TagDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = BlogTag.objects.all()
     serializer_class = TagSerializer
     permission_classes = [permissions.IsAdminUser]  # Or your custom permission
 
+
 class DashboardPostList(generics.ListAPIView):
     queryset = BlogPost.objects.all()
     serializer_class = DashboardPostListSerializer
+
 
 class PostDetail(generics.RetrieveAPIView):
     lookup_field = 'slug'
@@ -211,21 +222,21 @@ class PostDetail(generics.RetrieveAPIView):
 
         if not user.is_authenticated:
             print('user :', user)
-            return BlogPost.objects.filter(status='published').only("slug", "title", "content", "author", "status")  
+            return BlogPost.objects.filter(status='published').only("slug", "title", "content", "author", "status")
             # Fetch only required fields for performance
 
-        if user.role == 'master_admin':  
+        if user.role == 'master_admin':
             print('user :', user.role)
-            return BlogPost.objects.defer("updated_at", "content")  
+            return BlogPost.objects.defer("updated_at", "content")
             # Avoid loading heavy fields unless needed
 
-        if user.role == 'blog_admin':  
+        if user.role == 'blog_admin':
             print('user :', user.role)
-            return BlogPost.objects.filter(models.Q(author=user) | models.Q(status='published')).only("slug", "title", "content", "author", "status")  
+            return BlogPost.objects.filter(models.Q(author=user) | models.Q(status='published')).only("slug", "title", "content", "author", "status")
             # Blog admin sees all posts but fetches minimal data
 
         print('user :', user)
-        return BlogPost.objects.filter(status='published')  
+        return BlogPost.objects.filter(status='published')
 
 
 class PostCreate(generics.CreateAPIView):
@@ -245,19 +256,20 @@ class PostCreate(generics.CreateAPIView):
     def perform_create(self, serializer):
         # Generate meta title and description from content
         content = self.request.data.get('content', '')
-        
+
         # Parse the JSON content to get plain text
         try:
             content_dict = json.loads(content)
             h = html2text.HTML2Text()
             h.ignore_links = True
-            plain_text = h.handle(content_dict.get('blocks', [{}])[0].get('text', ''))
+            plain_text = h.handle(content_dict.get(
+                'blocks', [{}])[0].get('text', ''))
         except:
             plain_text = ''
 
         # Generate meta title (use post title if available)
         meta_title = self.request.data.get('title', '')[:60]
-        
+
         # Generate meta description (first 160 characters of content)
         meta_description = plain_text[:155].strip()
 
@@ -267,27 +279,29 @@ class PostCreate(generics.CreateAPIView):
             meta_description=meta_description
         )
 
+
 class PostUpdate(generics.UpdateAPIView):
     lookup_field = 'slug'
     serializer_class = PostCreateUpdateSerializer
     permission_classes = [permissions.IsAuthenticated]
+    parser_classes = [MultiPartParser, FormParser]
 
     def get_queryset(self):
         user = self.request.user
-        if user.role == 'master_admin':  
+        if user.role == 'master_admin':
             return BlogPost.objects.defer("created_at")
-        if user.role == 'blog_admin':  
-            return BlogPost.objects.filter(author=user).only('title', 'content', 'category', 'status', 'keywords')  
-        return BlogPost.objects.none()  
-
+        if user.role == 'blog_admin':
+            return BlogPost.objects.filter(author=user).only('title', 'content', 'category', 'status', 'keywords')
+        return BlogPost.objects.none()
 
 
 class PostDelete(generics.DestroyAPIView):
     lookup_field = 'slug'
     permission_classes = [permissions.IsAuthenticated, IsAuthorOrReadOnly]
+
     def get_queryset(self):
         user = self.request.user
-        if user.role == 'master_admin':  
+        if user.role == 'master_admin':
             return BlogPost.objects.only("id")
         return BlogPost.objects.filter(author=user).only("id")
 
@@ -300,5 +314,3 @@ class PostDelete(generics.DestroyAPIView):
             )
         self.perform_destroy(instance)
         return Response({"message": "Post deleted successfully."}, status=status.HTTP_204_NO_CONTENT)
-
-
