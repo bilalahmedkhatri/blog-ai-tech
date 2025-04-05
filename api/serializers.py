@@ -53,7 +53,7 @@ class UserSerializer(serializers.ModelSerializer):
         # List only the fields you want to expose and allow updates for
         fields = [
             'id', 'email', 'first_name', 'last_name', 'phone_number', 'profile_image', 'country', 'summery',
-            'city', 'state',
+            'city', 'security_question', 'security_answer',
         ]
         read_only_fields = ['id', 'email']  # Email and ID are read-only
 

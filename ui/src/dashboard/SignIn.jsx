@@ -92,7 +92,6 @@ export default function SignIn(props) {
 
     try {
       await login({ email, password }).unwrap();
-      console.log('Login successful');
       navigate('/dashboard');
     } catch (err) {
       console.error('Login failed:', err);

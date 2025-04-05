@@ -63,7 +63,6 @@ function PostCreate() {
   const [createPost, { isLoading: isSubmitting }] = useCreatePostMutation();
   const [uploadImage] = useUploadImageMutation();
 
-  // On mount, load autosaved data from localStorage
   useEffect(() => {
     const savedData = getAutosavedFormState(storagePrefix, [
       'title',
@@ -81,7 +80,6 @@ function PostCreate() {
     if (savedData.status) setStatus(savedData.status);
   }, [storagePrefix]);
 
-  // Consolidate form state for autosave
   const formState = {
     title: blogTitle,
     content: editorContent,
@@ -91,10 +89,8 @@ function PostCreate() {
     status
   };
 
-  // Autosave form state with debouncing (using our custom hook)
   useAutosave(storagePrefix, formState);
 
-  // Handler functions
   const onEditorChange = useCallback((content) => {
     setEditorContent(content);
   }, []);
@@ -103,7 +99,6 @@ function PostCreate() {
     const file = e.target.files[0];
     if (file) {
       setFeaturedImage(file);
-      // Generate image preview
       setImagePreview(URL.createObjectURL(file));
     }
   }, []);
@@ -155,9 +150,6 @@ function PostCreate() {
     if (featuredImage) formData.append('featured_image', featuredImage);
     formData.append('keywords', keywords);
     formData.append('status', status);
-
-    console.log('type: ', typeof formData);
-    console.log('actual formdata', formData);
 
     try {
       await createPost(formData).unwrap();

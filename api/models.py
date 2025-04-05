@@ -137,7 +137,7 @@ class UploadedImage(models.Model):
         ('using', 'In Use'),
     )
 
-    image = models.ImageField(upload_to='editor_images/')
+    image = models.ImageField(upload_to='media/content_images/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     uploaded_by = models.ForeignKey(
         UserProfile, on_delete=models.CASCADE, related_name="blog_detailed_images")

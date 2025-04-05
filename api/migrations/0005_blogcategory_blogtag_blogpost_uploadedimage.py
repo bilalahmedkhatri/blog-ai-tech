@@ -65,7 +65,7 @@ class Migration(migrations.Migration):
             name='UploadedImage',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to='editor_images/')),
+                ('image', models.ImageField(upload_to='media/editor_images/')),
                 ('uploaded_at', models.DateTimeField(auto_now_add=True)),
                 ('status', models.CharField(choices=[('pending', 'Pending'), ('using', 'In Use')], default='pending', max_length=10)),
                 ('notification_sent', models.BooleanField(default=False)),

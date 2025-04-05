@@ -162,13 +162,7 @@ function PostUpdate() {
           formDataObj[key] = value;
         }
       }
-      // console.log(formDataObj);
-      // console.log('type: ', typeof formDataObj, typeof formData.get('featured_image'));
-      // console.log('actual formdata', ...formData.entries());
-      // console.log('actual formdata', ...formData);
-      // console.log('updated form data', formDataObj);
       await updatePost({ slug, formData }).unwrap();
-      // await updatePost({ slug, ...formDataObj }).unwrap();
       navigate('/dashboard');
     } catch (error) {
       if (error.data.title) {
@@ -189,7 +183,6 @@ function PostUpdate() {
         setFormError('Failed to create post. Please try again.');
       }
       console.error('Error creating post:', error);
-      // setFormError(`${error.status || 'unknown'}. ${error.data?.featured_image || 'Unknown error'}`);
     }
   };
 

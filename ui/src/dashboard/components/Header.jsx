@@ -10,7 +10,7 @@ import Search from './Search';
 import { Typography, Box } from '@mui/material';
 
 export default function Header() {
-  const { name, email } = getEmailAndName() || null;
+  const name = getEmailAndName().name || '';
   return (
     <Stack
       direction="row"
@@ -25,7 +25,7 @@ export default function Header() {
       spacing={2}
     >
       <Typography variant="body1">
-        Welcome <b>{name}</b>
+        Welcome <b>{name ? name : 'admin'}</b>
       </Typography>
       {/* <Stack direction="row" sx={{ gap: 1 }}>
         <Search />
