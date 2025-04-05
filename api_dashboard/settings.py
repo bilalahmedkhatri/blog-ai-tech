@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('DJANG0_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', True) == True
 
-ALLOWED_HOSTS = ['ai-blog.bilalahmed.dev/', 'https://ai-blog.bilalahmed.dev/', 'http://ai-blog.bilalahmed.dev/', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['ai-blog.bilalahmed.dev', 'https://ai-blog.bilalahmed.dev/', 'http://ai-blog.bilalahmed.dev/', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -146,6 +146,8 @@ STATICFILES_DIRS = [
     # os.path.join(BASE_DIR, 'api', 'frontend', 'dist'),
     os.path.join(BASE_DIR, 'frontend', 'dist'),
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
