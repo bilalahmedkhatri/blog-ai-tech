@@ -1,4 +1,3 @@
-from tkinter.tix import Tree
 from rest_framework import serializers
 from api.models import UserProfile, BlogPost, BlogTag, BlogCategory, UploadedImage
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer

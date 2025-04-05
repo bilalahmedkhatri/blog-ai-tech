@@ -9,14 +9,14 @@
 boot_out.txt
 
 ### Django ###
-backend_auto_video/*.log
-backend_auto_video/*.pot
-backend_auto_video/*.pyc
-backend_auto_video/__pycache__/
-backend_auto_video/local_settings.py
-backend_auto_video/db.sqlite3
-backend_auto_video/db.sqlite3-journal
-backend_auto_video/media
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
 
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
@@ -493,4 +493,4 @@ moviepy_10_minutes
 download
 auto_movie
 .qodo
-
+db,sqlite3
