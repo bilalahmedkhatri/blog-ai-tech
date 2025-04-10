@@ -35,7 +35,6 @@ const securityQuestions = [
 
 const UserProfile = () => {
   const { data: user, isLoading, error } = useGetUserProfileByIdSlugQuery();
-  console.log('user: ', user);
   const [updateUserProfile] = useUpdateUserProfileMutation();
   const [editMode, setEditMode] = useState(false);
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
@@ -90,7 +89,6 @@ const UserProfile = () => {
 
   const handleSave = async () => {
     try {
-      console.log('form data saving: ', formData)
       await updateUserProfile(formData).unwrap();
       setEditMode(false);
       setSnackbar({ open: true, message: 'Profile updated successfully!', severity: 'success' });

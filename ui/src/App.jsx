@@ -17,7 +17,6 @@ import UpdatePost from './pages/UpdatePost';
 import UserProfile from './pages/UserProfile';
 import { HelmetProvider } from "react-helmet-async";
 
-
 const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,

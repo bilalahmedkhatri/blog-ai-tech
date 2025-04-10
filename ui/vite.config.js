@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
@@ -11,6 +12,10 @@ export default defineConfig({
   //     entryFileNames: (file) => 'assets/js/[name].min.js',
   //   },
   // },
+  build: {
+    manifest: true,
+    outDir: path.resolve(__dirname, '../frontend/ui-dist'),
+  },
   esbuild: {
     loader: 'jsx',
     include: /\.jsx?$/,

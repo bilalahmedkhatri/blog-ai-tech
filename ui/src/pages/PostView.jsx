@@ -168,8 +168,6 @@ const PostView = () => {
   const { slug } = useParams();
   const { data: post, error, isLoading } = useGetPostByIdQuery(slug);
 
-  console.log('blog: ', post)
-  
   if (isLoading) {
     return <div>Loading post...</div>;
   }
