@@ -75,7 +75,6 @@ export default function SignUp(props) {
     const password = document.getElementById('password');
     const name = document.getElementById('name');
     
-
     let isValid = true;
 
     if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {

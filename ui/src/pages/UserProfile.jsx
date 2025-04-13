@@ -70,6 +70,8 @@ const UserProfile = () => {
     }
   }, [user]);
 
+  console.log('profile image: ', avatarPreview)
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));

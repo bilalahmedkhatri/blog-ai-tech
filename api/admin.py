@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
 from api.models import UserProfile, BlogTag, BlogCategory, BlogPost, UploadedImage
-
+from django.contrib.sites.models import Site
 
 class UserAdmin(BaseUserAdmin):
     list_display = ('email', 'first_name', 'last_name', 'role',
@@ -54,3 +54,8 @@ class PostAdmin(admin.ModelAdmin):
 class UploadedImageAdmin(admin.ModelAdmin):
     list_display = ('id', 'image', 'uploaded_at',
                     'uploaded_by', 'status', 'notification_sent')
+    
+    
+# @admin.register(Site)
+# class MySidddteAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'name', 'domain')

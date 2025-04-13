@@ -24,7 +24,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
+    'django.contrib.sites',
 ]
+
+SITE_ID = 1
 
 AUTH_USER_MODEL = 'api.UserProfile'
 

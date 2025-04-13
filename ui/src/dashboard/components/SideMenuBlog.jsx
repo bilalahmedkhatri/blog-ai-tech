@@ -35,9 +35,8 @@ const Drawer = styled(MuiDrawer)({
 });
 
 export default function SideMenuBlog() {
-
   const userData = getEmailAndName();
-
+  console.log('profile image test:', userData);
   return (
     <Drawer
       variant="permanent"
@@ -95,8 +94,8 @@ export default function SideMenuBlog() {
       >
         <Avatar
           sizes="small"
-          alt="Riley Carter"
-          src="/static/images/avatar/7.jpg"
+          alt={userData ? userData.name : 'Admin'}
+          src={userData.img ?  userData.img : '/static/images/avatar/7.jpg'}
           sx={{ width: 36, height: 36 }}
         />
         <Box sx={{ mr: 'auto', mt:1 }}>

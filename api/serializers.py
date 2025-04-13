@@ -1,22 +1,35 @@
 from rest_framework import serializers
+from django.contrib.sites.models import Site
+from django.contrib.sites.shortcuts import get_current_site
+from urllib.parse import urljoin
 from api.models import UserProfile, BlogPost, BlogTag, BlogCategory, UploadedImage
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-
+from api_dashboard import settings
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-        # Optionally, add custom claims
         token['email'] = user.email
         token['name'] = f"{user.first_name} {user.last_name}"
         token['role'] = user.role
+
+        if user.profile_image:
+            current_site = get_current_site(None)
+            protocol = 'https' if settings.DEBUG else 'http'
+            base_url = f"{protocol}://{current_site.domain}"
+            token['img'] = urljoin(base_url, user.profile_image.url)
+        else:
+            token['img'] = ''  # or set
         return token
 
     def validate(self, attrs):
-        # Map 'email' to 'username' for authentication purposes
-        attrs['username'] = attrs.get('email')
+        email = attrs.get('email')
+        if not email:
+            raise serializers.ValidationError({"email": "This field is required."})
+        attrs['username'] = email.strip().lower()
         return super().validate(attrs)
+        
 
 
 class UserProfileSignupSerializer(serializers.ModelSerializer):
@@ -43,9 +56,6 @@ class UserProfileSignupSerializer(serializers.ModelSerializer):
         return user
 
 
-from rest_framework import serializers
-from .models import UserProfile
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile
@@ -56,9 +66,10 @@ class UserSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['id', 'email']  # Email and ID are read-only
 
-        
+
 class ForgotPasswordQuestionSerializer(serializers.Serializer):
     email = serializers.EmailField()
+
 
 class ForgotPasswordAnswerSerializer(serializers.Serializer):
     email = serializers.EmailField()
@@ -68,13 +79,14 @@ class ForgotPasswordAnswerSerializer(serializers.Serializer):
 
 class CategorySerializer(serializers.ModelSerializer):
     created_by_name = serializers.SerializerMethodField()
+
     class Meta:
         model = BlogCategory
         fields = ['id', 'name', 'slug', 'created_by_name', 'count']
 
     def get_created_by_name(self, obj):
         if obj.created_by:
-            return f"{obj.created_by.first_name} {obj.created_by.last_name}" 
+            return f"{obj.created_by.first_name} {obj.created_by.last_name}"
         return None
 
 
@@ -82,6 +94,7 @@ class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = BlogTag
         fields = ['id', 'name', 'slug', 'count']
+
 
 class PostSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
@@ -96,7 +109,7 @@ class PostSerializer(serializers.ModelSerializer):
             'status', 'meta_title', 'meta_description', 'keywords'
         ]
         read_only_fields = ['slug', 'created_at', 'updated_at']
-                
+
 
 class DashboardPostListSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
@@ -109,6 +122,7 @@ class DashboardPostListSerializer(serializers.ModelSerializer):
             'id', 'title', 'status', 'author', 'slug', 'category', 'tags', 'keywords'
         ]
         read_only_fields = ['slug', 'created_at', 'updated_at']
+
 
 class PostCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
