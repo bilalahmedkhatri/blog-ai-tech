@@ -8,23 +8,28 @@ import AppNavbar from "./components/AppNavbar";
 import LoadingCircle from "./components/LoadingCircle";
 import Header from "./components/Header";
 import SideMenuBlog from "./components/SideMenuBlog";
-import { useGetAdminDashboardQuery, useGetPostsQuery } from "../apiSlice";
+import { useGetUserProfileByIdSlugQuery } from "../apiSlice";
 
 export default function Dashboard(props) {
   // page state: "main" shows the blog grid; "create" shows the create post view.
   const [page, setPage] = useState("main");
 
+  const { data: userProfile, isLoading: isUserProfileLoading } = useGetUserProfileByIdSlugQuery();
   // Pass a callback to the side menu (and/or mobile menu) for page switching
   const handleMenuClick = (selectedPage) => {
     setPage(selectedPage);
   };
+
+  if (isUserProfileLoading) {
+    return <LoadingCircle />;
+  }
 
   return (
     // <AppTheme{...props}>
     <>
       <CssBaseline enableColorScheme />
       <Box sx={{ display: "flex" }}>
-        <SideMenuBlog onMenuClick={handleMenuClick} currentPage={page} />
+        <SideMenuBlog onMenuClick={handleMenuClick} currentPage={page} userProfile={userProfile} />
         <AppNavbar onMenuClick={handleMenuClick} currentPage={page} />
         <Box
           component="main"
@@ -45,7 +50,7 @@ export default function Dashboard(props) {
               mt: { xs: 8, md: 0 },
             }}
           >
-            <Header />
+            <Header userProfile={userProfile} />
             <Outlet />
           </Stack>
         </Box>

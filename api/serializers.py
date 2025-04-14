@@ -37,7 +37,7 @@ class UserProfileSignupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = ['email', 'password', 'first_name', 'last_name']
+        fields = ['first_name', 'last_name', 'email', 'password']
 
     # {
     # "email":"travelkhatri786@gmail.com", "password":"ashaaz123", "first_name":"Usman", "last_name":"ghani"

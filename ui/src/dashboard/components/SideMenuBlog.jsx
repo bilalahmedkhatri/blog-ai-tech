@@ -34,9 +34,9 @@ const Drawer = styled(MuiDrawer)({
   },
 });
 
-export default function SideMenuBlog() {
-  const userData = getEmailAndName();
-  console.log('profile image test:', userData);
+export default function SideMenuBlog({ userProfile }) {
+  // const userData = getEmailAndName();
+  // console.log('profile image test:', userData);
   return (
     <Drawer
       variant="permanent"
@@ -94,6 +94,20 @@ export default function SideMenuBlog() {
       >
         <Avatar
           sizes="small"
+          alt={userProfile.name}
+          src={userProfile.img}
+          sx={{ width: 36, height: 36 }}
+        />
+        <Box sx={{ mr: 'auto', mt:1 }}>
+          <Typography variant="body2" sx={{ fontWeight: 500, lineHeight: '10px' }}>
+          {userProfile.first_name} {' '} {userProfile.last_name}
+          </Typography>
+          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+            {userProfile.email}
+          </Typography>
+        </Box>
+        {/* <Avatar
+          sizes="small"
           alt={userData ? userData.name : 'Admin'}
           src={userData.img ?  userData.img : '/static/images/avatar/7.jpg'}
           sx={{ width: 36, height: 36 }}
@@ -105,7 +119,7 @@ export default function SideMenuBlog() {
           <Typography variant="caption" sx={{ color: 'text.secondary' }}>
             {userData ? userData.email : 'test@admin.com'}
           </Typography>
-        </Box>
+        </Box> */}
         <OptionsMenu />
       </Stack>
     </Drawer>
