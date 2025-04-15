@@ -70,7 +70,7 @@ const UserProfile = () => {
     }
   }, [user]);
 
-  console.log('profile image: ', avatarPreview)
+  // console.log('profile image: ', avatarPreview)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -97,6 +97,7 @@ const UserProfile = () => {
     } catch (err) {
       setSnackbar({ open: true, message: 'Update failed. Please try again.', severity: 'error' });
       console.error('Update failed:', err);
+      console.log('Update failed:', err);
     }
   };
 

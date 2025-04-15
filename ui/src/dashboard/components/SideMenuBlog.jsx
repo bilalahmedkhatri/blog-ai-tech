@@ -13,7 +13,6 @@ import ListItemText from '@mui/material/ListItemText';
 import MuiListItemAvatar from '@mui/material/ListItemAvatar';
 import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
 import { Link } from 'react-router-dom';
-import { getEmailAndName } from '../../tools';
 
 
 const ListItemAvatar = styled(MuiListItemAvatar)({
@@ -35,8 +34,6 @@ const Drawer = styled(MuiDrawer)({
 });
 
 export default function SideMenuBlog({ userProfile }) {
-  // const userData = getEmailAndName();
-  // console.log('profile image test:', userData);
   return (
     <Drawer
       variant="permanent"
@@ -95,7 +92,7 @@ export default function SideMenuBlog({ userProfile }) {
         <Avatar
           sizes="small"
           alt={userProfile.name}
-          src={userProfile.img}
+          src={userProfile.profile_image}
           sx={{ width: 36, height: 36 }}
         />
         <Box sx={{ mr: 'auto', mt:1 }}>
@@ -106,20 +103,6 @@ export default function SideMenuBlog({ userProfile }) {
             {userProfile.email}
           </Typography>
         </Box>
-        {/* <Avatar
-          sizes="small"
-          alt={userData ? userData.name : 'Admin'}
-          src={userData.img ?  userData.img : '/static/images/avatar/7.jpg'}
-          sx={{ width: 36, height: 36 }}
-        />
-        <Box sx={{ mr: 'auto', mt:1 }}>
-          <Typography variant="body2" sx={{ fontWeight: 500, lineHeight: '10px' }}>
-            {userData ? userData.name : 'Admin'}
-          </Typography>
-          <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-            {userData ? userData.email : 'test@admin.com'}
-          </Typography>
-        </Box> */}
         <OptionsMenu />
       </Stack>
     </Drawer>

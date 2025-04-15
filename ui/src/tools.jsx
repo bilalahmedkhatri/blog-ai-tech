@@ -8,8 +8,6 @@ export const getEmailAndName = () => {
   if (token) {
     try {
       const decodedToken = jwtDecode(token);
-
-      console.log("Decoded token:", decodedToken);
       if (decodedToken.exp * 1000 < Date.now()) {
         console.log("Token has expired");
         return {
@@ -32,3 +30,34 @@ export const getEmailAndName = () => {
   }
   return null;
 };
+
+
+export const isPasswordStrong = (password) => {
+  console.log("Debug: password =", password, "length =", password.length);
+  const errors = [];
+  
+  // Check for at least 8 characters
+  if (!/.{8,}/.test(password)) {
+    errors.push('at least 8 characters');
+  }
+  // Check for one lowercase letter
+  if (!/[a-z]/.test(password)) {
+    errors.push('one lowercase letter');
+  }
+  // Check for one uppercase letter
+  if (!/[A-Z]/.test(password)) {
+    errors.push('one uppercase letter');
+  }
+  // Check for one digit
+  if (!/\d/.test(password)) {
+    errors.push('one digit');
+  }
+  // Check for one special character (@#$%^&+=!)
+  if (!/[@#$%^&+=!]/.test(password)) {
+    errors.push('one special character (@#$%^&+=!)');
+  }
+  
+  console.log("Debug: errors =", errors);
+  return { valid: errors.length === 0, errors };
+};
+

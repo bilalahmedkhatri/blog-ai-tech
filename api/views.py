@@ -52,7 +52,7 @@ class EditorDashboardView(APIView):
 class SignupView(APIView):
     permission_classes = []  # Allow unauthenticated access for signup
 
-    def post(self, request):
+    def post(self, request):    
         serializer = UserProfileSignupSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
@@ -149,6 +149,8 @@ class UserProfileRetrieveAPIView(generics.RetrieveAPIView):
 class UserProfileUpdateAPIView(generics.UpdateAPIView):
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
+    parser_classes = [MultiPartParser, FormParser]
+
 
     def get_object(self):
         # Returns the currently authenticated user
