@@ -59,7 +59,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
     role = models.CharField(
-        max_length=20, choices=ROLE_CHOICES, default='user')
+        max_length=20, choices=ROLE_CHOICES, default='blog_admin')
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(auto_now_add=True)

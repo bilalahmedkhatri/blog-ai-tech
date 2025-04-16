@@ -219,6 +219,7 @@ export const apiSlice = createApi({
         url: 'user/profile/update/', 
         method: 'PUT',
         body: profileData,
+        formData: true,
       }),
       invalidatesTags: ['UserProfile'],
     }),

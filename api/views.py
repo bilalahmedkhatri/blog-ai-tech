@@ -248,7 +248,6 @@ class PostCreate(generics.CreateAPIView):
     parser_classes = [MultiPartParser, FormParser]
 
     def create(self, request, *args, **kwargs):
-        print("Received data:", request.data)  # Add this for debugging
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             self.perform_create(serializer)
@@ -293,6 +292,8 @@ class PostUpdate(generics.UpdateAPIView):
         if user.role == 'master_admin':
             return BlogPost.objects.defer("created_at")
         if user.role == 'blog_admin':
+            return BlogPost.objects.defer("created_at")
+        if user.role == 'user':
             return BlogPost.objects.filter(author=user).only('title', 'content', 'category', 'status', 'keywords')
         return BlogPost.objects.none()
 

@@ -83,7 +83,8 @@ const UserProfile = () => {
       const reader = new FileReader();
       reader.onloadend = () => {
         setAvatarPreview(reader.result);
-        setFormData((prev) => ({ ...prev, avatar: reader.result }));
+        setFormData((prev) => ({ ...prev, avatar: file }));
+        // setFormData((prev) => ({ ...prev, avatar: reader.result }));
       };
       reader.readAsDataURL(file);
     }
@@ -91,13 +92,28 @@ const UserProfile = () => {
 
   const handleSave = async () => {
     try {
-      await updateUserProfile(formData).unwrap();
+      const formDataToSend = new FormData();
+
+      formDataToSend.append('first_name', formData.first_name);
+      formDataToSend.append('last_name', formData.last_name);
+      formDataToSend.append('phone_number', formData.phone_number);
+      formDataToSend.append('city', formData.city);
+      formDataToSend.append('country', formData.country);
+      formDataToSend.append('security_question', formData.security_question);
+      formDataToSend.append('security_answer', formData.security_answer);
+      formDataToSend.append('summery', formData.summery);
+
+      if (formData.avatar instanceof File) {
+        formDataToSend.append('profile_image', formData.avatar);
+      }
+
+      await updateUserProfile(formDataToSend).unwrap();
+
       setEditMode(false);
       setSnackbar({ open: true, message: 'Profile updated successfully!', severity: 'success' });
     } catch (err) {
       setSnackbar({ open: true, message: 'Update failed. Please try again.', severity: 'error' });
       console.error('Update failed:', err);
-      console.log('Update failed:', err);
     }
   };
 

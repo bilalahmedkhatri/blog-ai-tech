@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from api.models import UserProfile, BlogTag, BlogCategory, BlogPost, UploadedImage
 from django.contrib.sites.models import Site
 
+
 class UserAdmin(BaseUserAdmin):
     list_display = ('email', 'first_name', 'last_name', 'role',
                     'is_staff', 'is_active', 'security_question', 'security_answer')
@@ -14,7 +15,8 @@ class UserAdmin(BaseUserAdmin):
 
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        (_('Personal info'), {'fields': ('first_name', 'last_name', 'phone_number', 'profile_image', 'city', 'state', 'country', 'summery')}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name',
+         'phone_number', 'profile_image', 'city', 'state', 'country', 'summery')}),
         (_('Role'), {'fields': ('role',)}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff',
          'is_superuser', 'groups', 'user_permissions')}),
@@ -48,14 +50,15 @@ class TagAdmin(admin.ModelAdmin):
 class PostAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'slug', 'author',
                     'status', 'created_at', 'updated_at')
+    search_fields = ('title', 'content')
 
 
 @admin.register(UploadedImage)
 class UploadedImageAdmin(admin.ModelAdmin):
     list_display = ('id', 'image', 'uploaded_at',
                     'uploaded_by', 'status', 'notification_sent')
-    
-    
+
+
 # @admin.register(Site)
 # class MySidddteAdmin(admin.ModelAdmin):
 #     list_display = ('id', 'name', 'domain')
