@@ -106,12 +106,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-if DEBUG:
-    STATICFILES_DIRS = [
-        # os.path.join(BASE_DIR, 'api', 'frontend', 'public'),
-        # os.path.join(BASE_DIR, 'api', 'frontend', 'ui-dist'),
-        os.path.join(BASE_DIR, 'frontend', 'ui-dist'),
-    ]
+# if DEBUG:
+STATICFILES_DIRS = [
+    # os.path.join(BASE_DIR, 'api', 'frontend', 'public'),
+    # os.path.join(BASE_DIR, 'api', 'frontend', 'ui-dist'),
+    os.path.join(BASE_DIR, 'frontend', 'ui-dist'),
+]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
