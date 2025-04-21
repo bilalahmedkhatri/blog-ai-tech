@@ -33,7 +33,7 @@ import {
   isTouchDevice,
 } from "mui-tiptap";
 
-export default function EditorMenuControls() {
+export default function EditorMenuControls({ children }) {
   const theme = useTheme();
   return (
     <MenuControlsContainer>
@@ -133,15 +133,15 @@ export default function EditorMenuControls() {
 
       <MenuDivider />
 
-      <MenuButtonImageUpload
+      {/* <MenuButtonImageUpload
         onUploadFiles={(files) =>
           files.map((file) => ({
             src: URL.createObjectURL(file),
             alt: file.name,
           }))
         }
-      />
-
+      /> */}
+      {children}
       <MenuDivider />
 
       <MenuButtonHorizontalRule />

@@ -1,20 +1,9 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
-from api.views import (
-    frontend,
-    AdminDashboardView,
-    EditorDashboardView,
-    CustomTokenObtainPairView,
-    SignupView,
-    VerifyEmailView,
-    ForgotPasswordQuestionView,
-    ForgotPasswordAnswerView,
-    DashboardPostList, PostDetail, PostCreate, PostUpdate, PostDelete,
-    UserProfileRetrieveAPIView, UserProfileUpdateAPIView, CreateCategory, DeleteCategory, CategoryList, CategoryDetail, TagList, TagDetail,
-)
+from api.views import *
 
 urlpatterns = [
-#     path('', frontend, name='frontend'),
+    #     path('', frontend, name='frontend'),
 
     # JWT token endpoints
     path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -32,6 +21,9 @@ urlpatterns = [
     path('admin-dashboard/', AdminDashboardView.as_view(), name='admin_dashboard'),
     path('editor-dashboard/', EditorDashboardView.as_view(),
          name='editor_dashboard'),
+
+    # Add this to your urlpatterns
+    path('upload-image/', UploadImageView.as_view(), name='upload-image'),
 
 
     # from previous blog

@@ -1,16 +1,30 @@
 import * as React from 'react';
 import Stack from '@mui/material/Stack';
-import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
-import CustomDatePicker from './CustomDatePicker';
-import NavbarBreadcrumbs from './NavbarBreadcrumbs';
-import MenuButton from './MenuButton';
-import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown';
-import { getEmailAndName } from '../../tools';
-import Search from './Search';
-import { Typography, Box } from '@mui/material';
+// import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded';
+// import CustomDatePicker from './CustomDatePicker';
+// import NavbarBreadcrumbs from './NavbarBreadcrumbs';
+// import MenuButton from './MenuButton';
+// import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown';
+import { processUserProfile } from '../../utils/profile';
+
+// import Search from './Search';
+import { Typography} from '@mui/material';
 
 export default function Header({ userProfile }) {
-  // const name = getEmailAndName().name || '';
+  const [userData, setUserData] = React.useState({
+    name: ''
+  });
+
+  React.useEffect(() => {
+    const processedData = processUserProfile(userProfile);
+
+    if (processedData) {
+      setUserData({
+        name: processedData.name,
+      });
+    }
+  }, [userProfile]);
+
   return (
     <Stack
       direction="row"
@@ -25,7 +39,7 @@ export default function Header({ userProfile }) {
       spacing={2}
     >
       <Typography variant="body1">
-        Welcome <b>{userProfile.first_name} {' '} {userProfile.last_name}</b>
+        Welcome <b>{userData.name || 'Guest'}</b>
       </Typography>
       {/* <Stack direction="row" sx={{ gap: 1 }}>
         <Search />

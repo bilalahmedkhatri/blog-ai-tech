@@ -1,11 +1,14 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useGetPostByIdQuery } from '../apiSlice';
 import { Helmet } from 'react-helmet-async';
-import { Container, Typography, Card, CardContent, Box, Chip, Avatar } from "@mui/material";
+import { Container, Typography, Card, CardContent, Box, Chip, Avatar, Tooltip } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PersonIcon from '@mui/icons-material/Person';
+import IconButton from '@mui/material/IconButton';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import { useUserProfile } from '../context'
 
 // Enhanced styled components
 const PostCard = styled(Card)(({ theme }) => ({
@@ -131,27 +134,27 @@ const ContentBox = styled(Box)(({ theme }) => ({
     textAlign: 'left',
   },
   '& th': {
-    backgroundColor: theme.palette.mode === 'dark' 
-      ? theme.palette.grey[800] 
+    backgroundColor: theme.palette.mode === 'dark'
+      ? theme.palette.grey[800]
       : theme.palette.grey[100],
     fontWeight: 600,
     color: theme.palette.text.primary,
   },
   '& tr:nth-of-type(even)': {
-    backgroundColor: theme.palette.mode === 'dark' 
-      ? 'rgba(255, 255, 255, 0.05)' 
+    backgroundColor: theme.palette.mode === 'dark'
+      ? 'rgba(255, 255, 255, 0.05)'
       : 'rgba(0, 0, 0, 0.02)',
   },
   '& tr:hover': {
-    backgroundColor: theme.palette.mode === 'dark' 
-      ? 'rgba(255, 255, 255, 0.08)' 
+    backgroundColor: theme.palette.mode === 'dark'
+      ? 'rgba(255, 255, 255, 0.08)'
       : 'rgba(0, 0, 0, 0.04)',
   },
   // Code styling
   '& pre, & code': {
     fontFamily: 'monospace',
-    backgroundColor: theme.palette.mode === 'dark' 
-      ? 'rgba(255, 255, 255, 0.05)' 
+    backgroundColor: theme.palette.mode === 'dark'
+      ? 'rgba(255, 255, 255, 0.05)'
       : 'rgba(0, 0, 0, 0.04)',
     padding: theme.spacing(0.5, 1),
     borderRadius: theme.spacing(0.5),
@@ -166,23 +169,41 @@ const ContentBox = styled(Box)(({ theme }) => ({
 
 const PostView = () => {
   const { slug } = useParams();
+  const navigate = useNavigate();
+  const userProfile = useUserProfile();
   const { data: post, error, isLoading } = useGetPostByIdQuery(slug);
+
+  const isPostOwner = React.useMemo(() => {
+    if (!post || !userProfile) return false;
+    return post.author && userProfile.id === post.author.id;
+  }, [post, userProfile]);
+
+  const handleEditClick = () => {
+    if (isPostOwner) {
+      navigate(`/dashboard/update-post/${slug}`);
+    };
+  };
 
   if (isLoading) {
     return <div>Loading post...</div>;
   }
-  
+
   if (error) {
     return <div>{error.status} : {error.data.detail}</div>;
   }
 
+  if (post?.content && post.content.includes('blob:')) {
+    console.warn('Post content contains blob URLs which may not be accessible');
+    // You could show a warning to the user or try to replace them with placeholders
+  }
+
   // Format date if available
-  const formattedDate = post.created_at 
+  const formattedDate = post.created_at
     ? new Date(post.created_at).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      })
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
     : null;
 
   return (
@@ -198,7 +219,7 @@ const PostView = () => {
           <meta property="og:url" content={`${window.location.origin}/post/${post.slug}`} />
         </Helmet>
       )} */}
-      
+
       <PostCard>
         {post.featured_image && (
           <PostImage
@@ -207,31 +228,44 @@ const PostView = () => {
             alt={post.title}
           />
         )}
-        
+
         <PostHeader>
-          <PostTitle variant="h4">
-            {post.title}
-          </PostTitle>
-          
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <PostTitle variant="h4">
+              {post.title}
+            </PostTitle>
+            <Tooltip title="Edit Post">
+              <IconButton
+                aria-label="edit post"
+                size="large"
+                onClick={handleEditClick}
+                color="primary"
+                disabled={!isPostOwner}
+              >
+                <BorderColorIcon sx={{ fontSize: 24 }} />
+              </IconButton>
+            </Tooltip>
+          </Box>
+
           <PostMeta>
             {post.author && (
               <MetaItem>
                 <PersonIcon fontSize="small" />
-                {post.author.first_name && post.author.last_name 
+                {post.author.first_name && post.author.last_name
                   ? `${post.author.first_name} ${post.author.last_name}`
                   : post.author.email}
               </MetaItem>
             )}
-            
+
             {formattedDate && (
               <MetaItem>
                 <AccessTimeIcon fontSize="small" />
                 {formattedDate}
               </MetaItem>
             )}
-            
+
             {post.category && (
-              <Chip 
+              <Chip
                 label={typeof post.category === 'object' ? post.category.name : post.category}
                 size="small"
                 color="primary"
@@ -239,7 +273,7 @@ const PostView = () => {
               />
             )}
           </PostMeta>
-          
+
           {Array.isArray(post.tags) && post.tags.length > 0 && (
             <TagsContainer>
               {post.tags.map((tag, index) => (
@@ -259,7 +293,7 @@ const PostView = () => {
             </TagsContainer>
           )}
         </PostHeader>
-        
+
         <ContentBox dangerouslySetInnerHTML={{ __html: post.content }} />
       </PostCard>
     </Container>

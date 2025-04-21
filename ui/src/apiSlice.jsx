@@ -8,7 +8,7 @@ const authSlice = createSlice({
   initialState: {
     token: Cookies.get('access_token') || null,
     refreshToken: Cookies.get('refresh_token') || null,
-    isAuthenticated: !!Cookies.get('access_token')
+    isAuthenticated: !!Cookies.get('access_token'),
   },
   reducers: {
     setCredentials: (state, { payload }) => {
@@ -208,6 +208,7 @@ export const apiSlice = createApi({
         url: 'upload-image/',
         method: 'POST',
         body: imageData,
+        formData: true,
       })
     }),
     getUserProfileByIdSlug: builder.query({

@@ -103,6 +103,15 @@ function PostCreate() {
     }
   }, []);
 
+  // Clean up blob URLs when component unmounts
+  useEffect(() => {
+    return () => {
+      if (imagePreview && imagePreview.startsWith('blob:')) {
+        URL.revokeObjectURL(imagePreview);
+      }
+    };
+  }, [imagePreview]);
+
   const validateForm = () => {
     if (!blogTitle) {
       setFormError('Title is required.');
@@ -177,6 +186,7 @@ function PostCreate() {
     }
   };
 
+  // Function to handle image uploads from the editor
   const uploadImageCallBack = async (file) => {
     try {
       const formData = new FormData();

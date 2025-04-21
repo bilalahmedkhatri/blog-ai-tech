@@ -1,3 +1,6 @@
+import imghdr
+from PIL import Image
+from django.core.validators import FileExtensionValidator
 from rest_framework import serializers
 from django.contrib.sites.models import Site
 from django.contrib.sites.shortcuts import get_current_site
@@ -5,6 +8,7 @@ from urllib.parse import urljoin
 from api.models import UserProfile, BlogPost, BlogTag, BlogCategory, UploadedImage
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from api_dashboard import settings
+
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -26,10 +30,10 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         email = attrs.get('email')
         if not email:
-            raise serializers.ValidationError({"email": "This field is required."})
+            raise serializers.ValidationError(
+                {"email": "This field is required."})
         attrs['username'] = email.strip().lower()
         return super().validate(attrs)
-        
 
 
 class UserProfileSignupSerializer(serializers.ModelSerializer):
@@ -130,3 +134,68 @@ class PostCreateUpdateSerializer(serializers.ModelSerializer):
         fields = [
             'title', 'content', 'category', 'tags', 'featured_image', 'status', 'keywords'
         ]
+
+
+class UploadedImageSerializer(serializers.Serializer):
+    allow_file_ext = ['jpg', 'jpeg', 'png', 'gif']
+    image = serializers.ImageField(
+        validators=[
+            FileExtensionValidator(allowed_extensions=allow_file_ext)
+        ]
+    )
+
+    id = serializers.IntegerField(read_only=True)
+    url = serializers.CharField(read_only=True)
+    name = serializers.CharField(read_only=True)
+    size = serializers.IntegerField(read_only=True)
+    width = serializers.IntegerField(read_only=True)
+    height = serializers.IntegerField(read_only=True)
+
+    def validate_image(self, file):
+        # 1. File size check
+        max_size = 5 * 1024 * 1024  # 5 MB
+        if file.size > max_size:
+            raise serializers.ValidationError("Image too large (max 5MB).")
+
+        # 2. MIME-type check via imghdr
+        file.open()
+        header = file.read(512)
+        file_type = imghdr.what(None, header)
+        if file_type not in self.allow_file_ext:
+            raise serializers.ValidationError("Invalid image format.")
+
+        # 3. Pillow validation
+        try:
+            file.seek(0)
+            img = Image.open(file)
+            img.verify()
+        except Exception:
+            raise serializers.ValidationError(
+                "Corrupted or invalid image file.")
+
+        # Reset pointer
+        file.seek(0)
+        return file
+
+    def create(self, validated_data):
+        user = self.context['request'].user
+        ImageModel = self.context['view'].queryset.model
+        instance = ImageModel.objects.create(
+            image=validated_data['image'],
+            uploaded_by=user,
+            status='using'
+        )
+        return instance
+
+    def to_representation(self, instance) -> dict:
+        request = self.context['request']
+        uri = request.build_absolute_uri(instance.image.url)
+        width, height = Image.open(instance.image.path).size
+        return {
+            'id': instance.id,
+            'url': uri,
+            'name': instance.image.name.split('/')[-1],
+            'size': instance.image.size,
+            'width': width,
+            'height': height
+        }

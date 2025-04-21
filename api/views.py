@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.sites.shortcuts import get_current_site
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status
 from django.shortcuts import get_object_or_404
@@ -8,21 +9,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import permissions, status, generics
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
-from api.models import UserProfile, BlogPost, BlogCategory, BlogTag
-from api.permissions import IsAdminUserRole, IsEditorOrAdmin, IsAuthorOrReadOnly
-from api.serializers import (
-    ForgotPasswordQuestionSerializer,
-    ForgotPasswordAnswerSerializer,
-    UserProfileSignupSerializer,
-    CustomTokenObtainPairSerializer,
-    CategorySerializer,
-    TagSerializer,
-    PostSerializer,
-    DashboardPostListSerializer,
-    PostCreateUpdateSerializer,
-    UserSerializer,
-)
+from api.models import *
+from api.permissions import *
+from api.serializers import *
 from django.db import models
+from rest_framework.renderers import JSONRenderer
+
 import json
 import html2text
 
@@ -52,7 +44,7 @@ class EditorDashboardView(APIView):
 class SignupView(APIView):
     permission_classes = []  # Allow unauthenticated access for signup
 
-    def post(self, request):    
+    def post(self, request):
         serializer = UserProfileSignupSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
@@ -150,7 +142,6 @@ class UserProfileUpdateAPIView(generics.UpdateAPIView):
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]
-
 
     def get_object(self):
         # Returns the currently authenticated user
@@ -317,3 +308,21 @@ class PostDelete(generics.DestroyAPIView):
             )
         self.perform_destroy(instance)
         return Response({"message": "Post deleted successfully."}, status=status.HTTP_204_NO_CONTENT)
+
+
+class UploadImageView(generics.CreateAPIView):
+    queryset = UploadedImage.objects.all()
+    serializer_class = UploadedImageSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    parser_classes = [MultiPartParser, FormParser]
+    
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        instance = serializer.save()
+        print('instance :', instance)
+        return Response(serializer.to_representation(instance),
+                        status=status.HTTP_201_CREATED)
+        
+        

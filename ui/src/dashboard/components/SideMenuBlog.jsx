@@ -13,6 +13,8 @@ import ListItemText from '@mui/material/ListItemText';
 import MuiListItemAvatar from '@mui/material/ListItemAvatar';
 import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
 import { Link } from 'react-router-dom';
+import { processUserProfile } from '../../utils/profile';
+
 
 
 const ListItemAvatar = styled(MuiListItemAvatar)({
@@ -34,6 +36,25 @@ const Drawer = styled(MuiDrawer)({
 });
 
 export default function SideMenuBlog({ userProfile }) {
+  const [userData, setUserData] = React.useState({
+    name: '',
+    email: '',
+    profileImage: '',
+  });
+
+  React.useEffect(() => {
+    const processedData = processUserProfile(userProfile);
+
+    if (processedData) {
+      setUserData({
+        name: processedData.name,
+        email: processedData.email,
+        profileImage: processedData.profileImage,
+      });
+    }
+  }, [userProfile]);
+
+
   return (
     <Drawer
       variant="permanent"
@@ -91,16 +112,16 @@ export default function SideMenuBlog({ userProfile }) {
       >
         <Avatar
           sizes="small"
-          alt={userProfile.name}
-          src={userProfile.profile_image}
+          alt={userData.name}
+          src={userData.profileImage}
           sx={{ width: 36, height: 36 }}
         />
-        <Box sx={{ mr: 'auto', mt:1 }}>
+        <Box sx={{ mr: 'auto', mt: 1 }}>
           <Typography variant="body2" sx={{ fontWeight: 500, lineHeight: '10px' }}>
-          {userProfile.first_name} {' '} {userProfile.last_name}
+            {userData.name}
           </Typography>
           <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-            {userProfile.email}
+            {userData.email}
           </Typography>
         </Box>
         <OptionsMenu />

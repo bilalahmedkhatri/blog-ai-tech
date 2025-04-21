@@ -35,7 +35,7 @@ export const getEmailAndName = () => {
 export const isPasswordStrong = (password) => {
   console.log("Debug: password =", password, "length =", password.length);
   const errors = [];
-  
+
   // Check for at least 8 characters
   if (!/.{8,}/.test(password)) {
     errors.push('at least 8 characters');
@@ -56,8 +56,31 @@ export const isPasswordStrong = (password) => {
   if (!/[@#$%^&+=!]/.test(password)) {
     errors.push('one special character (@#$%^&+=!)');
   }
-  
+
   console.log("Debug: errors =", errors);
   return { valid: errors.length === 0, errors };
 };
 
+
+export function UserProfile(userProfile) {
+  if (!userProfile) {
+    return null;
+  } else if (userProfile.length > 0) {
+    try {
+      const first_name = userProfile[0].first_name || userProfile.name || '';
+      const last_name = userProfile[0].last_name || userProfile.name || '';
+      return {
+        userId: userProfile.user_id,
+        email: userProfile.email,
+        name: first_name || last_name,
+        profile_image: userProfile.img,
+        security_question: userProfile.security_question,
+        security_answer: userProfile.security_answer,
+        phone_number: userProfile.phone_number,
+      }
+    } catch (error) {
+      const error_message = error.message;
+      console.error("Error decoding user profile:", error_message);
+    }
+  }
+}

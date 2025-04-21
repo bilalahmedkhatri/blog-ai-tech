@@ -55,7 +55,7 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(UploadedImage)
 class UploadedImageAdmin(admin.ModelAdmin):
-    list_display = ('id', 'image', 'uploaded_at',
+    list_display = ('id', 'name', 'size', 'content_type', 'height', 'width', 'image', 'uploaded_at',
                     'uploaded_by', 'status', 'notification_sent')
 
 

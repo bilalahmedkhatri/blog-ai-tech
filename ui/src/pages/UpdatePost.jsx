@@ -62,8 +62,8 @@ function PostUpdate() {
   const { data: postData, isLoading: isPostLoading } = useGetPostByIdQuery(slug);
   const { data: categories, isLoading: categoriesLoading } = useGetCategoriesQuery();
   const { data: tags, isLoading: tagsLoading } = useGetTagsQuery();
-  const [updatePost, { error: updateError, isLoading: isUpdating,  }] = useUpdatePostMutation();
-  const [uploadImage] = useUploadImageMutation();
+  const [updatePost, { error: updateError, isLoading: isUpdating }] = useUpdatePostMutation();
+  const [uploadedImage] = useUploadImageMutation();
 
   // Load post data into state for editing
   useEffect(() => {
@@ -92,6 +92,15 @@ function PostUpdate() {
       }
     }
   }, [postData]);
+
+  // Clean up blob URLs when component unmounts
+  useEffect(() => {
+    return () => {
+      if (imagePreview && imagePreview.startsWith('blob:')) {
+        URL.revokeObjectURL(imagePreview);
+      }
+    };
+  }, [imagePreview]);
 
   // Handlers
   const onEditorChange = useCallback((content) => {
@@ -151,17 +160,6 @@ function PostUpdate() {
     formData.append('status', status);
 
     try {
-      const formDataObj = {};
-      for (const [key, value] of formData.entries()) {
-        if (key === 'tags') {
-          if (!formDataObj[key]) {
-            formDataObj[key] = [];
-          }
-          formDataObj[key].push(value);
-        } else {
-          formDataObj[key] = value;
-        }
-      }
       await updatePost({ slug, formData }).unwrap();
       navigate('/dashboard');
     } catch (error) {
@@ -190,13 +188,14 @@ function PostUpdate() {
     try {
       const formData = new FormData();
       formData.append('image', file);
-      const response = await uploadImage(formData).unwrap();
+      const response = await uploadedImage(formData).unwrap();
+      console.log('Image uploaded successfully:', response);
       if (response && response.url) {
         return { data: { link: response.url } };
       }
       throw new Error('Failed to upload image');
     } catch (error) {
-      console.error('Error uploading image:', error);
+      console.error('yyyyError uploading image:', error);
       return null;
     }
   };
@@ -344,13 +343,17 @@ function PostUpdate() {
                 />
               </Grid>
 
+              {/* {formError && (
+                <Grid size={{
+                  xs: 12, sm: 12, md: 6, lg: */}
               {formError && (
                 <Grid size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
                   <Alert severity="error" sx={{ borderRadius: 2 }}>
                     {formError}
                   </Alert>
                 </Grid>
-              )}
+              )
+              }
 
               <Grid size={{ xs: 12 }} container spacing={2} justifyContent="flex-end">
                 <Grid>

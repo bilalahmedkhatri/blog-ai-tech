@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useOutletContext } from "react-router-dom";
 import { alpha } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
@@ -51,7 +51,7 @@ export default function Dashboard(props) {
             }}
           >
             <Header userProfile={userProfile} />
-            <Outlet />
+            <Outlet context={userProfile} />
           </Stack>
         </Box>
       </Box>

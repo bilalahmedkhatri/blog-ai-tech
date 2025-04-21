@@ -1,3 +1,7 @@
+from ast import mod
+from os import name
+from pyexpat import model
+from turtle import mode, width
 from django.db import models
 from django.utils.text import slugify
 from django.utils import timezone
@@ -137,7 +141,13 @@ class UploadedImage(models.Model):
         ('using', 'In Use'),
     )
 
+    name = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='media/content_images/')
+    size = models.FloatField(default=0)
+    content_type = models.CharField(max_length=12, blank=True, null=True)
+    width = models.IntegerField(default=0)
+    height = models.IntegerField(default=0)
+    thumbnail = models.ImageField(upload_to='media/thumbnails/', blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     uploaded_by = models.ForeignKey(
         UserProfile, on_delete=models.CASCADE, related_name="blog_detailed_images")
