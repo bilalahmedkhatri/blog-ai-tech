@@ -1,7 +1,3 @@
-from ast import mod
-from os import name
-from pyexpat import model
-from turtle import mode, width
 from django.db import models
 from django.utils.text import slugify
 from django.utils import timezone

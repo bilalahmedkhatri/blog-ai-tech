@@ -2,12 +2,8 @@ import imghdr
 from PIL import Image
 from django.core.validators import FileExtensionValidator
 from rest_framework import serializers
-from django.contrib.sites.models import Site
-from django.contrib.sites.shortcuts import get_current_site
-from urllib.parse import urljoin
-from api.models import UserProfile, BlogPost, BlogTag, BlogCategory, UploadedImage
+from api.models import UserProfile, BlogPost, BlogTag, BlogCategory
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from api_dashboard import settings
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -17,14 +13,6 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['email'] = user.email
         token['name'] = f"{user.first_name} {user.last_name}"
         token['role'] = user.role
-
-        if user.profile_image:
-            current_site = get_current_site(None)
-            protocol = 'https' if settings.DEBUG else 'http'
-            base_url = f"{protocol}://{current_site.domain}"
-            token['img'] = urljoin(base_url, user.profile_image.url)
-        else:
-            token['img'] = ''  # or set
         return token
 
     def validate(self, attrs):

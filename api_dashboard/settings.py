@@ -14,7 +14,9 @@ DEBUG = os.environ.get('DJANGO_DEBUG', True) == True
 ALLOWED_HOSTS = ['ai-blog.bilalahmed.dev', '127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
     'django.contrib.admin',
+    'corsheaders',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -23,8 +25,6 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'rest_framework_simplejwt',
-    'corsheaders',
-    'django.contrib.sites',
 ]
 
 SITE_ID = 1
@@ -98,7 +98,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Karachi'
 
 USE_I18N = True
 
@@ -106,10 +106,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# if DEBUG:
 STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'api', 'frontend', 'public'),
-    # os.path.join(BASE_DIR, 'api', 'frontend', 'ui-dist'),
     os.path.join(BASE_DIR, 'frontend', 'ui-dist'),
 ]
 
@@ -141,11 +138,11 @@ SIMPLE_JWT = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    # "ai-blog.bilalahmed.dev",
-    # "https://ai-blog.bilalahmed.dev",
+    "http://ai-blog.bilalahmed.dev",
+    "https://ai-blog.bilalahmed.dev",
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
