@@ -151,6 +151,10 @@ CORS_ALLOWED_ORIGINS = [
     "https://gitapp.bilalahmed.dev",
 ]
 
+# CORS_ORIGIN_REGEX_WHITELIST = [
+#     r"^https://.*\.bilalahmed\.dev$",
+# ]
+
 CORS_ALLOW_ALL_ORIGINS = False
 
 CELERY_BROKER_URL = 'redis://localhost:6379/0'

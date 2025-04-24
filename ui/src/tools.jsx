@@ -27,12 +27,12 @@ export const getApiUrl = () => {
   const { hostname, protocol, origin } = window.location;            // MDN: hostname & origin :contentReference[oaicite:0]{index=0}
   const envUrl = import.meta.env.BLOG_API_URL?.trim();               // Vite env :contentReference[oaicite:1]{index=1}
 
-  let apiAdd = '/api/';
+  let apiAdd = 'api/';
   // 1. Local development
   if (hostname === 'localhost' || hostname === '127.0.0.1') {
-    const localApi = `${protocol}//localhost:8000/api/`;                   // protocol consistency avoids mixed content :contentReference[oaicite:2]{index=2}
+    const localApi = `${protocol}//localhost:8000/${apiAdd}`;                   // protocol consistency avoids mixed content :contentReference[oaicite:2]{index=2}
     if (import.meta.env.DEV) {
-      console.warn('⚠️ Dev: using localhost API at', localApi);
+      console.warn('Dev: using localhost API at', localApi);
     }
     return localApi;
   }
@@ -40,21 +40,24 @@ export const getApiUrl = () => {
   // 2. Production – valid env URL
   if (envUrl && isValidUrl(envUrl)) {
     const { hostname: envHost } = new URL(envUrl);
+    console.log('Debug: envUrl =', envUrl, 'envHost =', envHost, 'hostname =', hostname);
     // Exact hostname match avoids substring spoofing :contentReference[oaicite:3]{index=3}
     if (envHost === hostname) {
       if (import.meta.env.DEV) {
-        console.info('ℹ️ DEV: BLOG_API_URL matches host; using page origin', origin);
+        console.info('DEV: BLOG_API_URL matches host; using page origin', origin + apiAdd);
       }
       return origin + apiAdd;
     }
     // Trust a different, valid API host
+    console.log('Using BLOG_API_URL:', envUrl + apiAdd);
     return envUrl + apiAdd;
   }
 
   // 3. Fallback to origin with DEV warning
   if (import.meta.env.DEV) {
-    console.warn('⚠️ BLOG_API_URL is unset/invalid; defaulting to page origin', origin);
+    console.warn('BLOG_API_URL is unset/invalid; defaulting to page origin', origin);
   }
+  console.log('Using page origin for API:', origin + apiAdd);
   return origin + apiAdd;
 };
 
