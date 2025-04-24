@@ -27,10 +27,10 @@ export const getApiUrl = () => {
   const { hostname, protocol, origin } = window.location;            // MDN: hostname & origin :contentReference[oaicite:0]{index=0}
   const envUrl = import.meta.env.BLOG_API_URL?.trim();               // Vite env :contentReference[oaicite:1]{index=1}
 
-  let apiAdd = 'api/';
+  let apiAdd = '/api/';
   // 1. Local development
   if (hostname === 'localhost' || hostname === '127.0.0.1') {
-    const localApi = `${protocol}//localhost:8000/${apiAdd}`;                   // protocol consistency avoids mixed content :contentReference[oaicite:2]{index=2}
+    const localApi = `${protocol}//localhost:8000${apiAdd}`;                   // protocol consistency avoids mixed content :contentReference[oaicite:2]{index=2}
     if (import.meta.env.DEV) {
       console.warn('Dev: using localhost API at', localApi);
     }
