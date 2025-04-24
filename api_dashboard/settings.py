@@ -9,9 +9,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('DJANG0_SECRET_KEY')
 
-DEBUG = os.environ.get('DJANGO_DEBUG', True) == True
+DEBUG = True
+# DEBUG = os.environ.get('DJANGO_DEBUG', True) == True
 
-ALLOWED_HOSTS = ['ai-blog.bilalahmed.dev', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = str(os.environ.get('ALLOWED_DOMAINS')).split(',')
 
 INSTALLED_APPS = [
     'django.contrib.sites',
@@ -48,7 +49,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            # os.path.join(BASE_DIR, 'api', 'frontend', 'ui-dist'),
             os.path.join(BASE_DIR, 'frontend', 'ui-dist'),
             os.path.join(BASE_DIR, 'frontend'),
         ],
@@ -68,15 +68,22 @@ WSGI_APPLICATION = 'api_dashboard.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
 
-        # 'ENGINE': 'mysql.connector.django',
+        # 'ENGINE': 'django.db.backends.mysql',
         # 'NAME': 'uihxzefkgh_ai_blog',
         # 'USER': 'uihxzefkgh_ai_blog',
         # 'PASSWORD': '63SE58{-x{pC',
-        # 'HOST': '120.0.0.1',
+        # 'HOST': 'localhost',
         # 'PORT': 3306,
+        
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blog',
+        'USER': 'root',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': 3306,
     }
 }
 
@@ -140,6 +147,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://ai-blog.bilalahmed.dev",
     "https://ai-blog.bilalahmed.dev",
+    "http://gitapp.bilalahmed.dev",
+    "https://gitapp.bilalahmed.dev",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = False

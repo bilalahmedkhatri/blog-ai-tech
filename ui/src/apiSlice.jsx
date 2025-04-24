@@ -1,8 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { createSlice } from '@reduxjs/toolkit';
 import Cookies from 'js-cookie';
+import { getApiUrl } from './tools';
 
-// Add auth slice to manage authentication state
+const API_URL = getApiUrl();
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -49,7 +51,7 @@ export const { setCredentials, updateToken, logout } = authSlice.actions;
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
   const baseQuery = fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_API_URL,
+    baseUrl: API_URL,
     prepareHeaders: (headers) => {
       const token = Cookies.get('access_token');
       if (token) {

@@ -3,6 +3,62 @@ import Cookies from 'js-cookie';
 // import useGetUserProfileByIdSlugQuery from './apiSlice';
 
 
+/**
+ * Validates a URL string using the URL constructor.
+ * @param {string} value – the URL to validate.
+ * @returns {boolean}
+ */
+const isValidUrl = (value) => {
+  try {
+    new URL(value);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+/**
+ * Determines the API base URL securely:
+ * 1. Localhost development: uses window.protocol + localhost, logs only in DEV mode.
+ * 2. Production with valid BLOG_API_URL: validates URL and matches exact hostname.
+ * 3. Fallback: window.location.origin with a DEV-only warning.
+ */
+export const getApiUrl = () => {
+  const { hostname, protocol, origin } = window.location;            // MDN: hostname & origin :contentReference[oaicite:0]{index=0}
+  const envUrl = import.meta.env.BLOG_API_URL?.trim();               // Vite env :contentReference[oaicite:1]{index=1}
+
+  let apiAdd = '/api/';
+  // 1. Local development
+  if (hostname === 'localhost' || hostname === '127.0.0.1') {
+    const localApi = `${protocol}//localhost:8000/api/`;                   // protocol consistency avoids mixed content :contentReference[oaicite:2]{index=2}
+    if (import.meta.env.DEV) {
+      console.warn('⚠️ Dev: using localhost API at', localApi);
+    }
+    return localApi;
+  }
+
+  // 2. Production – valid env URL
+  if (envUrl && isValidUrl(envUrl)) {
+    const { hostname: envHost } = new URL(envUrl);
+    // Exact hostname match avoids substring spoofing :contentReference[oaicite:3]{index=3}
+    if (envHost === hostname) {
+      if (import.meta.env.DEV) {
+        console.info('ℹ️ DEV: BLOG_API_URL matches host; using page origin', origin);
+      }
+      return origin + apiAdd;
+    }
+    // Trust a different, valid API host
+    return envUrl + apiAdd;
+  }
+
+  // 3. Fallback to origin with DEV warning
+  if (import.meta.env.DEV) {
+    console.warn('⚠️ BLOG_API_URL is unset/invalid; defaulting to page origin', origin);
+  }
+  return origin + apiAdd;
+};
+
+
 export const getEmailAndName = () => {
   const token = Cookies.get('access_token');
   if (token) {

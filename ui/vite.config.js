@@ -12,6 +12,7 @@ export default defineConfig({
   //     entryFileNames: (file) => 'assets/js/[name].min.js',
   //   },
   // },
+  envPrefix: 'BLOG_',
   build: {
     manifest: true,
     outDir: path.resolve(__dirname, '../frontend/ui-dist'),
