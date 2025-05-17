@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.contrib.sites.shortcuts import get_current_site
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status
 from django.shortcuts import get_object_or_404

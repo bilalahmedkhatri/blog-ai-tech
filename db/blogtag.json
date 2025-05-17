@@ -1,0 +1,302 @@
+[
+    {
+        "model": "api.blogtag",
+        "pk": 1,
+        "fields": {
+            "name": "Technology",
+            "slug": "technology",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 2,
+        "fields": {
+            "name": "Programming",
+            "slug": "programming",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 3,
+        "fields": {
+            "name": "Self Improvement",
+            "slug": "self-improvement",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 4,
+        "fields": {
+            "name": "Business",
+            "slug": "business",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 5,
+        "fields": {
+            "name": "Data Science",
+            "slug": "data-science",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 6,
+        "fields": {
+            "name": "Life",
+            "slug": "life",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 7,
+        "fields": {
+            "name": "Startup",
+            "slug": "startup",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 8,
+        "fields": {
+            "name": "Blockchain",
+            "slug": "blockchain",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 9,
+        "fields": {
+            "name": "Poetry",
+            "slug": "poetry",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 10,
+        "fields": {
+            "name": "Life Lessons",
+            "slug": "life-lessons",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 11,
+        "fields": {
+            "name": "Politics",
+            "slug": "politics",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 12,
+        "fields": {
+            "name": "Health",
+            "slug": "health",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 13,
+        "fields": {
+            "name": "Love",
+            "slug": "love",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 14,
+        "fields": {
+            "name": "Travel",
+            "slug": "travel",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 15,
+        "fields": {
+            "name": "Entrepreneurship",
+            "slug": "entrepreneurship",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 16,
+        "fields": {
+            "name": "Machine Learning",
+            "slug": "machine-learning",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 17,
+        "fields": {
+            "name": "AI",
+            "slug": "ai",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 18,
+        "fields": {
+            "name": "Productivity",
+            "slug": "productivity",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 19,
+        "fields": {
+            "name": "Marketing",
+            "slug": "marketing",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 20,
+        "fields": {
+            "name": "Design",
+            "slug": "design",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 21,
+        "fields": {
+            "name": "Writing",
+            "slug": "writing",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 22,
+        "fields": {
+            "name": "Leadership",
+            "slug": "leadership",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 23,
+        "fields": {
+            "name": "Finance",
+            "slug": "finance",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 24,
+        "fields": {
+            "name": "Career",
+            "slug": "career",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 25,
+        "fields": {
+            "name": "Remote Work",
+            "slug": "remote-work",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 26,
+        "fields": {
+            "name": "UX",
+            "slug": "ux",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 27,
+        "fields": {
+            "name": "Mental Health",
+            "slug": "mental-health",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 28,
+        "fields": {
+            "name": "Investing",
+            "slug": "investing",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 29,
+        "fields": {
+            "name": "Education",
+            "slug": "education",
+            "created_by": 1,
+            "count": 1
+        }
+    },
+    {
+        "model": "api.blogtag",
+        "pk": 30,
+        "fields": {
+            "name": "Sustainability",
+            "slug": "sustainability",
+            "created_by": 1,
+            "count": 1
+        }
+    }
+]

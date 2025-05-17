@@ -1,0 +1,61 @@
+[
+    {
+        "model": "api.blogpost",
+        "pk": 1,
+        "fields": {
+            "title": "Duke’s Kara Lawson Appointed Head Coach for Team USA at FIBA AmeriCup",
+            "slug": "dukes-kara-lawson-appointed-head-coach-for-team-usa",
+            "author": 1,
+            "category": 7,
+            "tags": [
+                8,
+                16,
+                17
+            ],
+            "content": "<p>In a landmark announcement on May 6, 2025, USA Basketball named Duke women’s basketball coach Kara Lawson as the head coach for Team USA at the upcoming FIBA Women’s AmeriCup in Santiago, Chile (June 28–July 6) :contentReference[oaicite:0]{index=0}. Lawson brings an exceptional USA Basketball pedigree—she holds a 75–5 coaching record with nine gold medals, including leading the 3×3 team to Tokyo 2021 gold and serving as a 2024 Paris Olympic assistant coach :contentReference[oaicite:1]{index=1}. Assisting Lawson will be DeLisha Milton-Jones (Old Dominion) and Jennie Baranczyk (Oklahoma), both experienced USA Basketball coaches eager to build on America’s four AmeriCup golds :contentReference[oaicite:2]{index=2}.</p>\n\n<p>“I’m incredibly honored,” Lawson said in a USA Basketball statement. “The opportunity to work with some of the top players and coaches in the country is something I’m very excited about.” Under her leadership, Duke captured its first ACC Tournament title in over a decade and reached the 2024 Elite Eight :contentReference[oaicite:3]{index=3}. Team USA, placed in Group B with Chile, Colombia, Puerto Rico, and Mexico, aims to reclaim the AmeriCup crown after a 2023 silver-medal finish to Brazil :contentReference[oaicite:4]{index=4}.</p>\n\n<p><img src=\"https://www.dukebasketballreport.com/images/kara_lawson_featured.jpg\" alt=\"Kara Lawson coaching Team USA\" /></p>\n\n<p>With the AmeriCup serving as a qualifier for both the FIBA Women’s World Cup and the 2028 Olympics, Lawson’s appointment signals USA Basketball’s commitment to blending veteran leadership with fresh strategic vision :contentReference[oaicite:5]{index=5}.</p>",
+            "excerpt": "Duke’s Lawson named head coach of the 2025 USA Women’s AmeriCup team.",
+            "featured_image": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Kara Lawson Heads Team USA",
+            "meta_description": "Overview of Kara Lawson’s appointment as Team USA head coach for the 2025 AmeriCup.",
+            "keywords": "Kara Lawson, USA Basketball, FIBA AmeriCup",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 3
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 2,
+        "fields": {
+            "title": "MAGA-Aligned Media’s Growing Influence in Washington, D.C.",
+            "slug": "maga-aligned-medias-growing-influence-in-washington",
+            "author": 1,
+            "category": 2,
+            "tags": [
+                11,
+                19
+            ],
+            "content": "<p>In early May 2025, multiple MAGA-aligned outlets and investors made headlines by deepening their foothold in Washington’s power corridors. Recent SEC filings show firms like Charles Schwab Investment Management boosted their stakes in Trump Media and Technology Group (TMTG) by over $3.7 million—despite the platform’s $400 million loss last year :contentReference[oaicite:6]{index=6}. Critics warn these investments may be designed to curry favor with a future Trump administration, especially as insiders like Gina Rinehart also poured millions into TMTG shares :contentReference[oaicite:7]{index=7}.</p>\n\n<p>Meanwhile, newsletters and digital platforms once relegated to the political fringe are now staffing up and securing major ad buys in D.C. corridors, challenging legacy outlets for access and influence. Axios reports that several pro-Trump super PACs are planning to funnel $500 million+ into targeted media campaigns ahead of the 2026 midterms, signaling a strategic shift in conservative media mobilization :contentReference[oaicite:8]{index=8}. This realignment blurs the line between political advocacy and journalism, raising fresh questions about conflicts of interest, transparency, and the future of objective reporting in the capital :contentReference[oaicite:9]{index=9}.</p>\n\n<p><img src=\"https://www.theguardian.com/images/trump_media.jpg\" alt=\"MAGA media influence graph\" /></p>\n\n<p>As traditional cable ratings decline among younger viewers, these nimble, digitally native outlets are stepping in—fuelled by both ideology and big-ticket investments—to reshape the narrative from the White House briefing room to congressional coverage :contentReference[oaicite:10]{index=10}.</p>",
+            "excerpt": "How MAGA-aligned outlets and investors are reshaping Washington’s media landscape.",
+            "featured_image": "https://www.theguardian.com/images/trump_media.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "MAGA Media’s Washington Rise",
+            "meta_description": "Analysis of the surge in MAGA-aligned media and investments in D.C.",
+            "keywords": "MAGA media, Trump Media, political influence",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 3
+        }
+    }
+]

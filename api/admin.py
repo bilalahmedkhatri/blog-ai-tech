@@ -55,10 +55,10 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(UploadedImage)
 class UploadedImageAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'size', 'content_type', 'height', 'width', 'image', 'uploaded_at',
+    list_display = ('id', 'name', 'size', 'content_type', 'height', 'width', 'image', 'blog_url', 'uploaded_at',
                     'uploaded_by', 'status', 'notification_sent')
 
 
 # @admin.register(Site)
 # class MySidddteAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'name', 'domain')
+    # list_display = ('id', 'name', 'domain')

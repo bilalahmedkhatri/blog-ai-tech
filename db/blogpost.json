@@ -1,0 +1,873 @@
+[
+    {
+        "model": "api.blogpost",
+        "pk": 1,
+        "fields": {
+            "title": "Duke’s Kara Lawson to Coach Team USA",
+            "slug": "dukes-kara-lawson-to-coach-team-usa",
+            "author": 1,
+            "category": 7,
+            "tags": [
+                8,
+                16,
+                17
+            ],
+            "content": "<p>Kara Lawson has been named head coach for Team USA at the 2025 Women’s AmeriCup. <img src=\"https://www.dukebasketballreport.com/images/kara_lawson.jpg\" alt=\"Kara Lawson\"></p>",
+            "excerpt": "Kara Lawson takes the reins of the U.S. women’s basketball team.",
+            "featured_image": "https://www.dukebasketballreport.com/images/kara_lawson_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Kara Lawson Appointed USA Coach",
+            "meta_description": "Duke’s Kara Lawson named head coach of the U.S. women’s basketball team.",
+            "keywords": "Kara Lawson, Team USA, basketball",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 18
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 2,
+        "fields": {
+            "title": "MAGA Media Muscle Gains Influence in Washington",
+            "slug": "maga-media-muscle-gains-influence-in-washington",
+            "author": 1,
+            "category": 2,
+            "tags": [
+                11,
+                19
+            ],
+            "content": "<p>MAGA-aligned outlets are securing top talent and advertisers. <img src=\"https://images.axios.com/maga_media_muscle.jpg\" alt=\"MAGA Media\"></p>",
+            "excerpt": "Conservative media outlets move into the mainstream.",
+            "featured_image": "https://images.axios.com/maga_media_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "MAGA Media’s Rise",
+            "meta_description": "How MAGA-aligned media outlets are growing their reach in D.C.",
+            "keywords": "MAGA media, Washington, politics",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 7
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 3,
+        "fields": {
+            "title": "Inside the 2025 Met Gala: Fashion Highlights",
+            "slug": "inside-the-2025-met-gala-fashion-highlights",
+            "author": 1,
+            "category": 8,
+            "tags": [
+                4,
+                13
+            ],
+            "content": "<p>Stars like Jenna Ortega dazzled on May 5. <img src=\"https://media.people.com/metgala2025.jpg\" alt=\"Met Gala 2025\"></p>",
+            "excerpt": "A look at the show-stopping Met Gala red carpet.",
+            "featured_image": "https://media.people.com/metgala2025_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "2025 Met Gala Fashion",
+            "meta_description": "Celeb looks from the 2025 Met Gala in NYC.",
+            "keywords": "Met Gala, fashion, celebrities",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 25
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 4,
+        "fields": {
+            "title": "Pope Leo XIV: First American Elected",
+            "slug": "pope-leo-xiv-first-american-elected",
+            "author": 1,
+            "category": 1,
+            "tags": [
+                5,
+                29
+            ],
+            "content": "<p>Pope Leo XIV held his first Mass this week. <img src=\"https://pbs.org/images/pope_leo_xiv.jpg\" alt=\"Pope Leo XIV\"></p>",
+            "excerpt": "U.S. cardinal becomes the new pope Leo XIV.",
+            "featured_image": "https://pbs.org/images/pope_leo_xiv_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Pope Leo XIV Elected",
+            "meta_description": "First American pope Leo XIV celebrates first Mass.",
+            "keywords": "Pope Leo XIV, Vatican, Catholic Church",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 12
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 5,
+        "fields": {
+            "title": "May Day Protests Sweep Across U.S.",
+            "slug": "may-day-protests-sweep-across-us",
+            "author": 1,
+            "category": 2,
+            "tags": [
+                11,
+                27
+            ],
+            "content": "<p>Labor rallies erupted from NYC to Portland on May 1. <img src=\"https://upload.wikimedia.org/mayday2025.jpg\" alt=\"May Day Protest\"></p>",
+            "excerpt": "Thousands marched in nationwide May Day demonstrations.",
+            "featured_image": "https://upload.wikimedia.org/mayday2025_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "2025 May Day Protests",
+            "meta_description": "International Workers' Day rallies across America.",
+            "keywords": "May Day, protests, labor rights",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 22
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 6,
+        "fields": {
+            "title": "Over 200 CEOs Back Mandatory AI Education",
+            "slug": "200-ceos-back-mandatory-ai-education",
+            "author": 1,
+            "category": 5,
+            "tags": [
+                5,
+                16
+            ],
+            "content": "<p>CEOs urge high schools to teach AI and CS. <img src=\"https://images.axios.com/ai_education.jpg\" alt=\"AI Education\"></p>",
+            "excerpt": "Business leaders call for AI curricula in schools.",
+            "featured_image": "https://images.axios.com/ai_education_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "AI Education Push",
+            "meta_description": "Hundreds of CEOs want mandatory AI classes.",
+            "keywords": "AI, education, CEOs",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 30
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 7,
+        "fields": {
+            "title": "SpaceX Starbase Officially Declared a City",
+            "slug": "spacex-starbase-officially-declared-a-city",
+            "author": 1,
+            "category": 5,
+            "tags": [
+                5,
+                8
+            ],
+            "content": "<p>Residents voice concern as Starbase gains city status. <img src=\"https://images.axios.com/starbase_city.jpg\" alt=\"Starbase City\"></p>",
+            "excerpt": "Starbase, Texas, is now formally incorporated.",
+            "featured_image": "https://images.axios.com/starbase_city_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Starbase City Status",
+            "meta_description": "Elon Musk's Starbase becomes official city.",
+            "keywords": "Starbase, SpaceX, Texas",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 14
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 8,
+        "fields": {
+            "title": "Washington, D.C. to Host 2027 NFL Draft",
+            "slug": "washington-dc-to-host-2027-nfl-draft",
+            "author": 1,
+            "category": 7,
+            "tags": [
+                8,
+                23
+            ],
+            "content": "<p>The NFL Draft is moving to the National Mall in 2027. <img src=\"https://images.axios.com/nfl_draft_dc.jpg\" alt=\"NFL Draft DC\"></p>",
+            "excerpt": "D.C. wins bid for landmark NFL Draft event.",
+            "featured_image": "https://images.axios.com/nfl_draft_dc_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "2027 NFL Draft in DC",
+            "meta_description": "How Washington, D.C. secured the 2027 Draft.",
+            "keywords": "NFL Draft, Washington DC",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 9
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 9,
+        "fields": {
+            "title": "Skype to Shut Down After 22 Years",
+            "slug": "skype-to-shut-down-after-22-years",
+            "author": 1,
+            "category": 4,
+            "tags": [
+                2,
+                20
+            ],
+            "content": "<p>Microsoft announces end of Skype service in 2025. <img src=\"https://92q.com/images/skype_shutdown.jpg\" alt=\"Skype Shutdown\"></p>",
+            "excerpt": "Legacy VoIP pioneer Skype will retire this year.",
+            "featured_image": "https://92q.com/images/skype_shutdown_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Skype Service Ends",
+            "meta_description": "Microsoft to retire Skype in late 2025.",
+            "keywords": "Skype, Microsoft, VoIP",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 5
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 10,
+        "fields": {
+            "title": "Berkshire Hathaway Beats the S&P 500 Again",
+            "slug": "berkshire-hathaway-beats-the-sp-500-again",
+            "author": 1,
+            "category": 3,
+            "tags": [
+                4,
+                23
+            ],
+            "content": "<p>Buffett's conglomerate outperforms the market in Q1. <img src=\"https://images.axios.com/berkshire_sp500.jpg\" alt=\"Berkshire vs S&P\"></p>",
+            "excerpt": "Berkshire Hathaway delivers strong returns this quarter.",
+            "featured_image": "https://images.axios.com/berkshire_sp500_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Berkshire vs S&P",
+            "meta_description": "How Buffett's firm outdid the S&P in early 2025.",
+            "keywords": "Berkshire Hathaway, market performance",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 17
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 11,
+        "fields": {
+            "title": "Hollywood's Summer Film Season Kicks Off Strong",
+            "slug": "hollywood-summer-film-season-kicks-off-strong",
+            "author": 1,
+            "category": 8,
+            "tags": [
+                4,
+                12
+            ],
+            "content": "<p>Disney's \"Thunderbolts\" smashes opening weekend records. <img src=\"https://images.axios.com/hollywood_summer.jpg\" alt=\"Summer Films\"></p>",
+            "excerpt": "Blockbusters break box office records this May.",
+            "featured_image": "https://images.axios.com/hollywood_summer_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Summer Blockbusters 2025",
+            "meta_description": "Highlights of Hollywood's 2025 summer lineup.",
+            "keywords": "summer films, box office",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 28
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 12,
+        "fields": {
+            "title": "U.S. and U.K. Seal New Trade Framework",
+            "slug": "us-and-uk-seal-new-trade-framework",
+            "author": 1,
+            "category": 3,
+            "tags": [
+                4,
+                23
+            ],
+            "content": "<p>Tariffs eased under fresh U.S.–UK agreement. <img src=\"https://pbs.org/images/us_uk_trade.jpg\" alt=\"US-UK Trade\"></p>",
+            "excerpt": "Economic ties strengthened by new trade pact.",
+            "featured_image": "https://pbs.org/images/us_uk_trade_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "US-UK Trade Deal",
+            "meta_description": "Key points of the new U.S.–UK trade framework.",
+            "keywords": "trade, US-UK, tariffs",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 11
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 13,
+        "fields": {
+            "title": "Bill Gates Plans to Close Down His Foundation",
+            "slug": "bill-gates-plans-to-close-down-his-foundation",
+            "author": 1,
+            "category": 3,
+            "tags": [
+                4,
+                23
+            ],
+            "content": "<p>Gates to give away nearly all wealth and wind up philanthropy. <img src=\"https://pbs.org/images/gates_foundation.jpg\" alt=\"Gates Foundation\"></p>",
+            "excerpt": "The billionaire’s radical plan for philanthropy.",
+            "featured_image": "https://pbs.org/images/gates_foundation_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Gates to Close Foundation",
+            "meta_description": "Why Bill Gates is winding down his charity work.",
+            "keywords": "Bill Gates, philanthropy",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 26
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 14,
+        "fields": {
+            "title": "California Wildfires Flare After Record Heat",
+            "slug": "california-wildfires-flare-after-record-heat",
+            "author": 1,
+            "category": 6,
+            "tags": [
+                12,
+                27
+            ],
+            "content": "<p>Emergency crews battle new blazes amid heatwave. <img src=\"https://abcnews.go.com/images/ca_wildfires.jpg\" alt=\"California Wildfires\"></p>",
+            "excerpt": "Heat-driven wildfires threaten communities in CA.",
+            "featured_image": "https://abcnews.go.com/images/ca_wildfires_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "CA Wildfires 2025",
+            "meta_description": "Impact of record heat on California fire season.",
+            "keywords": "wildfires, California, heatwave",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 15
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 15,
+        "fields": {
+            "title": "FDA Approves Groundbreaking Alzheimer’s Drug",
+            "slug": "fda-approves-groundbreaking-alzheimers-drug",
+            "author": 1,
+            "category": 6,
+            "tags": [
+                12,
+                27
+            ],
+            "content": "<p>New treatment shows promise in slowing disease. <img src=\"https://cbsnews.com/images/alzheimers_drug.jpg\" alt=\"Alzheimer’s Drug\"></p>",
+            "excerpt": "Landmark FDA approval offers hope to millions.",
+            "featured_image": "https://cbsnews.com/images/alzheimers_drug_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "FDA Alzheimer’s Approval",
+            "meta_description": "Details on the first new Alzheimer’s therapy in years.",
+            "keywords": "FDA, Alzheimer’s, drug approval",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 20
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 16,
+        "fields": {
+            "title": "Major Cybersecurity Breach Hits Twitter",
+            "slug": "major-cybersecurity-breach-hits-twitter",
+            "author": 1,
+            "category": 4,
+            "tags": [
+                2,
+                21
+            ],
+            "content": "<p>Hackers accessed millions of user records. <img src=\"https://techncrunch.com/images/twitter_breach.jpg\" alt=\"Twitter Breach\"></p>",
+            "excerpt": "Twitter confirms large-scale data leak.",
+            "featured_image": "https://techncrunch.com/images/twitter_breach_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Twitter Data Breach",
+            "meta_description": "Scope and response to the latest Twitter hack.",
+            "keywords": "Twitter, cybersecurity, breach",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 22
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 17,
+        "fields": {
+            "title": "New iPhone 17 Rumors Swirl Ahead of Launch",
+            "slug": "new-iphone-17-rumors-swirl-ahead-of-launch",
+            "author": 1,
+            "category": 4,
+            "tags": [
+                1,
+                16
+            ],
+            "content": "<p>Leaked specs hint at periscope zoom lens. <img src=\"https://gsmarena.com/images/iphone17_rumor.jpg\" alt=\"iPhone 17 Rumor\"></p>",
+            "excerpt": "Next-gen Apple device may break camera records.",
+            "featured_image": "https://gsmarena.com/images/iphone17_rumor_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "iPhone 17 Rumors",
+            "meta_description": "What to expect from Apple's 2025 flagship.",
+            "keywords": "iPhone 17, Apple, rumors",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 21
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 18,
+        "fields": {
+            "title": "Google Unveils Next-Gen AI Model",
+            "slug": "google-unveils-next-gen-ai-model",
+            "author": 1,
+            "category": 4,
+            "tags": [
+                1,
+                16
+            ],
+            "content": "<p>Google’s Gemini X sets new benchmarks in ML. <img src=\"https://ai.google.com/images/gemini_x.jpg\" alt=\"Gemini X\"></p>",
+            "excerpt": "Tech giant pushes AI boundaries once more.",
+            "featured_image": "https://ai.google.com/images/gemini_x_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Google Gemini X",
+            "meta_description": "Details on Google’s latest AI innovation.",
+            "keywords": "Google, AI, Gemini X",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 22
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 19,
+        "fields": {
+            "title": "Cryptocurrency Markets Rally on ETF News",
+            "slug": "cryptocurrency-markets-rally-on-etf-news",
+            "author": 1,
+            "category": 3,
+            "tags": [
+                23,
+                17
+            ],
+            "content": "<p>Bitcoin and Ethereum spike after new ETF approvals. <img src=\"https://coindesk.com/images/crypto_rally.jpg\" alt=\"Crypto Rally\"></p>",
+            "excerpt": "Digital assets soar on regulatory clarity.",
+            "featured_image": "https://coindesk.com/images/crypto_rally_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Crypto ETF Rally",
+            "meta_description": "Why crypto markets jumped this week.",
+            "keywords": "bitcoin, ETF, crypto",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 18
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 20,
+        "fields": {
+            "title": "U.S. Inflation Eases to 3.1% in April",
+            "slug": "us-inflation-eases-to-3-1-in-april",
+            "author": 1,
+            "category": 3,
+            "tags": [
+                4,
+                23
+            ],
+            "content": "<p>CPI data shows cooling price growth. <img src=\"https://bls.gov/images/inflation_april.jpg\" alt=\"Inflation April\"></p>",
+            "excerpt": "Consumer prices rise at slowest pace since 2021.",
+            "featured_image": "https://bls.gov/images/inflation_april_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "April CPI Report",
+            "meta_description": "Latest US inflation figures explained.",
+            "keywords": "inflation, CPI, economy",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 12
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 21,
+        "fields": {
+            "title": "Federal Reserve Holds Interest Rates Steady",
+            "slug": "federal-reserve-holds-interest-rates-steady",
+            "author": 1,
+            "category": 3,
+            "tags": [
+                4,
+                23
+            ],
+            "content": "<p>The Fed pauses rate hikes amid mixed data. <img src=\"https://federalreserve.gov/images/fed_rate.jpg\" alt=\"Fed Rates\"></p>",
+            "excerpt": "Central bank maintains federal funds rate at 5.25%.",
+            "featured_image": "https://federalreserve.gov/images/fed_rate_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Fed Rate Decision",
+            "meta_description": "Why policymakers held rates this week.",
+            "keywords": "Federal Reserve, interest rates",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 29
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 22,
+        "fields": {
+            "title": "Electric Vehicle Adoption Surpasses 10% of U.S. Sales",
+            "slug": "electric-vehicle-adoption-surpasses-10-percent-of-us-sales",
+            "author": 1,
+            "category": 5,
+            "tags": [
+                5,
+                8
+            ],
+            "content": "<p>EVs hit double-digit market share in Q1. <img src=\"https://epa.gov/images/ev_adoption.jpg\" alt=\"EV Adoption\"></p>",
+            "excerpt": "EV sales grow amid new incentives.",
+            "featured_image": "https://epa.gov/images/ev_adoption_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "EV Market Share",
+            "meta_description": "Analysis of rising electric vehicle sales.",
+            "keywords": "electric vehicles, market share",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 21
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 23,
+        "fields": {
+            "title": "Climate Summit Preparations Underway",
+            "slug": "climate-summit-preparations-underway",
+            "author": 1,
+            "category": 5,
+            "tags": [
+                5,
+                30
+            ],
+            "content": "<p>Delegates finalize agenda for global summit. <img src=\"https://un.org/images/climate_summit.jpg\" alt=\"Climate Summit\"></p>",
+            "excerpt": "World leaders gear up for climate talks in June.",
+            "featured_image": "https://un.org/images/climate_summit_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Global Climate Summit",
+            "meta_description": "What to expect from the upcoming summit.",
+            "keywords": "climate change, summit, environment",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 15
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 24,
+        "fields": {
+            "title": "Mental Health Takes Center Stage in Tech Workplaces",
+            "slug": "mental-health-takes-center-stage-in-tech-workplaces",
+            "author": 1,
+            "category": 9,
+            "tags": [
+                6,
+                27
+            ],
+            "content": "<p>Companies roll out new wellness programs. <img src=\"https://medium.com/images/tech_mental_health.jpg\" alt=\"Mental Health\"></p>",
+            "excerpt": "How Silicon Valley firms address employee wellbeing.",
+            "featured_image": "https://medium.com/images/tech_mental_health_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Tech Workplace Wellness",
+            "meta_description": "Mental health initiatives in tech companies.",
+            "keywords": "mental health, tech, workplace",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 17
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 25,
+        "fields": {
+            "title": "Remote Work Trends Continue Post-Pandemic",
+            "slug": "remote-work-trends-continue-post-pandemic",
+            "author": 1,
+            "category": 9,
+            "tags": [
+                6,
+                25
+            ],
+            "content": "<p>Hybrid models dominate corporate strategies. <img src=\"https://hbr.org/images/remote_work.jpg\" alt=\"Remote Work\"></p>",
+            "excerpt": "Employers adapt long-term to distributed teams.",
+            "featured_image": "https://hbr.org/images/remote_work_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Remote Work 2025",
+            "meta_description": "Evolution of work models after COVID-19.",
+            "keywords": "remote work, hybrid, post-pandemic",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 10
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 26,
+        "fields": {
+            "title": "Startup Funding Soars in Q2 2025",
+            "slug": "startup-funding-soars-in-q2-2025",
+            "author": 1,
+            "category": 3,
+            "tags": [
+                7,
+                15
+            ],
+            "content": "<p>Venture capital deals reach record highs. <img src=\"https://techcrunch.com/images/startup_funding.jpg\" alt=\"Startup Funding\"></p>",
+            "excerpt": "Investors pour billions into early-stage companies.",
+            "featured_image": "https://techcrunch.com/images/startup_funding_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Q2 Startup Funding",
+            "meta_description": "Overview of venture capital trends in early 2025.",
+            "keywords": "startup, funding, venture capital",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 16
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 27,
+        "fields": {
+            "title": "Leadership Lessons from Jeff Bezos",
+            "slug": "leadership-lessons-from-jeff-bezos",
+            "author": 1,
+            "category": 9,
+            "tags": [
+                22,
+                7
+            ],
+            "content": "<p>What Amazon’s founder teaches about vision and culture. <img src=\"https://fortune.com/images/bezos_leadership.jpg\" alt=\"Bezos Leadership\"></p>",
+            "excerpt": "Key insights on leading large organizations.",
+            "featured_image": "https://fortune.com/images/bezos_leadership_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Bezos on Leadership",
+            "meta_description": "Jeff Bezos’s top management principles.",
+            "keywords": "leadership, Bezos, Amazon",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 28
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 28,
+        "fields": {
+            "title": "UX Design Trends to Watch in 2025",
+            "slug": "ux-design-trends-to-watch-in-2025",
+            "author": 1,
+            "category": 9,
+            "tags": [
+                20,
+                26
+            ],
+            "content": "<p>Immersive and voice-driven interfaces on the rise. <img src=\"https://uxmag.com/images/ux_trends_2025.jpg\" alt=\"UX Trends\"></p>",
+            "excerpt": "How UX is evolving with emerging tech.",
+            "featured_image": "https://uxmag.com/images/ux_trends_2025_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "2025 UX Trends",
+            "meta_description": "Key user experience directions for this year.",
+            "keywords": "UX, design, trends",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 19
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 29,
+        "fields": {
+            "title": "Personal Finance Tips for the Modern Investor",
+            "slug": "personal-finance-tips-for-the-modern-investor",
+            "author": 1,
+            "category": 9,
+            "tags": [
+                23,
+                24
+            ],
+            "content": "<p>Strategies to navigate today’s markets successfully. <img src=\"https://forbes.com/images/finance_tips.jpg\" alt=\"Finance Tips\"></p>",
+            "excerpt": "Build wealth through diversified portfolios and habits.",
+            "featured_image": "https://forbes.com/images/finance_tips_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "Modern Investing Tips",
+            "meta_description": "Top personal finance strategies for 2025.",
+            "keywords": "personal finance, investing, tips",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 29
+        }
+    },
+    {
+        "model": "api.blogpost",
+        "pk": 30,
+        "fields": {
+            "title": "Sustainability Initiatives Gain Momentum in U.S.",
+            "slug": "sustainability-initiatives-gain-momentum-in-us",
+            "author": 1,
+            "category": 5,
+            "tags": [
+                30,
+                5
+            ],
+            "content": "<p>Corporate pledges aim for net zero by 2040. <img src=\"https://un.org/images/net_zero.jpg\" alt=\"Net Zero Pledge\"></p>",
+            "excerpt": "Companies ramp up green commitments and goals.",
+            "featured_image": "https://un.org/images/net_zero_featured.jpg",
+            "created_at": "2025-05-10T00:00:00Z",
+            "updated_at": "2025-05-10T00:00:00Z",
+            "published_at": "2025-05-10T00:00:00Z",
+            "status": "published",
+            "meta_title": "US Sustainability Push",
+            "meta_description": "Overview of net zero pledges in American industry.",
+            "keywords": "sustainability, net zero, environment",
+            "view_count": 0,
+            "like_count": 0,
+            "is_approved": true,
+            "is_featured": false,
+            "blog_like": 22
+        }
+    }
+]

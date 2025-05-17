@@ -1,0 +1,112 @@
+[
+    {
+        "model": "api.blogcategory",
+        "pk": 1,
+        "fields": {
+            "name": "World",
+            "slug": "world",
+            "created_by": 1,
+            "count": 23,
+            "description": "Global news coverage"
+        }
+    },
+    {
+        "model": "api.blogcategory",
+        "pk": 2,
+        "fields": {
+            "name": "Politics",
+            "slug": "politics",
+            "created_by": 3,
+            "count": 42,
+            "description": "Political news and analysis"
+        }
+    },
+    {
+        "model": "api.blogcategory",
+        "pk": 3,
+        "fields": {
+            "name": "Business",
+            "slug": "business",
+            "created_by": 2,
+            "count": 15,
+            "description": "Finance, markets, and economic trends"
+        }
+    },
+    {
+        "model": "api.blogcategory",
+        "pk": 4,
+        "fields": {
+            "name": "Technology",
+            "slug": "technology",
+            "created_by": 5,
+            "count": 37,
+            "description": "Tech innovations and reviews"
+        }
+    },
+    {
+        "model": "api.blogcategory",
+        "pk": 5,
+        "fields": {
+            "name": "Science",
+            "slug": "science",
+            "created_by": 4,
+            "count": 8,
+            "description": "Science news and discoveries"
+        }
+    },
+    {
+        "model": "api.blogcategory",
+        "pk": 6,
+        "fields": {
+            "name": "Health",
+            "slug": "health",
+            "created_by": 1,
+            "count": 29,
+            "description": "Health, wellness, and medicine"
+        }
+    },
+    {
+        "model": "api.blogcategory",
+        "pk": 7,
+        "fields": {
+            "name": "Sports",
+            "slug": "sports",
+            "created_by": 2,
+            "count": 50,
+            "description": "Sports news and scores"
+        }
+    },
+    {
+        "model": "api.blogcategory",
+        "pk": 8,
+        "fields": {
+            "name": "Entertainment",
+            "slug": "entertainment",
+            "created_by": 3,
+            "count": 12,
+            "description": "Movies, TV, music, and celebrity"
+        }
+    },
+    {
+        "model": "api.blogcategory",
+        "pk": 9,
+        "fields": {
+            "name": "Lifestyle",
+            "slug": "lifestyle",
+            "created_by": 5,
+            "count": 5,
+            "description": "Culture, travel, and living well"
+        }
+    },
+    {
+        "model": "api.blogcategory",
+        "pk": 10,
+        "fields": {
+            "name": "Opinion",
+            "slug": "opinion",
+            "created_by": 4,
+            "count": 34,
+            "description": "Editorials and viewpoints"
+        }
+    }
+]

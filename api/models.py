@@ -1,6 +1,10 @@
+from tkinter import N
 from django.db import models
 from django.utils.text import slugify
 from django.utils import timezone
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 
@@ -100,8 +104,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 class BlogCategory(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True, blank=True)
-    created_by = models.ForeignKey(
-        UserProfile, on_delete=models.CASCADE, related_name='blog_categories')
+    created_by = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='blog_categories')
     count = models.IntegerField(default=1)
     # Optional description for category
     description = models.TextField(blank=True, null=True)
@@ -138,12 +141,13 @@ class UploadedImage(models.Model):
     )
 
     name = models.CharField(max_length=255, blank=True, null=True)
-    image = models.ImageField(upload_to='media/content_images/')
+    image = models.ImageField(upload_to='content_images/')
+    blog_url = models.URLField(blank=True, null=True, max_length=1000)
     size = models.FloatField(default=0)
     content_type = models.CharField(max_length=12, blank=True, null=True)
     width = models.IntegerField(default=0)
     height = models.IntegerField(default=0)
-    thumbnail = models.ImageField(upload_to='media/thumbnails/', blank=True, null=True)
+    thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     uploaded_by = models.ForeignKey(
         UserProfile, on_delete=models.CASCADE, related_name="blog_detailed_images")
@@ -154,7 +158,12 @@ class UploadedImage(models.Model):
     def __str__(self):
         return f"Image uploaded by {self.uploaded_by.first_name} at {self.uploaded_at} - {self.status}"
 
-
+class BlogLikes(models.Model):
+    blog_like = models.IntegerField(null=True, blank=True)
+    blog_dislike = models.IntegerField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    
+    
 class BlogPost(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
@@ -173,28 +182,27 @@ class BlogPost(models.Model):
     # Optional summary of the post
     excerpt = models.TextField(blank=True, null=True)
     featured_image = models.ImageField(
-        upload_to='post_images/', blank=True, null=True)
+        upload_to='post_images/', blank=True, null=True, max_length=1000)
+    blog_featured_image = models.URLField(blank=True, null=True, max_length=1000)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     published_at = models.DateTimeField(
         null=True, blank=True)  # When the post was published
     status = models.CharField(
         max_length=10, choices=STATUS_CHOICES, default='draft')
-    meta_title = models.CharField(max_length=255, blank=True, null=True)
+    meta_title = models.CharField(max_length=500, blank=True, null=True)
     meta_description = models.TextField(blank=True, null=True)
     keywords = models.TextField(
         blank=True, null=True, help_text="Comma-separated keywords")
     view_count = models.IntegerField(default=0)
     like_count = models.IntegerField(default=0)
-    # Dashboard specific fields:
+    blog_like = models.ForeignKey(BlogLikes, on_delete=models.CASCADE, related_name='blog_likes', null=True)
     is_approved = models.BooleanField(default=False, help_text="Post approval status for dashboard moderation")
     is_featured = models.BooleanField(default=False, help_text="Mark post as featured on the dashboard")
 
     def save(self, *args, **kwargs):
-        # Auto-generate slug if not provided
         if not self.slug:
             self.slug = slugify(self.title)
-        # Automatically set published_at if status is published and not already set
         if self.status == 'published' and self.published_at is None:
             self.published_at = timezone.now()
         super().save(*args, **kwargs)
@@ -204,3 +212,17 @@ class BlogPost(models.Model):
 
     class Meta:
         ordering = ['-published_at', '-created_at']
+
+@receiver(post_save, sender=BlogPost)
+def blogpost_url(sender, instance, created, **kwargs):
+    if created:
+        domain = get_current_site(instance.author).domain
+        instance.blog_featured_image = f"{domain}{instance.featured_image.url}"
+        instance.save(update_fields=['blog_featured_image'])
+        
+@receiver(post_save, sender=UploadedImage)
+def uploadedimage_url(sender, instance, created, **kwargs):
+    if created:
+        domain = get_current_site(instance.uploaded_by).domain
+        instance.blog_url = f"{domain}{instance.image.url}"
+        instance.save(update_fields=['blog_url'])

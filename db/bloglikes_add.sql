@@ -1,0 +1,9 @@
+INSERT INTO blog.api_bloglikes (blog_like, blog_dislike, created_at)
+SELECT 
+    FLOOR(RAND() * 1000) AS blog_like,
+    FLOOR(RAND() * 500) AS blog_dislike,
+    DATE_SUB(NOW(), INTERVAL FLOOR(RAND() * 365) DAY) AS created_at
+FROM 
+    (SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5) t1,
+    (SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6) t2
+LIMIT 30;
