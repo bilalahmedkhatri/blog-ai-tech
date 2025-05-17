@@ -3,7 +3,8 @@ import Grid from '@mui/material/Grid';
 import NewsCard from '../NewsCard';
 import InPageTitile from '../InPageTitile';
 
-export default function Featured({ featurePost }) {
+export default function Featured({ featurePost, featuredPosts, }) {
+	console.log('featured', featuredPosts);
 	return (
 
 		<Grid container spacing={3} sx={{ mt: 1 }}>

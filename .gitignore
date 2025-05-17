@@ -276,8 +276,8 @@ web_modules/
 # Next.js build output
 .next
 out
-# my-blog/node_modules
-# my-blog/.env
+my-blog/node_modules
+my-blog/.env
 my-blog
 
 
@@ -289,6 +289,13 @@ my-blog
 # Comment in the public line in if your project uses Gatsby and not Next.js
 # https://nextjs.org/blog/next-9-1#public-directory-support
 # public
+nextao/node_modules
+nextao/.env
+nextap/node_modules
+nextap/.env
+nextap/.next
+nextap/README.md
+nextap/.gitignore
 
 # vuepress build output
 .vuepress/dist

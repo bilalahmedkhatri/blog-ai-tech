@@ -1,15 +1,16 @@
 import React from 'react';
 import image from '../images/honda.jpg';
 import HeroSections from '../components/home/HeroSections';
-import NewJustIn from '../components/home/NewJustIn';
-import MostViewed from '../components/home/MostViewed';
+import MostViewJustIn from '../components/home/MostViewJustIn';
+import Popular from '../components/home/Popular';
 import Featured from '../components/home/Featured';
 import {
   getTopNews,
   getLatestNews,
-  getFeaturedNews,
   getMostViewedPosts,
   getJustIn,
+  getPopularNews,
+  getFeaturedNews,
   getAllCategories
 } from '../lib/blogIndexPagePosts';
 
@@ -19,20 +20,20 @@ export default async function HomePage() {
 
   // Use try/catch to handle potential data fetching errors
   let topNews = [];
-  let latestPosts = [];
-  let featuredPosts = [];
   let mostViewedPosts = [];
   let justIn = [];
+  let popularNews = [];
+  let featuredPosts = [];
   let categories = [];
 
   try {
     // Fetch data with Promise.all
-    [topNews, latestPosts, featuredPosts, mostViewedPosts, justIn, categories] = await Promise.all([
+    [topNews, mostViewedPosts, justIn, popularNews, featuredPosts, categories] = await Promise.all([
       getTopNews(),
-      getLatestNews(),
-      getFeaturedNews(),
       getMostViewedPosts(),
       getJustIn(),
+      getPopularNews(),
+      getFeaturedNews(),
       getAllCategories()
     ]);
   } catch (error) {
@@ -45,9 +46,9 @@ export default async function HomePage() {
   return (
     <>
       <HeroSections posts={topNews} />
-      <NewJustIn NewJustInData={JustInItem} mostViewedPosts={mostViewedPosts} justIn={justIn} />
-      <MostViewed mosttViewed={latestNews} Popular={oldPosts2} />
-      <Featured featurePost={featurePost} />
+      <MostViewJustIn mostViewedPosts={mostViewedPosts} justIn={justIn} />
+      <Popular mosttViewed={latestNews} Popular={oldPosts2} popularNews={popularNews} />
+      <Featured featurePost={featurePost} featuredPosts={featuredPosts}  />
     </>
   );
 }

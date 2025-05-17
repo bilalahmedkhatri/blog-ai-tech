@@ -9,13 +9,10 @@ import { oldPosts1, oldPosts2 } from '../../app/dumy';
 import InPageTitile from '../InPageTitile';
 import { getMostViewedPosts } from '../../lib/blogIndexPagePosts';
 
-export default function NewJustIn({ NewJustInData, mostViewedPosts, justIn }) {
+export default function MostViewJustIn({ mostViewedPosts, justIn }) {
 
 	const twoMostViewedPosts = mostViewedPosts.slice(0, 2);
 	const fourMostViewedPosts = mostViewedPosts.slice(2, 6);
-
-	console.log('just in ', justIn);
-
 	return (
 		<Grid container spacing={3} sx={{ pt: 4 }}>
 			<Grid size={{ xs: 12, sm: 12, md: 8, lg: 8 }}>
@@ -74,7 +71,18 @@ export default function NewJustIn({ NewJustInData, mostViewedPosts, justIn }) {
 							<React.Fragment key={idx}>
 								<ListItem alignItems="flex-start" sx={{ my: 1, }}>
 									<ListItemText
-										primary={<Typography sx={{ fontSize: 18, fontWeight: 600, pt: 0.2, width: 80, textAlign: 'left' }}> {date} {month} </Typography>}
+										primary={
+											<Typography
+												sx={{
+													fontSize: 18,
+													fontWeight: 600,
+													pt: 0.2,
+													width: 80,
+													textAlign: 'left'
+												}}
+											>
+												{date} {month}
+											</Typography>}
 										sx={{ mr: 1, width: 80, textAlign: 'left' }}
 									/>
 									<ListItemText
