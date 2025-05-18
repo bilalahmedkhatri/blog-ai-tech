@@ -16,6 +16,12 @@ export default function InPageTitile({ title, showBreadcrumbs = true }) {
   // const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   // const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 
+  const listOfcategories = [
+    { name: 'Movie', link: '/movie' },
+    { name: 'Technology', link: '/technology' },
+    { name: 'World', link: '/world' },
+  ];
+
   return (
     <Box
       sx={{
@@ -29,7 +35,12 @@ export default function InPageTitile({ title, showBreadcrumbs = true }) {
         pb: 1,
       }}
     >
-      <Box>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 1,
+        }}>
         <Typography
           variant="h2"
           component="h2"
@@ -42,7 +53,7 @@ export default function InPageTitile({ title, showBreadcrumbs = true }) {
         </Typography>
       </Box>
       {showBreadcrumbs && (
-        <CustomBreadcrumbs />
+        <CustomBreadcrumbs listOfcategories={listOfcategories} />
       )}
     </Box>
   )
@@ -50,7 +61,8 @@ export default function InPageTitile({ title, showBreadcrumbs = true }) {
 
 
 
-export const CustomBreadcrumbs = () => {
+export const CustomBreadcrumbs = ({ listOfcategories }) => {
+
   return (
     <div role="presentation">
       <Breadcrumbs
@@ -64,24 +76,41 @@ export const CustomBreadcrumbs = () => {
           textAlign: 'center'
         }}
       >
-        <Typography fontFamily='Roboto Serif'
-          textTransform='uppercase'
-          fontSize='0.7rem'
-          fontWeight={600}
-          color={green[800]}
+        <Typography
+          variant="subtitle1"
+          component="span"
+          sx={{
+            fontFamily: 'Roboto Serif',
+            textTransform: 'uppercase',
+            fontSize: '0.8rem',
+            fontWeight: 'bold',
+            color: green[800],
+            textAlign: 'start',
+          }}
         >
           Trending
         </Typography>
-        <Link underline="hover" color="inherit">
-          Trending
-        </Link>
-        <Link
-          underline="hover"
-          color="inherit"
-          href="/material-ui/getting-started/installation/"
-        >
-          Core
-        </Link>
+        {listOfcategories.map((category, index) => (
+          <Link
+            key={index}
+            color="inherit"
+            href={category.link}
+            sx={{
+              fontFamily: 'Roboto Serif',
+              textTransform: 'uppercase',
+              fontSize: '0.8rem',
+              fontWeight: 'bold',
+              textDecoration: 'none',
+              '&:hover': {
+                color: grey[900],
+                textDecoration: 'underline',
+              },
+              textAlign: 'start',
+            }}
+          >
+            {category.name}
+          </Link>
+        ))}
       </Breadcrumbs>
     </div>
   )

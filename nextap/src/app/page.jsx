@@ -1,5 +1,4 @@
 import React from 'react';
-import image from '../images/honda.jpg';
 import HeroSections from '../components/home/HeroSections';
 import MostViewJustIn from '../components/home/MostViewJustIn';
 import Popular from '../components/home/Popular';
@@ -38,16 +37,12 @@ export default async function HomePage() {
     ]);
   } catch (error) {
     console.error("Error fetching data:", error);
-    // Use dummy data as fallback if fetching fails
-    latestPosts = latestNews;
-    featuredPosts = featurePost;
   }
-
   return (
     <>
       <HeroSections posts={topNews} />
       <MostViewJustIn mostViewedPosts={mostViewedPosts} justIn={justIn} />
-      <Popular mosttViewed={latestNews} Popular={oldPosts2} popularNews={popularNews} />
+      <Popular popularNews={popularNews} />
       <Featured featurePost={featurePost} featuredPosts={featuredPosts}  />
     </>
   );

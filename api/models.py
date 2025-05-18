@@ -162,6 +162,11 @@ class BlogLikes(models.Model):
     blog_like = models.IntegerField(null=True, blank=True)
     blog_dislike = models.IntegerField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+
+class BlogMainPageSections(models.Model):
+    section = models.CharField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     
     
 class BlogPost(models.Model):
@@ -196,6 +201,7 @@ class BlogPost(models.Model):
         blank=True, null=True, help_text="Comma-separated keywords")
     view_count = models.IntegerField(default=0)
     like_count = models.IntegerField(default=0)
+    blog_section = models.ForeignKey(BlogMainPageSections, on_delete=models.CASCADE, related_name='blog_section', null=True)
     blog_like = models.ForeignKey(BlogLikes, on_delete=models.CASCADE, related_name='blog_likes', null=True)
     is_approved = models.BooleanField(default=False, help_text="Post approval status for dashboard moderation")
     is_featured = models.BooleanField(default=False, help_text="Mark post as featured on the dashboard")

@@ -1,20 +1,17 @@
 'use client';
 
 import React from 'react';
-import {
-  Card,
-  Box,
-  CardContent,
-  Typography,
-} from '@mui/material';
+import { Card, Box, CardContent, Typography, } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { green } from '@mui/material/colors';
+import { formatDate } from '../lib/urlSettings';
 
 
-const NewsCard = ({ imageUrl, category, headline, mediaHeight = 140 }) => {
+const NewsCard = ({ id, imageUrl, headline, category, slug, date }) => {
+  const formattedDate = formatDate(new Date(date));
   return (
-    <Link href={`/${category}/${headline}`} passHref>
+    <Link href={`/${category.slug}/${formattedDate}/${slug}-${id}`} passHref>
       <Card
         sx={{
           width: '100%',
@@ -49,7 +46,7 @@ const NewsCard = ({ imageUrl, category, headline, mediaHeight = 140 }) => {
               color: green[800],
             }}
           >
-            {category}
+            {category.name}
           </Typography>
         </Box>
         <CardContent sx={{

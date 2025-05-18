@@ -5,9 +5,10 @@ import RightSideLatestNews from '../RightSideLatestNews';
 import InPageTitile from '../InPageTitile';
 
 
-export default function Popular({ mosttViewed, Popular, popularNews }) {
+export default function Popular({ popularNews }) {
 
 	const leftPopularNews = popularNews.slice(0, 4);
+	console.log('leftPopularNews', leftPopularNews[0]);
 	const rightPopularNews = popularNews.slice(4, 8);
 	return (
 		<Grid container spacing={3} sx={{ mt: 1 }}>
@@ -20,9 +21,13 @@ export default function Popular({ mosttViewed, Popular, popularNews }) {
 					{leftPopularNews.map((p, k) => (
 						<Grid key={k} size={{ xs: 12 }}>
 							<RightSideLatestNews
+								id={p.id}
 								imageUrl={p.blogFeaturedImage}
-								category={p.category.name}
-								headline={p.title} />
+								category={p.category}
+								headline={p.title}
+								slug={p.slug}
+								date={p.publishedAt}
+							/>
 						</Grid>
 					))}
 				</Grid>
@@ -34,9 +39,12 @@ export default function Popular({ mosttViewed, Popular, popularNews }) {
 					{rightPopularNews.map((p, k) => (
 						<Grid key={k} size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
 							<NewsCard
+								id={p.id}
 								imageUrl={p.blogFeaturedImage}
-								category={p.category.name}
+								category={p.category}
 								headline={p.title}
+								slug={p.slug}
+								date={p.publishedAt}
 							/>
 						</Grid>
 					))}

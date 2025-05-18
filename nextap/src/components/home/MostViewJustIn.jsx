@@ -5,9 +5,8 @@ import NewsCard from '../NewsCard';
 import RightSideLatestNews from '../RightSideLatestNews';
 import RestoreIcon from '@mui/icons-material/Restore';
 import CodeIcon from '@mui/icons-material/Code';
-import { oldPosts1, oldPosts2 } from '../../app/dumy';
 import InPageTitile from '../InPageTitile';
-import { getMostViewedPosts } from '../../lib/blogIndexPagePosts';
+import LeftSideLatestNews from '../LeftSideLatestNews';
 
 export default function MostViewJustIn({ mostViewedPosts, justIn }) {
 
@@ -24,18 +23,25 @@ export default function MostViewJustIn({ mostViewedPosts, justIn }) {
 					{twoMostViewedPosts.map((p, k) => (
 						<Grid key={k} size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
 							<NewsCard
+								id={p.id}
 								imageUrl={p.blogFeaturedImage}
-								category={p.category.name}
+								category={p.category}
 								headline={p.title}
+								slug={p.slug}
+								date={p.publishedAt}
 							/>
 						</Grid>
 					))}
 					{fourMostViewedPosts.map((p, k) => (
 						<Grid key={k} size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
 							<RightSideLatestNews
+								id={p.id}
 								imageUrl={p.blogFeaturedImage}
-								category={p.category.name}
-								headline={p.title} />
+								category={p.category}
+								headline={p.title}
+								slug={p.slug}
+								date={p.publishedAt}
+							/>
 						</Grid>
 					))}
 				</Grid>
@@ -60,54 +66,7 @@ export default function MostViewJustIn({ mostViewedPosts, justIn }) {
 						<Typography variant="button">Share</Typography>
 					</Box>
 				</Box>
-
-
-				<List>
-					{justIn.map((item, idx) => {
-						const datetime = new Date(item.publishedAt);
-						const date = datetime.getDate();
-						const month = datetime.toLocaleDateString('default', { month: 'short' });
-						return (
-							<React.Fragment key={idx}>
-								<ListItem alignItems="flex-start" sx={{ my: 1, }}>
-									<ListItemText
-										primary={
-											<Typography
-												sx={{
-													fontSize: 18,
-													fontWeight: 600,
-													pt: 0.2,
-													width: 80,
-													textAlign: 'left'
-												}}
-											>
-												{date} {month}
-											</Typography>}
-										sx={{ mr: 1, width: 80, textAlign: 'left' }}
-									/>
-									<ListItemText
-										primary={item.category.name}
-										secondary={
-											<React.Fragment>
-												<Typography
-													component="span"
-													variant="body2"
-													sx={{ color: 'text.primary', display: 'inline' }}
-												>
-													{item.title}
-												</Typography>
-												{/* {" — I'll be in your neighborhood doing errands this…"} */}
-											</React.Fragment>
-										}
-										sx={{ ml: 3, width: '100%', textAlign: 'left' }}
-									/>
-								</ListItem>
-								<Divider />
-							</React.Fragment>
-						)
-					})}
-				</List>
-
+				<LeftSideLatestNews leftJustIn={justIn} />
 				<Box>
 					{/* See More */}
 					<Box textAlign="right" mt={1}>
