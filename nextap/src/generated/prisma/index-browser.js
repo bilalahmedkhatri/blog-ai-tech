@@ -161,6 +161,12 @@ exports.Prisma.BlogTagScalarFieldEnum = {
   createdById: 'createdById'
 };
 
+exports.Prisma.BlogMainPageSectionsScalarFieldEnum = {
+  id: 'id',
+  section: 'section',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.UploadedImageScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -196,7 +202,8 @@ exports.Prisma.BlogPostScalarFieldEnum = {
   isApproved: 'isApproved',
   isFeatured: 'isFeatured',
   author_id: 'author_id',
-  category_id: 'category_id'
+  category_id: 'category_id',
+  blog_section_id: 'blog_section_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -233,6 +240,10 @@ exports.Prisma.BlogCategoryOrderByRelevanceFieldEnum = {
 exports.Prisma.BlogTagOrderByRelevanceFieldEnum = {
   name: 'name',
   slug: 'slug'
+};
+
+exports.Prisma.BlogMainPageSectionsOrderByRelevanceFieldEnum = {
+  section: 'section'
 };
 
 exports.Prisma.UploadedImageOrderByRelevanceFieldEnum = {
@@ -288,6 +299,7 @@ exports.Prisma.ModelName = {
   UserProfile: 'UserProfile',
   BlogCategory: 'BlogCategory',
   BlogTag: 'BlogTag',
+  BlogMainPageSections: 'BlogMainPageSections',
   UploadedImage: 'UploadedImage',
   BlogPost: 'BlogPost'
 };

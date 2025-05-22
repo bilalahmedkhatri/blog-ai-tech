@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.translation import gettext_lazy as _
-from api.models import UserProfile, BlogTag, BlogCategory, BlogPost, UploadedImage
+from api.models import UserProfile, BlogTag, BlogCategory, BlogPost, UploadedImage, BlogMainPageSections
 from django.contrib.sites.models import Site
 
 
@@ -39,6 +39,11 @@ admin.site.register(UserProfile, UserAdmin)
 @admin.register(BlogCategory)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'slug', 'count')
+
+
+@admin.register(BlogMainPageSections)
+class BlogMainPageSectionsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'section', 'created_at')
 
 
 @admin.register(BlogTag)

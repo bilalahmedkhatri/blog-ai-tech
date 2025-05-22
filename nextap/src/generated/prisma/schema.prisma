@@ -106,6 +106,15 @@ model BlogTag {
   @@map("api_blogtag")
 }
 
+model BlogMainPageSections {
+  id        Int        @id @default(autoincrement())
+  section   String     @unique
+  createdAt DateTime   @default(now()) @map("created_at")
+  posts     BlogPost[] @relation("BlogMainPageSections")
+
+  @@map("api_blogmainpagesections")
+}
+
 // Uploaded images
 model UploadedImage {
   id               Int                 @id @default(autoincrement())
@@ -146,11 +155,13 @@ model BlogPost {
   isApproved        Int            @default(0) @map("is_approved")
   isFeatured        Int            @default(0) @map("is_featured")
 
-  author      UserProfile   @relation("AuthorPosts", fields: [author_id], references: [id])
-  author_id   Int
-  category    BlogCategory? @relation("CategoryPosts", fields: [category_id], references: [id])
-  category_id Int?
-  tags        BlogTag[]     @relation("PostTags")
+  author          UserProfile           @relation("AuthorPosts", fields: [author_id], references: [id])
+  author_id       Int
+  category        BlogCategory?         @relation("CategoryPosts", fields: [category_id], references: [id])
+  category_id     Int?
+  section         BlogMainPageSections? @relation("BlogMainPageSections", fields: [blog_section_id], references: [id])
+  blog_section_id Int?
+  tags            BlogTag[]             @relation("PostTags")
 
   @@map("api_blogpost")
 }

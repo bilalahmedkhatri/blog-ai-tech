@@ -1,5 +1,4 @@
-// // ProQ: mekhbub.k
-// // CuhD00WQFOUD
+"use client";
 import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';

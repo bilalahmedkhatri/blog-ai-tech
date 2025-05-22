@@ -106,51 +106,62 @@ model BlogTag {
   @@map("api_blogtag")
 }
 
+model BlogMainPageSections {
+  id                  Int                 @id @default(autoincrement())
+  section             String              @unique
+  createdAt           DateTime            @default(now()) @map("created_at")  
+  posts               BlogPost[]          @relation("BlogMainPageSections")
+
+  @@map("api_blogmainpagesections")
+}
+
 // Uploaded images
 model UploadedImage {
-  id                 Int                 @id @default(autoincrement())
+  id                 Int                  @id @default(autoincrement())
   name               String?             
   image              String              
-  size               Float   @default(0.0)
-  contentType        String?             @map("content_type")
-  width              Int     @default(0)
-  height             Int     @default(0)
+  size               Float                @default(0.0)
+  contentType        String?              @map("content_type")
+  width              Int                  @default(0)
+  height             Int                  @default(0)
   thumbnail          String?             
-  uploadedAt         DateTime @default(now()) @map("uploaded_at")
-  status             UploadedImageStatus @default(PENDING)
-  notificationSent   Boolean  @default(false) @map("notification_sent")
-  uploadedBy         UserProfile         @relation("UploadedBy", fields: [uploadedById], references: [id])
-  uploadedById       Int                 @map("uploaded_by")
+  uploadedAt         DateTime             @default(now()) @map("uploaded_at")
+  status             UploadedImageStatus  @default(PENDING)
+  notificationSent   Boolean              @default(false) @map("notification_sent")
+  uploadedBy         UserProfile          @relation("UploadedBy", fields: [uploadedById], references: [id])
+  uploadedById       Int                  @map("uploaded_by")
 
   @@map("api_uploadedimage")
 }
 
 // Blog posts
 model BlogPost {
-  id                  Int            @id @default(autoincrement())
-  title               String         @unique
-  slug                String         @unique
+  id                  Int                     @id @default(autoincrement())
+  title               String                  @unique
+  slug                String                  @unique
   content             String
   excerpt             String?        
-  featuredImage       String?        @map("featured_image")
-  blogFeaturedImage   String?        @map("blog_featured_image")
-  createdAt           DateTime       @default(now()) @map("created_at")
-  updatedAt           DateTime       @updatedAt      @map("updated_at")
-  publishedAt         DateTime?      @map("published_at")
-  status              BlogPostStatus @default(draft)
-  metaTitle           String?        @map("meta_title")
-  metaDescription     String?        @map("meta_description")
+  featuredImage       String?                 @map("featured_image")
+  blogFeaturedImage   String?                 @map("blog_featured_image")
+  createdAt           DateTime                @default(now()) @map("created_at")
+  updatedAt           DateTime                @updatedAt      @map("updated_at")
+  publishedAt         DateTime?               @map("published_at")
+  status              BlogPostStatus          @default(draft)
+  metaTitle           String?                 @map("meta_title")
+  metaDescription     String?                 @map("meta_description")
   keywords            String?        
-  viewCount           Int            @default(0)     @map("view_count")
-  likeCount           Int            @default(0)     @map("like_count")
-  isApproved          Int            @default(0) @map("is_approved")
-  isFeatured          Int            @default(0) @map("is_featured")
+  viewCount           Int                     @default(0)     @map("view_count")
+  likeCount           Int                     @default(0)     @map("like_count")
+  isApproved          Int                     @default(0) @map("is_approved")
+  isFeatured          Int                     @default(0) @map("is_featured")
 
-  author              UserProfile    @relation("AuthorPosts", fields: [author_id], references: [id])
+  author              UserProfile             @relation("AuthorPosts", fields: [author_id], references: [id])
   author_id           Int
-  category            BlogCategory?  @relation("CategoryPosts", fields: [category_id], references: [id])
+  category            BlogCategory?           @relation("CategoryPosts", fields: [category_id], references: [id])
   category_id         Int?
-  tags                BlogTag[]      @relation("PostTags")
+  section             BlogMainPageSections?   @relation("BlogMainPageSections", fields: [blog_section_id], references: [id])
+  blog_section_id     Int?
+  tags                BlogTag[]               @relation("PostTags")
 
   @@map("api_blogpost")
 }

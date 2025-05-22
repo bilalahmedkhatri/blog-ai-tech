@@ -8,7 +8,6 @@ import InPageTitile from '../InPageTitile';
 export default function Popular({ popularNews }) {
 
 	const leftPopularNews = popularNews.slice(0, 4);
-	console.log('leftPopularNews', leftPopularNews[0]);
 	const rightPopularNews = popularNews.slice(4, 8);
 	return (
 		<Grid container spacing={3} sx={{ mt: 1 }}>

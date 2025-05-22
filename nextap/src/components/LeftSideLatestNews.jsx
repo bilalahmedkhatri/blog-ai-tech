@@ -52,7 +52,8 @@ export default function LeftSideLatestNews({ leftJustIn }) {
 									<React.Fragment>
 										<Typography
 											component={Link}
-											href={`/${item.category.slug}/${formatDate(datetime)}/${item.slug}-${item.id}`}
+											// href={`/${item.category.slug}/${formatDate(datetime)}/${item.slug}-${item.id}`}
+											href={`/${item.category.slug}/${item.slug}`}
 											passHref
 											variant="body2"
 											sx={{

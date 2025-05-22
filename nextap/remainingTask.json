@@ -1,0 +1,15 @@
+[
+    {
+        "mainPage": {
+            "db": {
+                "table": "BlogMainPageSections",
+                "detail": "es main har gante baad field update kerwani hain, jo ke main page par dikhai deti hain",
+                "condition": {
+                    "viewcount": true,
+                    "postlike": true
+                },
+                "updateField": ["blog_section_id"]
+            }
+        }
+    }
+]

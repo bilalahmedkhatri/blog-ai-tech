@@ -8,7 +8,8 @@ export default function LatestRandomPost({ id, headline, category, slug, date, k
   const formattedDate = formatDate(new Date(date));
   return (
     <Box key={key} sx={{ flex: 1, minWidth: '0' }}>
-      <Link href={`/${category.slug}/${formattedDate}/${slug}-${id}`} >
+      <Link href={`/${category.slug}/${slug}`} >
+      {/* <Link href={`/${category.slug}/${formattedDate}/${slug}-${id}`} > */}
         <Typography
           variant="body2"
           sx={{

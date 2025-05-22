@@ -1,4 +1,5 @@
 from tkinter import N
+import turtle
 from django.db import models
 from django.utils.text import slugify
 from django.utils import timezone
@@ -165,7 +166,7 @@ class BlogLikes(models.Model):
 
 
 class BlogMainPageSections(models.Model):
-    section = models.CharField(max_length=255, null=True, blank=True)
+    section = models.CharField(unique=True, max_length=255, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     
     

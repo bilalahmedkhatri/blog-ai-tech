@@ -42,7 +42,6 @@ export default async function HeroSections({ posts }) {
 				<Grid size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
 					<Grid container spacing={3}>
 						{fourRandomPost.map((p, k) => {
-							console.log('p', p.slug);
 							return (
 								<Grid key={k} size={{ xs: 12, sm: 12, md: 6, lg: 6 }}>
 									<NewsCard

@@ -9,9 +9,10 @@ import { formatDate } from '../lib/urlSettings';
 
 
 const NewsCard = ({ id, imageUrl, headline, category, slug, date }) => {
-  const formattedDate = formatDate(new Date(date));
+  // const formattedDate = formatDate(new Date(date));
   return (
-    <Link href={`/${category.slug}/${formattedDate}/${slug}-${id}`} passHref>
+    <Link href={`/${category.slug}/${slug}`} passHref>
+    {/* <Link href={`/${category.slug}/${formattedDate}/${slug}-${id}`} passHref> */}
       <Card
         sx={{
           width: '100%',

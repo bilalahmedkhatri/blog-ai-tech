@@ -9,7 +9,8 @@ export default function RightSideLatestNews({ id, imageUrl, headline, category, 
 	return (
 		<Card
 			component={Link}
-			href={`/${category.slug}/${formattedDate}/${slug}-${id}`}
+			href={`/${category.slug}/${slug}`}
+			// href={`/${category.slug}/${formattedDate}/${slug}-${id}`}
 			passHref
 			sx={{
 				display: 'flex',
