@@ -1,23 +1,14 @@
 'use client';
 
 import React from 'react';
-import { Container, Typography, Card, CardContent, Box, Chip, Tooltip } from "@mui/material";
+import { Typography, Card, CardContent, Box, Chip } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PersonIcon from '@mui/icons-material/Person';
-import IconButton from '@mui/material/IconButton';
-import BorderColorIcon from '@mui/icons-material/BorderColor';
 
 // Enhanced styled components
 const PostCard = styled(Card)(({ theme }) => ({
-  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
-  borderRadius: theme.spacing(1),
-  overflow: 'hidden',
-  transition: 'transform 0.3s ease',
-  '&:hover': {
-    transform: 'translateY(-4px)',
-    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.1)',
-  }
+  boxShadow: '0 0px 0px',
 }));
 
 const PostImage = styled(Box)(({ theme }) => ({
@@ -33,7 +24,7 @@ const PostImage = styled(Box)(({ theme }) => ({
 }));
 
 const PostHeader = styled(CardContent)(({ theme }) => ({
-  padding: theme.spacing(3, 4),
+  padding: theme.spacing(4, 0),
   [theme.breakpoints.down('sm')]: {
     padding: theme.spacing(2),
   },
@@ -60,15 +51,8 @@ const MetaItem = styled(Box)(({ theme }) => ({
   fontSize: '0.875rem',
 }));
 
-const TagsContainer = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: theme.spacing(1),
-  marginTop: theme.spacing(2),
-}));
-
 const ContentBox = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(0, 4),
+  padding: theme.spacing(0, 1),
   [theme.breakpoints.down('sm')]: {
     padding: theme.spacing(1, 2, 3),
   },
@@ -165,88 +149,53 @@ const ContentBox = styled(Box)(({ theme }) => ({
 }));
 
 export default function PostViewClient({ post, formattedDate, slug, category }) {
-  const handleEditClick = () => {
-    // Handle edit functionality here
-    console.log('Edit post:', post.id);
-  };
-
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }} disableGutters>
-      <PostCard>
-        {post.blogFeaturedImage && (
-          <PostImage
-            component="img"
-            src={post.blogFeaturedImage}
-            alt={post.title}
-          />
-        )}
+    <PostCard>
+      {post.blogFeaturedImage && (
+        <PostImage
+          component="img"
+          src={post.blogFeaturedImage}
+          alt={post.title}
+        />
+      )}
 
-        <PostHeader>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <PostTitle variant="h4">
-              {post.title}
-            </PostTitle>
-            <Tooltip title="Edit Post">
-              <IconButton
-                aria-label="edit post"
-                size="large"
-                onClick={handleEditClick}
-                color="primary"
-              >
-                <BorderColorIcon sx={{ fontSize: 24 }} />
-              </IconButton>
-            </Tooltip>
-          </Box>
+      <PostHeader>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <PostTitle variant="h4">
+            {post.title}
+          </PostTitle>
+        </Box>
 
-          <PostMeta>
-            {post.author && (
-              <MetaItem>
-                <PersonIcon fontSize="small" />
-                {post.author.first_name && post.author.last_name
-                  ? `${post.author.first_name} ${post.author.last_name}`
-                  : post.author?.email || 'Anonymous'}
-              </MetaItem>
-            )}
-
-            {formattedDate && (
-              <MetaItem>
-                <AccessTimeIcon fontSize="small" />
-                {formattedDate}
-              </MetaItem>
-            )}
-
-            {post.category && (
-              <Chip
-                label={typeof post.category === 'object' ? post.category.name : post.category}
-                size="small"
-                color="primary"
-                variant="outlined"
-              />
-            )}
-          </PostMeta>
-
-          {Array.isArray(post.tags) && post.tags?.length > 0 && (
-            <TagsContainer>
-              {post.tags.map((tag, index) => (
-                <Chip
-                  key={index}
-                  label={typeof tag === 'object' ? tag.name : tag}
-                  size="small"
-                  sx={{
-                    backgroundColor: `hsl(${Math.floor(Math.random() * 360)}, 70%, 90%)`,
-                    color: 'rgba(0, 0, 0, 0.7)',
-                    fontWeight: 500,
-                    borderRadius: '4px',
-                    border: 'none',
-                  }}
-                />
-              ))}
-            </TagsContainer>
+        <PostMeta>
+          {post.author && (
+            <MetaItem>
+              <PersonIcon fontSize="small" />
+              {post.author.first_name && post.author.last_name
+                ? `${post.author.first_name} ${post.author.last_name}`
+                : post.author?.email || 'Anonymous'}
+            </MetaItem>
           )}
-        </PostHeader>
 
-        <ContentBox dangerouslySetInnerHTML={{ __html: post.content || 'No content available' }} />
-      </PostCard>
-    </Container>
+          {formattedDate && (
+            <MetaItem>
+              <AccessTimeIcon fontSize="small" />
+              {formattedDate}
+            </MetaItem>
+          )}
+
+          {post.category && (
+            <Chip
+              label={typeof post.category === 'object' ? post.category.name : post.category}
+              size="small"
+              color="primary"
+              variant="outlined"
+            />
+          )}
+        </PostMeta>
+
+      </PostHeader>
+
+      <ContentBox dangerouslySetInnerHTML={{ __html: post.content || 'No content available' }} />
+    </PostCard>
   );
 }

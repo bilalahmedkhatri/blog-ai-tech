@@ -60,19 +60,21 @@ export default function AuthorBioComponent({ author }) {
     website: 'https://johndoe.com',
   };
 
+  console.log('authorData', author);
+
   const authorData = author || defaultAuthor;
 
   return (
     <AuthorPaper elevation={1}>
-      <AuthorAvatar src={authorData.avatar} alt={authorData.name} />
+      <AuthorAvatar src={authorData.avatar} alt={`${authorData.firstName} ${authorData.lastName}`} />
       
       <AuthorInfo>
         <AuthorName variant="h6">
-          {authorData.name}
+          {`${authorData.firstName} ${authorData.lastName}`}
         </AuthorName>
         
         <AuthorBio variant="body2">
-          {authorData.bio}
+          {authorData.summery}
         </AuthorBio>
         
         <SocialLinks>

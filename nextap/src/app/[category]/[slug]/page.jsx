@@ -1,4 +1,5 @@
 import React from 'react';
+import { notFound } from 'next/navigation';
 import { Container, Grid, Box } from "@mui/material";
 import { getPostBySlug, incrementViewCount, getTopNews, getJustIn, getPopularNews } from '../../../lib/blogIndexPagePosts';
 import PostViewClient from './PostViewClient';
@@ -44,15 +45,20 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function PostPage({ params }) {
+
+  // await new Promise(res => setTimeout(res, 50000)); // 2 seconds
+
   const post = await getPostBySlug(params.slug);
-  
+  console.log('post', post);
   if (!post) {
-    return (
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <h1>Post not found</h1>
-      </Container>
-    );
+    notFound();
   }
+  //   return (
+  //     <Container maxWidth="lg" sx={{ py: 4 }}>
+  //       <h1>Post not found</h1>
+  //     </Container>
+  //   );
+  // }
   
   // Increment view count
   await incrementViewCount(post.id);
@@ -75,10 +81,10 @@ export default async function PostPage({ params }) {
   console.log('Post:', post);
 
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container maxWidth="lg" disableGutters>
       <Grid container spacing={3}>
         {/* Main content */}
-        <Grid item xs={12} md={8}>
+        <Grid size={{ xs: 12, sm: 12, md: 8, lg: 8 }}>
           <PostViewClient post={post} formattedDate={formattedDate} slug={params.slug} category={params.category} />
           
           <AuthorBio author={post.author} />
@@ -87,7 +93,7 @@ export default async function PostPage({ params }) {
         </Grid>
         
         {/* Sidebar */}
-        <Grid item xs={12} md={4}>
+        <Grid size={{ xs: 12, sm: 12, md: 4, lg: 4 }}>
           <Box sx={{ position: 'sticky', top: 80 }}>
             <TableOfContents />
             

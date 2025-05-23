@@ -220,6 +220,32 @@ class BlogPost(models.Model):
     class Meta:
         ordering = ['-published_at', '-created_at']
 
+
+class Comment(models.Model):
+    author = models.ForeignKey(
+        UserProfile, on_delete=models.CASCADE, related_name='comments')
+    blog_post = models.ForeignKey(
+        BlogPost, on_delete=models.CASCADE, related_name='comments', null=True, blank=True)
+    uploaded_image = models.ForeignKey(
+        UploadedImage, on_delete=models.CASCADE, related_name='comments', null=True, blank=True)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    parent = models.ForeignKey(
+        'self', null=True, blank=True, on_delete=models.CASCADE, related_name='replies',
+        help_text="Parent comment for threaded replies"
+    )
+    is_approved = models.BooleanField(default=True, help_text="Moderation flag for comments")
+
+    # Each BlogPost and UploadedImage now has a reverse relation .comments.all() for accessing comments.
+    def __str__(self):
+        target = self.blog_post or self.uploaded_image
+        return f"Comment by {self.author.email} on {target} at {self.created_at}"
+
+    class Meta:
+        ordering = ['created_at']
+        
+
 @receiver(post_save, sender=BlogPost)
 def blogpost_url(sender, instance, created, **kwargs):
     if created:

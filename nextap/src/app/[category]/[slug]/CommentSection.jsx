@@ -1,6 +1,7 @@
+
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Box,
     Typography,
@@ -16,7 +17,8 @@ import {
     Dialog,
     DialogTitle,
     DialogContent,
-    DialogActions
+    DialogActions,
+    CircularProgress
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -69,46 +71,24 @@ const ReplyContainer = styled(Box)(({ theme }) => ({
     borderTop: `1px dashed ${theme.palette.divider}`,
 }));
 
-export default function CommentSection({ postId }) {
-    const [comments, setComments] = useState([
-        {
-            id: 1,
-            author: {
-                name: 'John Doe',
-                avatar: 'https://mui.com/static/images/avatar/1.jpg',
-            },
-            content: 'This is a great article! I learned a lot from it.',
-            date: '2023-06-15T10:30:00Z',
-            likes: 5,
-            liked: false,
-            replies: [
-                {
-                    id: 2,
-                    author: {
-                        name: 'Jane Smith',
-                        avatar: 'https://mui.com/static/images/avatar/2.jpg',
-                    },
-                    content: 'I agree! The examples were very helpful.',
-                    date: '2023-06-15T11:45:00Z',
-                    likes: 2,
-                    liked: false,
-                }
-            ]
-        },
-        {
-            id: 3,
-            author: {
-                name: 'Alex Johnson',
-                avatar: 'https://mui.com/static/images/avatar/3.jpg',
-            },
-            content: 'Could you elaborate more on the second point? I found it a bit confusing.',
-            date: '2023-06-16T09:15:00Z',
-            likes: 1,
-            liked: false,
-            replies: []
+// Helper to build threaded comments from flat array
+function buildThreadedComments(comments) {
+    const map = {};
+    const roots = [];
+    comments.forEach(c => { map[c.id] = { ...c, replies: [] }; });
+    comments.forEach(c => {
+        if (c.parentId) {
+            if (map[c.parentId]) map[c.parentId].replies.push(map[c.id]);
+        } else {
+            roots.push(map[c.id]);
         }
-    ]);
+    });
+    return roots;
+}
 
+export default function CommentSection({ postId }) {
+    const [comments, setComments] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [newComment, setNewComment] = useState('');
     const [replyingTo, setReplyingTo] = useState(null);
     const [replyContent, setReplyContent] = useState('');
@@ -118,28 +98,35 @@ export default function CommentSection({ postId }) {
     const [editingComment, setEditingComment] = useState(null);
     const [editContent, setEditContent] = useState('');
 
-    const handleCommentChange = (event) => {
-        setNewComment(event.target.value);
-    };
+    // Fetch comments from backend
+    useEffect(() => {
+        setLoading(true);
+        fetch(`/api/comments?postId=${postId}`)
+            .then(res => res.json())
+            .then(data => {
+                setComments(data);
+                setLoading(false);
+            })
+            .catch(() => setLoading(false));
+    }, [postId]);
 
-    const handleSubmitComment = () => {
+    const handleCommentChange = (event) => setNewComment(event.target.value);
+
+    const handleSubmitComment = async () => {
         if (!newComment.trim()) return;
-
-        const newCommentObj = {
-            id: Date.now(),
-            author: {
-                name: 'Current User', // Replace with actual user data
-                avatar: 'https://mui.com/static/images/avatar/4.jpg', // Replace with actual user avatar
-            },
-            content: newComment,
-            date: new Date().toISOString(),
-            likes: 0,
-            liked: false,
-            replies: []
-        };
-
-        setComments([...comments, newCommentObj]);
-        setNewComment('');
+        const res = await fetch('/api/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                postId,
+                content: newComment,
+            }),
+        });
+        if (res.ok) {
+            const comment = await res.json();
+            setComments(prev => [...prev, comment]);
+            setNewComment('');
+        }
     };
 
     const handleReplyClick = (commentId) => {
@@ -147,77 +134,32 @@ export default function CommentSection({ postId }) {
         setReplyContent('');
     };
 
-    const handleReplyChange = (event) => {
-        setReplyContent(event.target.value);
-    };
+    const handleReplyChange = (event) => setReplyContent(event.target.value);
 
-    const handleSubmitReply = (commentId) => {
+    const handleSubmitReply = async (parentId) => {
         if (!replyContent.trim()) return;
-
-        const newReply = {
-            id: Date.now(),
-            author: {
-                name: 'Current User', // Replace with actual user data
-                avatar: 'https://mui.com/static/images/avatar/4.jpg', // Replace with actual user avatar
-            },
-            content: replyContent,
-            date: new Date().toISOString(),
-            likes: 0,
-            liked: false,
-        };
-
-        const updatedComments = comments.map(comment => {
-            if (comment.id === commentId) {
-                return {
-                    ...comment,
-                    replies: [...(comment.replies || []), newReply]
-                };
-            }
-            return comment;
+        const res = await fetch('/api/comments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                postId,
+                content: replyContent,
+                parentId,
+            }),
         });
-
-        setComments(updatedComments);
-        setReplyingTo(null);
-        setReplyContent('');
-    };
-
-    const handleLikeComment = (commentId, isReply = false, parentId = null) => {
-        if (isReply) {
-            const updatedComments = comments.map(comment => {
-                if (comment.id === parentId) {
-                    const updatedReplies = comment.replies.map(reply => {
-                        if (reply.id === commentId) {
-                            return {
-                                ...reply,
-                                likes: reply.liked ? reply.likes - 1 : reply.likes + 1,
-                                liked: !reply.liked
-                            };
-                        }
-                        return reply;
-                    });
-                    return { ...comment, replies: updatedReplies };
-                }
-                return comment;
-            });
-            setComments(updatedComments);
-        } else {
-            const updatedComments = comments.map(comment => {
-                if (comment.id === commentId) {
-                    return {
-                        ...comment,
-                        likes: comment.liked ? comment.likes - 1 : comment.likes + 1,
-                        liked: !comment.liked
-                    };
-                }
-                return comment;
-            });
-            setComments(updatedComments);
+        if (res.ok) {
+            const reply = await res.json();
+            setComments(prev => [...prev, reply]);
+            setReplyingTo(null);
+            setReplyContent('');
         }
     };
 
-    const handleMenuOpen = (event, comment, isReply = false, parentId = null) => {
+    // Like, Edit, Delete handlers would be similar, calling backend endpoints
+
+    const handleMenuOpen = (event, comment) => {
         setAnchorEl(event.currentTarget);
-        setSelectedComment({ comment, isReply, parentId });
+        setSelectedComment(comment);
     };
 
     const handleMenuClose = () => {
@@ -230,71 +172,38 @@ export default function CommentSection({ postId }) {
         handleMenuClose();
     };
 
-    const handleDeleteConfirm = () => {
+    const handleDeleteConfirm = async () => {
         if (!selectedComment) return;
-
-        const { comment, isReply, parentId } = selectedComment;
-
-        if (isReply) {
-            const updatedComments = comments.map(c => {
-                if (c.id === parentId) {
-                    return {
-                        ...c,
-                        replies: c.replies.filter(reply => reply.id !== comment.id)
-                    };
-                }
-                return c;
-            });
-            setComments(updatedComments);
-        } else {
-            setComments(comments.filter(c => c.id !== comment.id));
+        const res = await fetch(`/api/comments/${selectedComment.id}`, { method: 'DELETE' });
+        if (res.ok) {
+            setComments(prev => prev.filter(c => c.id !== selectedComment.id && c.parentId !== selectedComment.id));
         }
-
         setDeleteDialogOpen(false);
     };
 
     const handleEditClick = () => {
         if (!selectedComment) return;
-
-        const { comment } = selectedComment;
-        setEditingComment(comment.id);
-        setEditContent(comment.content);
+        setEditingComment(selectedComment.id);
+        setEditContent(selectedComment.content);
         handleMenuClose();
     };
 
-    const handleEditChange = (event) => {
-        setEditContent(event.target.value);
-    };
+    const handleEditChange = (event) => setEditContent(event.target.value);
 
-    const handleEditSave = () => {
+    const handleEditSave = async () => {
         if (!editContent.trim() || !selectedComment) return;
-
-        const { comment, isReply, parentId } = selectedComment;
-
-        if (isReply) {
-            const updatedComments = comments.map(c => {
-                if (c.id === parentId) {
-                    const updatedReplies = c.replies.map(reply => {
-                        if (reply.id === comment.id) {
-                            return { ...reply, content: editContent };
-                        }
-                        return reply;
-                    });
-                    return { ...c, replies: updatedReplies };
-                }
-                return c;
-            });
-            setComments(updatedComments);
-        } else {
-            const updatedComments = comments.map(c => {
-                if (c.id === comment.id) {
-                    return { ...c, content: editContent };
-                }
-                return c;
-            });
-            setComments(updatedComments);
+        const res = await fetch(`/api/comments/${selectedComment.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content: editContent }),
+        });
+        if (res.ok) {
+            setComments(prev =>
+                prev.map(c =>
+                    c.id === selectedComment.id ? { ...c, content: editContent } : c
+                )
+            );
         }
-
         setEditingComment(null);
         setEditContent('');
     };
@@ -309,6 +218,8 @@ export default function CommentSection({ postId }) {
             minute: '2-digit'
         });
     };
+
+    const threadedComments = buildThreadedComments(comments);
 
     return (
         <CommentPaper elevation={1}>
@@ -339,19 +250,23 @@ export default function CommentSection({ postId }) {
 
             <Divider sx={{ my: 3 }} />
 
-            {comments.length > 0 ? (
+            {loading ? (
+                <Box sx={{ textAlign: 'center', py: 4 }}>
+                    <CircularProgress />
+                </Box>
+            ) : threadedComments.length > 0 ? (
                 <Stack spacing={1}>
-                    {comments.map((comment) => (
+                    {threadedComments.map((comment) => (
                         <CommentItem key={comment.id}>
                             <CommentHeader>
                                 <CommentAuthor>
-                                    <Avatar src={comment.author.avatar} alt={comment.author.name} />
+                                    <Avatar src={comment.author?.profileImage || ''} alt={comment.author?.firstName || 'User'} />
                                     <Box>
                                         <Typography variant="subtitle1" fontWeight={500}>
-                                            {comment.author.name}
+                                            {comment.author?.firstName} {comment.author?.lastName}
                                         </Typography>
                                         <CommentDate>
-                                            {formatDate(comment.date)}
+                                            {formatDate(comment.createdAt)}
                                         </CommentDate>
                                     </Box>
                                 </CommentAuthor>
@@ -399,13 +314,14 @@ export default function CommentSection({ postId }) {
                             )}
 
                             <CommentActions>
+                                {/* Like button can be implemented with backend */}
                                 <Button
-                                    startIcon={comment.liked ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon />}
+                                    startIcon={<ThumbUpOutlinedIcon />}
                                     size="small"
-                                    onClick={() => handleLikeComment(comment.id)}
-                                    color={comment.liked ? "primary" : "inherit"}
+                                    // onClick={() => handleLikeComment(comment.id)}
+                                    color="inherit"
                                 >
-                                    {comment.likes > 0 && comment.likes}
+                                    {/* {comment.likes > 0 && comment.likes} */}
                                 </Button>
 
                                 <Button
@@ -458,27 +374,23 @@ export default function CommentSection({ postId }) {
                                             <CommentHeader>
                                                 <CommentAuthor>
                                                     <Avatar
-                                                        src={reply.author.avatar}
-                                                        alt={reply.author.name}
+                                                        src={reply.author?.profileImage || ''}
+                                                        alt={reply.author?.firstName || 'User'}
                                                         sx={{ width: 32, height: 32 }}
                                                     />
                                                     <Box>
                                                         <Typography variant="subtitle2" fontWeight={500}>
-                                                            {reply.author.name}
+                                                            {reply.author?.firstName} {reply.author?.lastName}
                                                         </Typography>
                                                         <CommentDate>
-                                                            {formatDate(reply.date)}
+                                                            {formatDate(reply.createdAt)}
                                                         </CommentDate>
-
-
-
-
                                                     </Box>
                                                 </CommentAuthor>
 
                                                 <IconButton
                                                     size="small"
-                                                    onClick={(e) => handleMenuOpen(e, reply, true, comment.id)}
+                                                    onClick={(e) => handleMenuOpen(e, reply)}
                                                 >
                                                     <MoreVertIcon fontSize="small" />
                                                 </IconButton>
@@ -520,12 +432,11 @@ export default function CommentSection({ postId }) {
 
                                             <CommentActions>
                                                 <Button
-                                                    startIcon={reply.liked ? <ThumbUpIcon /> : <ThumbUpOutlinedIcon />}
+                                                    startIcon={<ThumbUpOutlinedIcon />}
                                                     size="small"
-                                                    onClick={() => handleLikeComment(reply.id, true, comment.id)}
-                                                    color={reply.liked ? "primary" : "inherit"}
+                                                    color="inherit"
                                                 >
-                                                    {reply.likes > 0 && reply.likes}
+                                                    {/* {reply.likes > 0 && reply.likes} */}
                                                 </Button>
                                             </CommentActions>
                                         </Box>
@@ -541,8 +452,7 @@ export default function CommentSection({ postId }) {
                         No comments yet. Be the first to share your thoughts!
                     </Typography>
                 </Box>
-            )
-            }
+            )}
 
             {/* Comment menu */}
             <Menu
@@ -572,7 +482,6 @@ export default function CommentSection({ postId }) {
                     </Button>
                 </DialogActions>
             </Dialog>
-        </CommentPaper >
+        </CommentPaper>
     );
 }
-

@@ -53,7 +53,7 @@ export default function RelatedPosts({ posts, currentPostId }) {
 						: null;
 
 					return (
-						<Grid item xs={12} sm={6} md={4} key={post.id}>
+						<Grid Grid size={{ xs: 12, sm: 12, md: 3, lg: 3 }} key={post.id}>
 							<Link
 								href={`/${post.category?.slug || 'uncategorized'}/${post.slug}`}
 								style={{ textDecoration: 'none' }}

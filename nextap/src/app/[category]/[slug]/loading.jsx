@@ -6,7 +6,7 @@ export default function Loading() {
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Grid container spacing={3}>
         {/* Main content */}
-        <Grid item xs={12} md={8}>
+        <Grid size={{ xs: 12, sm: 12, md: 8, lg: 8 }}>
           <Card sx={{ mb: 4 }}>
             {/* Featured image skeleton */}
             <Skeleton variant="rectangular" height={400} />
@@ -101,7 +101,7 @@ export default function Loading() {
         </Grid>
 
         {/* Sidebar */}
-        <Grid item xs={12} md={4}>
+        <Grid size={{ xs: 12, sm: 12, md: 4, lg: 4 }}>
           <Box sx={{ position: 'sticky', top: 80 }}>
             {/* Table of contents skeleton */}
             <Card sx={{ p: 2, mb: 4 }}>

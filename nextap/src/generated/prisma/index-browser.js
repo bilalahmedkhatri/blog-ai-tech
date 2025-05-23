@@ -122,6 +122,9 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UserProfileScalarFieldEnum = {
   id: 'id',
+  password: 'password',
+  last_login: 'last_login',
+  is_superuser: 'is_superuser',
   email: 'email',
   firstName: 'firstName',
   lastName: 'lastName',
@@ -150,7 +153,7 @@ exports.Prisma.BlogCategoryScalarFieldEnum = {
   slug: 'slug',
   count: 'count',
   description: 'description',
-  createdById: 'createdById'
+  created_by_id: 'created_by_id'
 };
 
 exports.Prisma.BlogTagScalarFieldEnum = {
@@ -158,7 +161,7 @@ exports.Prisma.BlogTagScalarFieldEnum = {
   name: 'name',
   slug: 'slug',
   count: 'count',
-  createdById: 'createdById'
+  created_by_id: 'created_by_id'
 };
 
 exports.Prisma.BlogMainPageSectionsScalarFieldEnum = {
@@ -179,7 +182,8 @@ exports.Prisma.UploadedImageScalarFieldEnum = {
   uploadedAt: 'uploadedAt',
   status: 'status',
   notificationSent: 'notificationSent',
-  uploadedById: 'uploadedById'
+  uploaded_by_id: 'uploaded_by_id',
+  blog_url: 'blog_url'
 };
 
 exports.Prisma.BlogPostScalarFieldEnum = {
@@ -202,8 +206,88 @@ exports.Prisma.BlogPostScalarFieldEnum = {
   isApproved: 'isApproved',
   isFeatured: 'isFeatured',
   author_id: 'author_id',
+  blog_like_id: 'blog_like_id',
   category_id: 'category_id',
   blog_section_id: 'blog_section_id'
+};
+
+exports.Prisma.Api_bloglikesScalarFieldEnum = {
+  id: 'id',
+  blog_like: 'blog_like',
+  blog_dislike: 'blog_dislike',
+  created_at: 'created_at'
+};
+
+exports.Prisma.Api_blogpost_tagsScalarFieldEnum = {
+  id: 'id',
+  blogpost_id: 'blogpost_id',
+  blogtag_id: 'blogtag_id'
+};
+
+exports.Prisma.Api_userprofile_groupsScalarFieldEnum = {
+  id: 'id',
+  userprofile_id: 'userprofile_id',
+  group_id: 'group_id'
+};
+
+exports.Prisma.Api_userprofile_user_permissionsScalarFieldEnum = {
+  id: 'id',
+  userprofile_id: 'userprofile_id',
+  permission_id: 'permission_id'
+};
+
+exports.Prisma.Auth_groupScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.Auth_group_permissionsScalarFieldEnum = {
+  id: 'id',
+  group_id: 'group_id',
+  permission_id: 'permission_id'
+};
+
+exports.Prisma.Auth_permissionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  content_type_id: 'content_type_id',
+  codename: 'codename'
+};
+
+exports.Prisma.Django_admin_logScalarFieldEnum = {
+  id: 'id',
+  action_time: 'action_time',
+  object_id: 'object_id',
+  object_repr: 'object_repr',
+  action_flag: 'action_flag',
+  change_message: 'change_message',
+  content_type_id: 'content_type_id',
+  user_id: 'user_id'
+};
+
+exports.Prisma.Django_content_typeScalarFieldEnum = {
+  id: 'id',
+  app_label: 'app_label',
+  model: 'model'
+};
+
+exports.Prisma.Django_migrationsScalarFieldEnum = {
+  id: 'id',
+  app: 'app',
+  name: 'name',
+  applied: 'applied'
+};
+
+exports.Prisma.Django_sessionScalarFieldEnum = {
+  session_key: 'session_key',
+  session_data: 'session_data',
+  expire_date: 'expire_date'
+};
+
+exports.Prisma.Django_siteScalarFieldEnum = {
+  id: 'id',
+  domain: 'domain',
+  name: 'name'
 };
 
 exports.Prisma.SortOrder = {
@@ -217,14 +301,17 @@ exports.Prisma.NullsOrder = {
 };
 
 exports.Prisma.UserProfileOrderByRelevanceFieldEnum = {
+  password: 'password',
   email: 'email',
   firstName: 'firstName',
   lastName: 'lastName',
+  role: 'role',
   city: 'city',
   state: 'state',
   country: 'country',
   address1: 'address1',
   address2: 'address2',
+  securityQuestion: 'securityQuestion',
   securityAnswer: 'securityAnswer',
   profileImage: 'profileImage',
   phoneNumber: 'phoneNumber',
@@ -250,7 +337,9 @@ exports.Prisma.UploadedImageOrderByRelevanceFieldEnum = {
   name: 'name',
   image: 'image',
   contentType: 'contentType',
-  thumbnail: 'thumbnail'
+  thumbnail: 'thumbnail',
+  status: 'status',
+  blog_url: 'blog_url'
 };
 
 exports.Prisma.BlogPostOrderByRelevanceFieldEnum = {
@@ -260,40 +349,47 @@ exports.Prisma.BlogPostOrderByRelevanceFieldEnum = {
   excerpt: 'excerpt',
   featuredImage: 'featuredImage',
   blogFeaturedImage: 'blogFeaturedImage',
+  status: 'status',
   metaTitle: 'metaTitle',
   metaDescription: 'metaDescription',
   keywords: 'keywords'
 };
-exports.Role = exports.$Enums.Role = {
-  MASTER_ADMIN: 'MASTER_ADMIN',
-  BLOG_ADMIN: 'BLOG_ADMIN',
-  AI_VIDEO_EDITOR_USER: 'AI_VIDEO_EDITOR_USER',
-  USER: 'USER'
+
+exports.Prisma.auth_groupOrderByRelevanceFieldEnum = {
+  name: 'name'
 };
 
-exports.SecurityQuestion = exports.$Enums.SecurityQuestion = {
-  FIRST_PET: 'FIRST_PET',
-  MOTHER_MAIDEN: 'MOTHER_MAIDEN',
-  BIRTH_CITY: 'BIRTH_CITY',
-  FIRST_SCHOOL: 'FIRST_SCHOOL',
-  FAVORITE_TEACHER: 'FAVORITE_TEACHER',
-  CHILDHOOD_FRIEND: 'CHILDHOOD_FRIEND',
-  FIRST_CAR: 'FIRST_CAR',
-  FAVORITE_PLACE: 'FAVORITE_PLACE',
-  PARENTS_MET: 'PARENTS_MET',
-  CHILDHOOD_HERO: 'CHILDHOOD_HERO'
+exports.Prisma.auth_permissionOrderByRelevanceFieldEnum = {
+  name: 'name',
+  codename: 'codename'
 };
 
-exports.UploadedImageStatus = exports.$Enums.UploadedImageStatus = {
-  PENDING: 'PENDING',
-  USING: 'USING'
+exports.Prisma.django_admin_logOrderByRelevanceFieldEnum = {
+  object_id: 'object_id',
+  object_repr: 'object_repr',
+  change_message: 'change_message'
 };
 
-exports.BlogPostStatus = exports.$Enums.BlogPostStatus = {
-  draft: 'draft',
-  pending: 'pending',
-  published: 'published'
+exports.Prisma.django_content_typeOrderByRelevanceFieldEnum = {
+  app_label: 'app_label',
+  model: 'model'
 };
+
+exports.Prisma.django_migrationsOrderByRelevanceFieldEnum = {
+  app: 'app',
+  name: 'name'
+};
+
+exports.Prisma.django_sessionOrderByRelevanceFieldEnum = {
+  session_key: 'session_key',
+  session_data: 'session_data'
+};
+
+exports.Prisma.django_siteOrderByRelevanceFieldEnum = {
+  domain: 'domain',
+  name: 'name'
+};
+
 
 exports.Prisma.ModelName = {
   UserProfile: 'UserProfile',
@@ -301,7 +397,19 @@ exports.Prisma.ModelName = {
   BlogTag: 'BlogTag',
   BlogMainPageSections: 'BlogMainPageSections',
   UploadedImage: 'UploadedImage',
-  BlogPost: 'BlogPost'
+  BlogPost: 'BlogPost',
+  api_bloglikes: 'api_bloglikes',
+  api_blogpost_tags: 'api_blogpost_tags',
+  api_userprofile_groups: 'api_userprofile_groups',
+  api_userprofile_user_permissions: 'api_userprofile_user_permissions',
+  auth_group: 'auth_group',
+  auth_group_permissions: 'auth_group_permissions',
+  auth_permission: 'auth_permission',
+  django_admin_log: 'django_admin_log',
+  django_content_type: 'django_content_type',
+  django_migrations: 'django_migrations',
+  django_session: 'django_session',
+  django_site: 'django_site'
 };
 
 /**

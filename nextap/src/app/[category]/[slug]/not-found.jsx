@@ -3,7 +3,7 @@ import React from "react";
 import { Container, Box, Typography, Button, Stack, Chip } from "@mui/material";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import Link from "next/link";
-import { getAllCategories } from "../lib/blogIndexPagePosts";
+import { getAllCategories } from "../../../lib/blogIndexPagePosts";
 
 export default async function NotFound() {
   const categories = await getAllCategories();

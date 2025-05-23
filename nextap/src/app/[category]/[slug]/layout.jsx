@@ -28,7 +28,7 @@ import { Container } from "@mui/material";
 
 export default function BlogPageLayout({ children }) {
   return (
-    <Container maxWidth="lg" component="main" sx={{ py: 4 }}>
+    <Container maxWidth="lg" component="main" sx={{ py: 3 }}>
       {children}
     </Container>
   );
