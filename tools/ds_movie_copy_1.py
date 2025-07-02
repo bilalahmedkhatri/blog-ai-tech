@@ -2,15 +2,16 @@ from PIL import Image
 from moviepy import *
 from moviepy.video.fx import CrossFadeIn, CrossFadeOut
 from moviepy.audio.io.AudioFileClip import AudioFileClip
-from tools.utils import FileDirectory
+from utils import FileDirectory
 from pathlib import Path
 import random
 import math
 from typing import Optional
 import numpy
 import string
-from db import User, ImageDetail, engine
-from sqlmodel import Session, select
+import random
+# from db import User, ImageDetail, engine
+# from sqlmodel import Session, select
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -47,10 +48,10 @@ TARGET_SIZE = {
 }
 CURRENT_SIZE = TARGET_SIZE["youtube_short"]
 IMAGE_VIEW_DURATION = 5  # seconds per image
-TRANSITION_DURATION = 1  # seconds between images
-ZOOM_RATIO = 0.00  # zoom IN effect
+TRANSITION_DURATION = 2 # seconds between images
+ZOOM_RATIO = 0.09  # zoom IN effect
 FACE_OVERLAY_CONFORM = False
-ZOOM_APPROVE = False
+ZOOM_APPROVE = True
 
         
 def calculate_total_duration(total_img):
@@ -61,7 +62,7 @@ def zoom_in_effect(clip, zoom_ratio=ZOOM_RATIO):
     def effect(get_frame, t):
         img = Image.fromarray(get_frame(t))
         base_size = img.size
-
+        
         new_size = [
             math.ceil(img.size[0] * (1 + (zoom_ratio * t))),
             math.ceil(img.size[1] * (1 + (zoom_ratio * t)))
@@ -100,15 +101,17 @@ def create_transition_clips(images):
     clips = []
     for i, clip in enumerate(images):
         print(i, 'clip', type(clip), clip)
+        clip_with_duration = clip.with_duration(IMAGE_VIEW_DURATION)
         # Process base clip
         if ZOOM_RATIO >= 0.01 and ZOOM_APPROVE:
             composite = CompositeVideoClip([
                 ColorClip(
-                    size=CURRENT_SIZE,
+                    size=CURRENT_SIZE, 
                     color=(0, 0, 0),
                     duration=IMAGE_VIEW_DURATION),
-                fit_to_screen(clip.with_duration(IMAGE_VIEW_DURATION)),
-                zoom_in_effect(clip)
+                fit_to_screen(clip_with_duration),
+                zoom_in_effect(clip_with_duration)
+                # zoom_in_effect(clip)
             ]).with_start(i * (IMAGE_VIEW_DURATION - TRANSITION_DURATION))
             if i > 0:
                 composite = composite.with_effects([
@@ -163,13 +166,17 @@ def main():
     
     try:
         # Load and process images
-        image_paths = file_directory.get_image_files(BASE_DIR.joinpath('media', 'image'))
+        image_paths = file_directory.get_image_files(BASE_DIR.parent.joinpath('media', 'post_images'))
+        # print('images from dir: ', image_paths)
         if not image_paths:
             raise ValueError("No images found in media/image directory")
         
+        select_random_images = random.choices(image_paths, k=6)
         
+        print('select_random_images: ', select_random_images)
         # Process clips with transitions
-        final_clips = create_transition_clips(image_paths)
+        final_clips = create_transition_clips(select_random_images)
+        # final_clips = create_transition_clips(image_paths)
         clips.extend(final_clips)
         
         # Create main video

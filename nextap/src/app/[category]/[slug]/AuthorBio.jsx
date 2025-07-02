@@ -66,7 +66,7 @@ export default function AuthorBioComponent({ author }) {
 
   return (
     <AuthorPaper elevation={1}>
-      <AuthorAvatar src={authorData.avatar} alt={`${authorData.firstName} ${authorData.lastName}`} />
+      <AuthorAvatar src={`http://localhost:8000/media/${authorData.profileImage}`} alt={`${authorData.firstName} ${authorData.lastName}`} />
       
       <AuthorInfo>
         <AuthorName variant="h6">

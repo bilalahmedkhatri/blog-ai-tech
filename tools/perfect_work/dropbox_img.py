@@ -4,8 +4,6 @@ import os
 from dotenv import load_dotenv
 import time
 
-from sympy import E
-
 load_dotenv()
 
 class DropboxManager:

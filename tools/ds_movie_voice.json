@@ -1,0 +1,893 @@
+{
+  "text": " Meet the 2025 Honda CBR 1000RR, a leader-class sportbike that's reborn for peak performance. Under that sleek body lies a 999 cubic centimeter liquid cooled inline 4, flat plane crank, high compression pistons, pushing out 10 horsepower more than the last Gen Full Color TFT display. Throttle by wire with three ride modes plus two customizable profiles and Honda Selectable Torque Control. Five power curves, 10 traction settings, three engine brake levels, plus three wheelie control levels. Like what you see? Hit like, subscribe for more killer bike breakdowns, and share with your crew. See you next ride.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0.0,
+      "end": 2.72,
+      "text": "Meet the 2025 Honda CBR",
+      "words": [
+        {
+          "text": "Meet",
+          "start": 0.0,
+          "end": 0.22,
+          "confidence": 0.887
+        },
+        {
+          "text": "the",
+          "start": 0.22,
+          "end": 0.44,
+          "confidence": 0.997
+        },
+        {
+          "text": "2025",
+          "start": 0.44,
+          "end": 1.32,
+          "confidence": 0.709
+        },
+        {
+          "text": "Honda",
+          "start": 1.32,
+          "end": 2.08,
+          "confidence": 0.978
+        },
+        {
+          "text": "CBR",
+          "start": 2.08,
+          "end": 2.72,
+          "confidence": 0.984
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 2.72,
+      "end": 7.3,
+      "text": "1000RR, a leader-class sportbike that's",
+      "words": [
+        {
+          "text": "1000RR,",
+          "start": 2.72,
+          "end": 4.36,
+          "confidence": 0.79
+        },
+        {
+          "text": "a",
+          "start": 4.78,
+          "end": 5.34,
+          "confidence": 0.788
+        },
+        {
+          "text": "leader-class",
+          "start": 5.34,
+          "end": 5.94,
+          "confidence": 0.695
+        },
+        {
+          "text": "sportbike",
+          "start": 5.94,
+          "end": 6.72,
+          "confidence": 0.727
+        },
+        {
+          "text": "that's",
+          "start": 6.72,
+          "end": 7.3,
+          "confidence": 0.913
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "seek": 0,
+      "start": 7.3,
+      "end": 8.82,
+      "text": "reborn for peak performance.",
+      "words": [
+        {
+          "text": "reborn",
+          "start": 7.3,
+          "end": 7.64,
+          "confidence": 0.928
+        },
+        {
+          "text": "for",
+          "start": 7.64,
+          "end": 8.06,
+          "confidence": 0.985
+        },
+        {
+          "text": "peak",
+          "start": 8.06,
+          "end": 8.3,
+          "confidence": 0.986
+        },
+        {
+          "text": "performance.",
+          "start": 8.3,
+          "end": 8.82,
+          "confidence": 0.992
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "seek": 0,
+      "start": 9.86,
+      "end": 11.66,
+      "text": "Under that sleek body lies",
+      "words": [
+        {
+          "text": "Under",
+          "start": 9.86,
+          "end": 10.06,
+          "confidence": 0.999
+        },
+        {
+          "text": "that",
+          "start": 10.06,
+          "end": 10.32,
+          "confidence": 0.996
+        },
+        {
+          "text": "sleek",
+          "start": 10.32,
+          "end": 10.64,
+          "confidence": 0.987
+        },
+        {
+          "text": "body",
+          "start": 10.64,
+          "end": 11.04,
+          "confidence": 0.999
+        },
+        {
+          "text": "lies",
+          "start": 11.04,
+          "end": 11.66,
+          "confidence": 0.89
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "seek": 0,
+      "start": 11.66,
+      "end": 14.56,
+      "text": "a 999 cubic centimeter liquid",
+      "words": [
+        {
+          "text": "a",
+          "start": 11.66,
+          "end": 11.88,
+          "confidence": 0.995
+        },
+        {
+          "text": "999",
+          "start": 11.88,
+          "end": 13.02,
+          "confidence": 0.972
+        },
+        {
+          "text": "cubic",
+          "start": 13.02,
+          "end": 13.58,
+          "confidence": 0.889
+        },
+        {
+          "text": "centimeter",
+          "start": 13.58,
+          "end": 14.16,
+          "confidence": 0.883
+        },
+        {
+          "text": "liquid",
+          "start": 14.16,
+          "end": 14.56,
+          "confidence": 0.993
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "seek": 0,
+      "start": 14.56,
+      "end": 16.26,
+      "text": "cooled inline 4,",
+      "words": [
+        {
+          "text": "cooled",
+          "start": 14.56,
+          "end": 15.06,
+          "confidence": 0.538
+        },
+        {
+          "text": "inline",
+          "start": 15.06,
+          "end": 15.88,
+          "confidence": 0.847
+        },
+        {
+          "text": "4,",
+          "start": 15.88,
+          "end": 16.26,
+          "confidence": 0.393
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "seek": 0,
+      "start": 16.82,
+      "end": 19.06,
+      "text": "flat plane crank, high compression",
+      "words": [
+        {
+          "text": "flat",
+          "start": 16.82,
+          "end": 17.08,
+          "confidence": 0.993
+        },
+        {
+          "text": "plane",
+          "start": 17.08,
+          "end": 17.42,
+          "confidence": 0.337
+        },
+        {
+          "text": "crank,",
+          "start": 17.42,
+          "end": 17.86,
+          "confidence": 0.987
+        },
+        {
+          "text": "high",
+          "start": 18.36,
+          "end": 18.56,
+          "confidence": 0.995
+        },
+        {
+          "text": "compression",
+          "start": 18.56,
+          "end": 19.06,
+          "confidence": 0.84
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "seek": 0,
+      "start": 19.06,
+      "end": 21.9,
+      "text": "pistons, pushing out 10 horsepower",
+      "words": [
+        {
+          "text": "pistons,",
+          "start": 19.06,
+          "end": 19.82,
+          "confidence": 0.996
+        },
+        {
+          "text": "pushing",
+          "start": 20.4,
+          "end": 20.62,
+          "confidence": 0.967
+        },
+        {
+          "text": "out",
+          "start": 20.62,
+          "end": 20.9,
+          "confidence": 0.996
+        },
+        {
+          "text": "10",
+          "start": 20.9,
+          "end": 21.26,
+          "confidence": 0.951
+        },
+        {
+          "text": "horsepower",
+          "start": 21.26,
+          "end": 21.9,
+          "confidence": 0.853
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "seek": 0,
+      "start": 21.9,
+      "end": 22.86,
+      "text": "more than the last",
+      "words": [
+        {
+          "text": "more",
+          "start": 21.9,
+          "end": 22.24,
+          "confidence": 0.938
+        },
+        {
+          "text": "than",
+          "start": 22.24,
+          "end": 22.46,
+          "confidence": 0.959
+        },
+        {
+          "text": "the",
+          "start": 22.46,
+          "end": 22.6,
+          "confidence": 0.954
+        },
+        {
+          "text": "last",
+          "start": 22.6,
+          "end": 22.86,
+          "confidence": 0.702
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "seek": 2296,
+      "start": 22.96,
+      "end": 24.98,
+      "text": "Gen Full Color TFT display.",
+      "words": [
+        {
+          "text": "Gen",
+          "start": 22.96,
+          "end": 23.26,
+          "confidence": 0.565
+        },
+        {
+          "text": "Full",
+          "start": 23.26,
+          "end": 23.6,
+          "confidence": 0.75
+        },
+        {
+          "text": "Color",
+          "start": 23.6,
+          "end": 23.9,
+          "confidence": 0.675
+        },
+        {
+          "text": "TFT",
+          "start": 23.9,
+          "end": 24.46,
+          "confidence": 0.928
+        },
+        {
+          "text": "display.",
+          "start": 24.46,
+          "end": 24.98,
+          "confidence": 0.783
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "seek": 2296,
+      "start": 25.66,
+      "end": 27.3,
+      "text": "Throttle by wire with three",
+      "words": [
+        {
+          "text": "Throttle",
+          "start": 25.66,
+          "end": 26.12,
+          "confidence": 0.878
+        },
+        {
+          "text": "by",
+          "start": 26.12,
+          "end": 26.36,
+          "confidence": 0.974
+        },
+        {
+          "text": "wire",
+          "start": 26.36,
+          "end": 26.72,
+          "confidence": 0.993
+        },
+        {
+          "text": "with",
+          "start": 26.72,
+          "end": 27.02,
+          "confidence": 0.991
+        },
+        {
+          "text": "three",
+          "start": 27.02,
+          "end": 27.3,
+          "confidence": 0.609
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "seek": 2296,
+      "start": 27.3,
+      "end": 29.6,
+      "text": "ride modes plus two customizable",
+      "words": [
+        {
+          "text": "ride",
+          "start": 27.3,
+          "end": 27.58,
+          "confidence": 0.966
+        },
+        {
+          "text": "modes",
+          "start": 27.58,
+          "end": 27.98,
+          "confidence": 0.997
+        },
+        {
+          "text": "plus",
+          "start": 27.98,
+          "end": 28.54,
+          "confidence": 0.791
+        },
+        {
+          "text": "two",
+          "start": 28.54,
+          "end": 28.9,
+          "confidence": 0.838
+        },
+        {
+          "text": "customizable",
+          "start": 28.9,
+          "end": 29.6,
+          "confidence": 0.941
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "seek": 2296,
+      "start": 29.6,
+      "end": 30.22,
+      "text": "profiles",
+      "words": [
+        {
+          "text": "profiles",
+          "start": 29.6,
+          "end": 30.22,
+          "confidence": 0.859
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "seek": 2296,
+      "start": 30.98,
+      "end": 33.02,
+      "text": "and Honda Selectable Torque Control.",
+      "words": [
+        {
+          "text": "and",
+          "start": 30.98,
+          "end": 31.14,
+          "confidence": 0.999
+        },
+        {
+          "text": "Honda",
+          "start": 31.14,
+          "end": 31.48,
+          "confidence": 0.996
+        },
+        {
+          "text": "Selectable",
+          "start": 31.48,
+          "end": 32.16,
+          "confidence": 0.826
+        },
+        {
+          "text": "Torque",
+          "start": 32.16,
+          "end": 32.6,
+          "confidence": 0.923
+        },
+        {
+          "text": "Control.",
+          "start": 32.6,
+          "end": 33.02,
+          "confidence": 0.722
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "seek": 2296,
+      "start": 33.4,
+      "end": 36.06,
+      "text": "Five power curves, 10 traction",
+      "words": [
+        {
+          "text": "Five",
+          "start": 33.4,
+          "end": 34.06,
+          "confidence": 0.891
+        },
+        {
+          "text": "power",
+          "start": 34.06,
+          "end": 34.48,
+          "confidence": 0.962
+        },
+        {
+          "text": "curves,",
+          "start": 34.48,
+          "end": 34.92,
+          "confidence": 0.994
+        },
+        {
+          "text": "10",
+          "start": 35.44,
+          "end": 35.64,
+          "confidence": 0.622
+        },
+        {
+          "text": "traction",
+          "start": 35.64,
+          "end": 36.06,
+          "confidence": 0.988
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "seek": 2296,
+      "start": 36.06,
+      "end": 36.56,
+      "text": "settings,",
+      "words": [
+        {
+          "text": "settings,",
+          "start": 36.06,
+          "end": 36.56,
+          "confidence": 0.983
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "seek": 2296,
+      "start": 37.22,
+      "end": 39.14,
+      "text": "three engine brake levels, plus",
+      "words": [
+        {
+          "text": "three",
+          "start": 37.22,
+          "end": 37.4,
+          "confidence": 0.954
+        },
+        {
+          "text": "engine",
+          "start": 37.4,
+          "end": 37.76,
+          "confidence": 0.994
+        },
+        {
+          "text": "brake",
+          "start": 37.76,
+          "end": 38.04,
+          "confidence": 0.965
+        },
+        {
+          "text": "levels,",
+          "start": 38.04,
+          "end": 38.42,
+          "confidence": 0.998
+        },
+        {
+          "text": "plus",
+          "start": 38.64,
+          "end": 39.14,
+          "confidence": 0.988
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "seek": 2296,
+      "start": 39.14,
+      "end": 42.02,
+      "text": "three wheelie control levels. Like",
+      "words": [
+        {
+          "text": "three",
+          "start": 39.14,
+          "end": 39.78,
+          "confidence": 0.967
+        },
+        {
+          "text": "wheelie",
+          "start": 39.78,
+          "end": 40.3,
+          "confidence": 0.954
+        },
+        {
+          "text": "control",
+          "start": 40.3,
+          "end": 40.6,
+          "confidence": 0.976
+        },
+        {
+          "text": "levels.",
+          "start": 40.6,
+          "end": 41.06,
+          "confidence": 0.999
+        },
+        {
+          "text": "Like",
+          "start": 41.84,
+          "end": 42.02,
+          "confidence": 0.759
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "seek": 2296,
+      "start": 42.02,
+      "end": 43.5,
+      "text": "what you see? Hit like,",
+      "words": [
+        {
+          "text": "what",
+          "start": 42.02,
+          "end": 42.22,
+          "confidence": 0.998
+        },
+        {
+          "text": "you",
+          "start": 42.22,
+          "end": 42.4,
+          "confidence": 0.996
+        },
+        {
+          "text": "see?",
+          "start": 42.4,
+          "end": 42.66,
+          "confidence": 0.996
+        },
+        {
+          "text": "Hit",
+          "start": 42.9,
+          "end": 43.32,
+          "confidence": 0.668
+        },
+        {
+          "text": "like,",
+          "start": 43.32,
+          "end": 43.5,
+          "confidence": 0.758
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "seek": 2296,
+      "start": 43.5,
+      "end": 45.46,
+      "text": "subscribe for more killer bike",
+      "words": [
+        {
+          "text": "subscribe",
+          "start": 43.5,
+          "end": 44.22,
+          "confidence": 0.647
+        },
+        {
+          "text": "for",
+          "start": 44.22,
+          "end": 44.7,
+          "confidence": 0.986
+        },
+        {
+          "text": "more",
+          "start": 44.7,
+          "end": 44.9,
+          "confidence": 0.998
+        },
+        {
+          "text": "killer",
+          "start": 44.9,
+          "end": 45.18,
+          "confidence": 0.682
+        },
+        {
+          "text": "bike",
+          "start": 45.18,
+          "end": 45.46,
+          "confidence": 0.977
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "seek": 2296,
+      "start": 45.46,
+      "end": 47.38,
+      "text": "breakdowns, and share with your",
+      "words": [
+        {
+          "text": "breakdowns,",
+          "start": 45.46,
+          "end": 46.22,
+          "confidence": 0.974
+        },
+        {
+          "text": "and",
+          "start": 46.42,
+          "end": 46.72,
+          "confidence": 0.981
+        },
+        {
+          "text": "share",
+          "start": 46.72,
+          "end": 47.0,
+          "confidence": 0.99
+        },
+        {
+          "text": "with",
+          "start": 47.0,
+          "end": 47.18,
+          "confidence": 0.999
+        },
+        {
+          "text": "your",
+          "start": 47.18,
+          "end": 47.38,
+          "confidence": 0.998
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "seek": 2296,
+      "start": 47.38,
+      "end": 49.14,
+      "text": "crew. See you next ride.",
+      "words": [
+        {
+          "text": "crew.",
+          "start": 47.38,
+          "end": 47.66,
+          "confidence": 0.999
+        },
+        {
+          "text": "See",
+          "start": 48.14,
+          "end": 48.34,
+          "confidence": 0.986
+        },
+        {
+          "text": "you",
+          "start": 48.34,
+          "end": 48.54,
+          "confidence": 0.999
+        },
+        {
+          "text": "next",
+          "start": 48.54,
+          "end": 48.78,
+          "confidence": 0.996
+        },
+        {
+          "text": "ride.",
+          "start": 48.78,
+          "end": 49.14,
+          "confidence": 0.995
+        }
+      ]
+    }
+  ],
+  "language": "en",
+  "language_probs": {
+    "en": 0.9994503855705261,
+    "zh": 0.00016566039994359016,
+    "de": 1.5298210200853646e-05,
+    "es": 1.172415340988664e-05,
+    "ru": 4.460957825358491e-06,
+    "ko": 2.0300920368754305e-05,
+    "fr": 3.883334284182638e-05,
+    "ja": 6.164355727378279e-05,
+    "pt": 1.165192497865064e-05,
+    "tr": 2.945095957329613e-06,
+    "pl": 7.425283001794014e-06,
+    "ca": 2.8984548094967977e-08,
+    "nl": 5.431116278487025e-06,
+    "ar": 9.670292456576135e-06,
+    "sv": 8.920690675040532e-07,
+    "it": 7.17655757398461e-06,
+    "id": 9.441974725632463e-06,
+    "hi": 8.648873517813627e-06,
+    "fi": 2.2441547571361298e-06,
+    "vi": 3.8012331060599536e-06,
+    "he": 1.8247945945404354e-06,
+    "uk": 3.3375567909388337e-07,
+    "el": 2.0392808437463827e-06,
+    "ms": 4.280759640096221e-06,
+    "cs": 1.0040615734396852e-06,
+    "ro": 5.788297130493447e-07,
+    "da": 2.9426095693452226e-07,
+    "hu": 2.314711991857621e-06,
+    "ta": 3.1436769631909556e-07,
+    "no": 8.708838095117244e-08,
+    "th": 4.7454894229304045e-05,
+    "ur": 3.2274988370772917e-06,
+    "hr": 4.624496696692404e-08,
+    "bg": 3.6415489290675396e-08,
+    "lt": 4.8089519033567285e-09,
+    "la": 5.388473437051289e-05,
+    "mi": 9.59949943535321e-07,
+    "ml": 6.703460826429364e-07,
+    "cy": 1.0527480299060699e-05,
+    "sk": 9.986655413740664e-08,
+    "te": 2.8189361955810455e-07,
+    "fa": 3.5841264889313607e-07,
+    "lv": 1.5592389601692958e-08,
+    "bn": 4.500688248754159e-07,
+    "sr": 1.6023557591893223e-08,
+    "az": 8.05692046412787e-09,
+    "sl": 4.901981469629391e-07,
+    "kn": 6.796302631784101e-09,
+    "et": 5.543416392583822e-09,
+    "mk": 2.6739312986023833e-09,
+    "br": 1.5204968804027885e-06,
+    "eu": 8.566083842254102e-09,
+    "is": 1.8752492891849215e-08,
+    "hy": 1.1421984247306227e-08,
+    "ne": 5.917428325119545e-08,
+    "mn": 8.898594217043865e-08,
+    "bs": 2.547317201617716e-08,
+    "kk": 6.647846717555694e-10,
+    "sq": 5.7217288684796586e-09,
+    "sw": 3.379215627319354e-07,
+    "gl": 5.0310777766071624e-08,
+    "mr": 7.449883820953573e-09,
+    "pa": 1.654144199392249e-08,
+    "si": 4.073570210039179e-07,
+    "km": 9.030046612679143e-07,
+    "sn": 9.296791745327937e-07,
+    "yo": 1.6727882723444054e-07,
+    "so": 2.965692968981415e-10,
+    "af": 6.864689794383594e-08,
+    "oc": 7.970621496156127e-09,
+    "ka": 8.746683932692179e-10,
+    "be": 4.550384513635208e-09,
+    "tg": 1.515397356210979e-11,
+    "sd": 2.3134163029681076e-08,
+    "gu": 2.370581064781163e-09,
+    "am": 1.6675644198826944e-10,
+    "yi": 9.696768188405258e-08,
+    "lo": 1.8357614095521058e-08,
+    "uz": 4.884634363655493e-13,
+    "fo": 1.2641730329221446e-08,
+    "ht": 4.6824190746974637e-08,
+    "ps": 4.0605652174008355e-09,
+    "tk": 8.37811417464529e-12,
+    "nn": 1.0553978427196853e-05,
+    "mt": 1.2166038843020033e-08,
+    "sa": 5.836973286932334e-07,
+    "lb": 1.2533574872408693e-11,
+    "my": 1.4435002526624885e-07,
+    "bo": 2.991963583554025e-07,
+    "tl": 4.350079962023301e-06,
+    "mg": 1.497701702241061e-12,
+    "as": 5.166512195842188e-08,
+    "tt": 6.245639422308713e-12,
+    "haw": 8.599312423029914e-06,
+    "ln": 2.509013552476347e-10,
+    "ha": 1.027091606209396e-11,
+    "ba": 8.220596946217906e-12,
+    "jw": 1.4897943856340135e-06,
+    "su": 1.3005986912451029e-11
+  }
+}

@@ -53,12 +53,6 @@ export default async function PostPage({ params }) {
   if (!post) {
     notFound();
   }
-  //   return (
-  //     <Container maxWidth="lg" sx={{ py: 4 }}>
-  //       <h1>Post not found</h1>
-  //     </Container>
-  //   );
-  // }
   
   // Increment view count
   await incrementViewCount(post.id);
@@ -89,7 +83,8 @@ export default async function PostPage({ params }) {
           
           <AuthorBio author={post.author} />
           
-          <CommentSection postId={post.id} />
+          {/* abhi ke liye comment section ko band kiya hai, user authentication add kerni hogi. */}
+          {/* <CommentSection postId={post.id} /> */}
         </Grid>
         
         {/* Sidebar */}
